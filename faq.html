@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FAQ — Skyfare Consulting</title>
+    <meta name="description" content="Skyfare Consulting — Flight Strategy & Miles Advisory" />
+    <script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = { theme: { extend: {} } }
+</script>
+    <link rel="icon" href="favicon.ico" />
+    <style>
+      :root { color-scheme: light; }
+      html, body { background:#fafafa; color:#111827; }
+      .container { max-width: 80rem; margin: 0 auto; padding: 0 1.5rem; }
+      a { text-underline-offset:2px; }
+    </style>
+  </head>
+  <body class="min-h-screen flex flex-col">
+  <header class="sticky top-0 z-40 backdrop-blur bg-white/80 border-b border-neutral-200">
+    <div class="container py-4 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3">
+        <div class="h-8 w-8 rounded-xl bg-neutral-900 flex items-center justify-center text-white text-sm font-semibold tracking-wide">CS</div>
+        <span class="font-serif text-lg">Skyfare Consulting</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="index.html" class="text-neutral-600 hover:opacity-70">Home</a>
+        <a href="services.html" class="text-neutral-600 hover:opacity-70">Services</a>
+        <a href="cases.html" class="text-neutral-600 hover:opacity-70">Case Studies</a>
+        <a href="faq.html" class="text-neutral-600 hover:opacity-70">FAQ</a>
+        <a href="about.html" class="text-neutral-600 hover:opacity-70">About</a>
+        <a href="contact.html" class="text-neutral-600 hover:opacity-70">Contact</a>
+        <a href="book.html" class="inline-flex items-center rounded-2xl border border-neutral-900 px-4 py-2 text-sm font-medium hover:bg-neutral-900 hover:text-white transition">Book</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container py-16 md:py-24 max-w-3xl">
+    <h1 class="font-serif text-4xl md:text-5xl">FAQ</h1>
+    <div class="mt-8 divide-y divide-neutral-200">
+      <details class="group py-4"><summary class="flex cursor-pointer list-none items-center justify-between"><span class="font-medium text-neutral-900">Are you a travel agency?</span><span class="ml-4 inline-flex h-7 w-7 items-center justify-center rounded-full border border-neutral-300 text-sm transition group-open:rotate-45">+</span></summary><p class="mt-3 text-sm text-neutral-700">No. We are a flight strategy consultancy. We don’t issue tickets. We design your itinerary and provide booking guidance (and optional concierge through partners).</p></details>
+      <details class="group py-4"><summary class="flex cursor-pointer list-none items-center justify-between"><span class="font-medium text-neutral-900">Can you guarantee availability?</span><span class="ml-4 inline-flex h-7 w-7 items-center justify-center rounded-full border border-neutral-300 text-sm transition group-open:rotate-45">+</span></summary><p class="mt-3 text-sm text-neutral-700">We can’t guarantee award or fare availability, but we time searches, leverage partners, and advise on transfer and waitlist strategies to maximize success.</p></details>
+      <details class="group py-4"><summary class="flex cursor-pointer list-none items-center justify-between"><span class="font-medium text-neutral-900">Do you work with corporate clients?</span><span class="ml-4 inline-flex h-7 w-7 items-center justify-center rounded-full border border-neutral-300 text-sm transition group-open:rotate-45">+</span></summary><p class="mt-3 text-sm text-neutral-700">Yes. We design repeatable route playbooks, handle complex team travel windows, and align with corporate policies and reward programs.</p></details>
+    </div>
+  </main>
+  <footer class="mt-auto border-t border-neutral-200">
+    <div class="container py-10 text-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+      <div class="text-neutral-600">© <span id="year"></span> Skyfare Consulting. All rights reserved.</div>
+      <div class="flex gap-4 text-neutral-600">
+        <a href="terms.html" class="hover:opacity-70">Terms</a>
+        <a href="privacy.html" class="hover:opacity-70">Privacy</a>
+        <a href="contact.html" class="hover:opacity-70">Contact</a>
+      </div>
+    </div>
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  </footer>
+</body>
+</html>
