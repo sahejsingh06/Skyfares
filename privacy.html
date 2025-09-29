@@ -1,101 +1,189 @@
-<main class="container py-16 md:py-24 max-w-3xl">
-  <h1 class="font-serif text-4xl md:text-5xl">Privacy Policy</h1>
-  <p class="mt-4 text-neutral-700">
-    At <strong>Skyfare Consulting</strong>, we value your trust and are committed to protecting your privacy. 
-    This Privacy Policy explains what information we collect, how we use it, and your rights as our client.
-  </p>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Privacy — Skyfare Consulting</title>
+    <meta name="description" content="Skyfare Consulting — Flight Strategy & Miles Advisory" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config = { theme: { extend: {} } }</script>
+    <link rel="icon" href="favicon.ico" />
+    <style>
+      :root { color-scheme: light; }
+      html, body { background:#fafafa; color:#111827; }
+      .container { max-width: 80rem; margin: 0 auto; padding: 0 1.5rem; }
+      a { text-underline-offset:2px; }
+      .toc a.active { color:#111827; font-weight:600; }
+    </style>
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <!-- NAV -->
+    <header class="sticky top-0 z-40 backdrop-blur bg-white/80 border-b border-neutral-200">
+      <div class="container py-4 flex items-center justify-between">
+        <a href="index.html" class="flex items-center gap-3">
+          <div class="h-8 w-8 rounded-xl bg-neutral-900 flex items-center justify-center text-white text-sm font-semibold">SC</div>
+          <span class="font-serif text-lg">Skyfare Consulting</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-6 text-sm">
+          <a href="index.html" class="text-neutral-600 hover:opacity-70">Home</a>
+          <a href="services.html" class="text-neutral-600 hover:opacity-70">Services</a>
+          <a href="cases.html" class="text-neutral-600 hover:opacity-70">Case Studies</a>
+          <a href="faq.html" class="text-neutral-600 hover:opacity-70">FAQ</a>
+          <a href="about.html" class="text-neutral-600 hover:opacity-70">About</a>
+          <a href="contact.html" class="text-neutral-600 hover:opacity-70">Contact</a>
+          <a href="book.html" class="inline-flex items-center rounded-2xl border border-neutral-900 px-4 py-2 text-sm font-medium hover:bg-neutral-900 hover:text-white transition">Book</a>
+        </nav>
+      </div>
+    </header>
 
-  <section class="mt-10 space-y-8 text-sm text-neutral-700 leading-relaxed">
-    <div>
-      <h2 class="font-medium text-lg">1. Information We Collect</h2>
-      <p class="mt-2">We may collect the following types of information when you use our services:</p>
-      <ul class="list-disc list-inside mt-2 space-y-1">
-        <li><strong>Personal details:</strong> Name, email, phone number, and country of residence.</li>
-        <li><strong>Travel preferences:</strong> Routes, dates, cabin class, loyalty programs, and points balances (only if you provide them).</li>
-        <li><strong>Technical data:</strong> Basic usage data when you visit our website (cookies, browser type, approximate location).</li>
-      </ul>
-    </div>
+    <!-- HERO -->
+    <section class="container pt-16 md:pt-24">
+      <div class="flex items-start gap-5">
+        <div class="shrink-0 rounded-2xl bg-white p-3 shadow-sm ring-1 ring-black/5">
+          <!-- tiny lock icon -->
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="3" y="10" width="18" height="10" rx="2" stroke="#111827" stroke-width="1.5"/>
+            <path d="M7 10V8a5 5 0 0 1 10 0v2" stroke="#111827" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          <h1 class="font-serif text-4xl md:text-5xl">Privacy Policy</h1>
+          <p class="mt-3 text-neutral-700 max-w-2xl">
+            We keep your data minimal, secure, and only for the purpose of designing your flight strategy.
+          </p>
+          <p class="mt-1 text-xs text-neutral-500">Last updated: <span id="last-updated">September 2025</span></p>
+        </div>
+      </div>
+    </section>
 
-    <div>
-      <h2 class="font-medium text-lg">2. How We Use Your Information</h2>
-      <p class="mt-2">We use your information solely for:</p>
-      <ul class="list-disc list-inside mt-2 space-y-1">
-        <li>Designing flight strategies and itineraries tailored to your needs.</li>
-        <li>Advising on loyalty program usage, award bookings, and cash vs. miles comparisons.</li>
-        <li>Communicating with you about options, updates, and follow-up support.</li>
-        <li>Improving our services and website experience.</li>
-      </ul>
-    </div>
+    <!-- CONTENT -->
+    <main class="container py-10 md:py-16">
+      <div class="grid md:grid-cols-[220px_1fr] gap-8">
+        <!-- TOC -->
+        <aside class="toc hidden md:block">
+          <div class="sticky top-24 rounded-2xl bg-white p-4 text-sm shadow-sm ring-1 ring-black/5">
+            <div class="font-medium mb-3">On this page</div>
+            <nav class="grid gap-2">
+              <a href="#collect" class="text-neutral-600 hover:opacity-70">1. Information we collect</a>
+              <a href="#use" class="text-neutral-600 hover:opacity-70">2. How we use it</a>
+              <a href="#share" class="text-neutral-600 hover:opacity-70">3. Sharing</a>
+              <a href="#retention" class="text-neutral-600 hover:opacity-70">4. Retention</a>
+              <a href="#security" class="text-neutral-600 hover:opacity-70">5. Security</a>
+              <a href="#rights" class="text-neutral-600 hover:opacity-70">6. Your rights</a>
+              <a href="#cookies" class="text-neutral-600 hover:opacity-70">7. Cookies</a>
+              <a href="#third" class="text-neutral-600 hover:opacity-70">8. Third-party links</a>
+              <a href="#intl" class="text-neutral-600 hover:opacity-70">9. International transfers</a>
+              <a href="#updates" class="text-neutral-600 hover:opacity-70">10. Changes</a>
+              <a href="#contact" class="text-neutral-600 hover:opacity-70">11. Contact</a>
+            </nav>
+          </div>
+        </aside>
 
-    <div>
-      <h2 class="font-medium text-lg">3. Data Sharing</h2>
-      <p class="mt-2">
-        We do <strong>not sell</strong> or trade your personal data. We only share your information with:
-      </p>
-      <ul class="list-disc list-inside mt-2 space-y-1">
-        <li>Trusted partners (for optional concierge or booking support, if you request it).</li>
-        <li>Service providers (e.g., calendar scheduling tools like Calendly, or payment processors if applicable).</li>
-        <li>When required by law or legal process.</li>
-      </ul>
-    </div>
+        <!-- Body -->
+        <section class="space-y-8 text-sm text-neutral-700 leading-relaxed">
+          <!-- Card wrapper keeps the same look as the rest of the site -->
+          <div id="collect" class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-black/5">
+            <h2 class="font-medium text-lg">1. Information we collect</h2>
+            <ul class="list-disc list-inside mt-3 space-y-1">
+              <li><strong>Personal details</strong> — name, email, phone (when you contact us or book a call).</li>
+              <li><strong>Travel preferences</strong> — routes, dates, cabin class, loyalty programs and balances you choose to share.</li>
+              <li><strong>Operational data</strong> — messages relevant to your itinerary and our engagement.</li>
+              <li><strong>Website data</strong> — basic analytics/cookies (pages visited, device/browser). No sensitive categories.</li>
+            </ul>
+          </div>
 
-    <div>
-      <h2 class="font-medium text-lg">4. Data Retention</h2>
-      <p class="mt-2">
-        We retain your information only as long as necessary to provide services and comply with legal obligations. 
-        You can request deletion of your data at any time by contacting us.
-      </p>
-    </div>
+          <div id="use" class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-black/5">
+            <h2 class="font-medium text-lg">2. How we use it</h2>
+            <ul class="list-disc list-inside mt-3 space-y-1">
+              <li>Design flight strategies, award bookings and cash-vs-miles comparisons tailored to you.</li>
+              <li>Communicate options, timing (transfer bonuses, award space), and provide documentation.</li>
+              <li>Operate and improve our website and services.</li>
+              <li>Comply with legal obligations.</li>
+            </ul>
+          </div>
 
-    <div>
-      <h2 class="font-medium text-lg">5. Security</h2>
-      <p class="mt-2">
-        We take appropriate technical and organizational measures to safeguard your personal data from unauthorized 
-        access, alteration, or disclosure. However, no system is 100% secure.
-      </p>
-    </div>
+          <div id="share" class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-black/5">
+            <h2 class="font-medium text-lg">3. Sharing</h2>
+            <p class="mt-3">We never sell your data. We may share it only with:</p>
+            <ul class="list-disc list-inside mt-3 space-y-1">
+              <li><strong>Vetted partners</strong> for optional concierge/booking support (only at your request).</li>
+              <li><strong>Service providers</strong> we use to operate (e.g., Calendly for scheduling, email tools, analytics).</li>
+              <li>Authorities when required by law.</li>
+            </ul>
+          </div>
 
-    <div>
-      <h2 class="font-medium text-lg">6. Your Rights</h2>
-      <p class="mt-2">Depending on your location, you may have the right to:</p>
-      <ul class="list-disc list-inside mt-2 space-y-1">
-        <li>Request access to your personal data.</li>
-        <li>Ask for corrections or updates to inaccurate information.</li>
-        <li>Request deletion of your data (“right to be forgotten”).</li>
-        <li>Withdraw consent for data processing at any time.</li>
-      </ul>
-    </div>
+          <div id="retention" class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-black/5">
+            <h2 class="font-medium text-lg">4. Retention</h2>
+            <p class="mt-3">We keep data only as long as needed for our engagement and to meet legal requirements. You can request deletion at any time.</p>
+          </div>
 
-    <div>
-      <h2 class="font-medium text-lg">7. Cookies & Tracking</h2>
-      <p class="mt-2">
-        Our website may use cookies for basic analytics and functionality. You can disable cookies in your browser 
-        settings, though some features may not function properly.
-      </p>
-    </div>
+          <div id="security" class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-black/5">
+            <h2 class="font-medium text-lg">5. Security</h2>
+            <p class="mt-3">We apply reasonable technical and organisational measures to protect your information. No method is 100% secure, and we continuously review our safeguards.</p>
+          </div>
 
-    <div>
-      <h2 class="font-medium text-lg">8. Third-Party Links</h2>
-      <p class="mt-2">
-        Our site may link to airline websites, loyalty programs, or booking tools. We are not responsible for the 
-        privacy practices of these third parties, and we encourage you to review their policies.
-      </p>
-    </div>
+          <div id="rights" class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-black/5">
+            <h2 class="font-medium text-lg">6. Your rights</h2>
+            <p class="mt-3">Depending on your region, you may:</p>
+            <ul class="list-disc list-inside mt-3 space-y-1">
+              <li>Access a copy of your personal data.</li>
+              <li>Request correction or deletion (“right to be forgotten”).</li>
+              <li>Object to or restrict certain processing.</li>
+              <li>Withdraw consent where we rely on it.</li>
+            </ul>
+            <p class="mt-3">To exercise these rights, <a href="contact.html" class="underline">contact us</a>.</p>
+          </div>
 
-    <div>
-      <h2 class="font-medium text-lg">9. Updates to This Policy</h2>
-      <p class="mt-2">
-        We may update this Privacy Policy from time to time. The latest version will always be posted on this page 
-        with a “last updated” date.
-      </p>
-    </div>
+          <div id="cookies" class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-black/5">
+            <h2 class="font-medium text-lg">7. Cookies</h2>
+            <p class="mt-3">We use minimal cookies for functionality and basic analytics. You can control cookies via your browser settings; some features may not work without them.</p>
+          </div>
 
-    <div>
-      <h2 class="font-medium text-lg">10. Contact Us</h2>
-      <p class="mt-2">
-        If you have any questions about this Privacy Policy or wish to exercise your rights, 
-        please <a href="contact.html" class="underline">contact us</a>.
-      </p>
-    </div>
-  </section>
-</main>
+          <div id="third" class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-black/5">
+            <h2 class="font-medium text-lg">8. Third-party links</h2>
+            <p class="mt-3">Our site links to airline/loyalty/program sites. Their privacy practices are their own—please review their policies when using those services.</p>
+          </div>
+
+          <div id="intl" class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-black/5">
+            <h2 class="font-medium text-lg">9. International transfers</h2>
+            <p class="mt-3">We may store or process data outside your country. Where applicable, we rely on lawful transfer mechanisms and standard contractual protections.</p>
+          </div>
+
+          <div id="updates" class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-black/5">
+            <h2 class="font-medium text-lg">10. Changes to this Policy</h2>
+            <p class="mt-3">We may update this page from time to time. We will post the new effective date above.</p>
+          </div>
+
+          <div id="contact" class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-black/5">
+            <h2 class="font-medium text-lg">11. Contact</h2>
+            <p class="mt-3">Questions or requests? Please <a href="contact.html" class="underline">contact us</a>.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="mt-auto border-t border-neutral-200">
+      <div class="container py-10 text-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div class="text-neutral-600">© <span id="year"></span> Skyfare Consulting. All rights reserved.</div>
+        <div class="flex gap-4 text-neutral-600">
+          <a href="terms.html" class="hover:opacity-70">Terms</a>
+          <a href="privacy.html" class="hover:opacity-70">Privacy</a>
+          <a href="contact.html" class="hover:opacity-70">Contact</a>
+        </div>
+      </div>
+      <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+        // tiny TOC highlighter on scroll
+        const links = [...document.querySelectorAll('.toc a')];
+        const sections = links.map(a => document.querySelector(a.getAttribute('href')));
+        window.addEventListener('scroll', () => {
+          let i = sections.findIndex(s => s.getBoundingClientRect().top > 100);
+          if (i === -1) i = sections.length;
+          const active = sections[Math.max(0, i - 1)];
+          links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + active.id));
+        }, { passive: true });
+      </script>
+    </footer>
+  </body>
+</html>
