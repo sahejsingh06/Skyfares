@@ -6,9 +6,7 @@
     <title>Contact — Skyfare Consulting</title>
     <meta name="description" content="Skyfare Consulting — Flight Strategy & Miles Advisory" />
     <script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = { theme: { extend: {} } }
-</script>
+    <script>tailwind.config = { theme: { extend: {} } }</script>
     <link rel="icon" href="favicon.ico" />
     <style>
       :root { color-scheme: light; }
@@ -17,50 +15,211 @@
       a { text-underline-offset:2px; }
     </style>
   </head>
+
   <body class="min-h-screen flex flex-col">
-  <header class="sticky top-0 z-40 backdrop-blur bg-white/80 border-b border-neutral-200">
-    <div class="container py-4 flex items-center justify-between">
-      <a href="index.html" class="flex items-center gap-3">
-        <div class="h-8 w-8 rounded-xl bg-neutral-900 flex items-center justify-center text-white text-sm font-semibold tracking-wide">CS</div>
-        <span class="font-serif text-lg">Skyfare Consulting</span>
-      </a>
-      <nav class="hidden md:flex items-center gap-6 text-sm">
-        <a href="index.html" class="text-neutral-600 hover:opacity-70">Home</a>
-        <a href="services.html" class="text-neutral-600 hover:opacity-70">Services</a>
-        <a href="cases.html" class="text-neutral-600 hover:opacity-70">Case Studies</a>
-        <a href="faq.html" class="text-neutral-600 hover:opacity-70">FAQ</a>
-        <a href="about.html" class="text-neutral-600 hover:opacity-70">About</a>
-        <a href="contact.html" class="text-neutral-600 hover:opacity-70">Contact</a>
-        <a href="book.html" class="inline-flex items-center rounded-2xl border border-neutral-900 px-4 py-2 text-sm font-medium hover:bg-neutral-900 hover:text-white transition">Book</a>
-      </nav>
-    </div>
-  </header>
+    <!-- NAV -->
+    <header class="sticky top-0 z-40 backdrop-blur bg-white/80 border-b border-neutral-200">
+      <div class="container py-4 flex items-center justify-between">
+        <a href="index.html" class="flex items-center gap-3">
+          <div class="h-8 w-8 rounded-xl bg-neutral-900 flex items-center justify-center text-white text-sm font-semibold tracking-wide">SC</div>
+          <span class="font-serif text-lg">Skyfare Consulting</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-6 text-sm">
+          <a href="index.html" class="text-neutral-600 hover:opacity-70">Home</a>
+          <a href="services.html" class="text-neutral-600 hover:opacity-70">Services</a>
+          <a href="cases.html" class="text-neutral-600 hover:opacity-70">Case Studies</a>
+          <a href="faq.html" class="text-neutral-600 hover:opacity-70">FAQ</a>
+          <a href="about.html" class="text-neutral-600 hover:opacity-70">About</a>
+          <a href="contact.html" class="text-neutral-900 font-medium">Contact</a>
+          <a href="book.html" class="inline-flex items-center rounded-2xl border border-neutral-900 px-4 py-2 text-sm font-medium hover:bg-neutral-900 hover:text-white transition">Book</a>
+        </nav>
+      </div>
+    </header>
 
-  <main class="container py-16 md:py-24 max-w-2xl">
-    <h1 class="font-serif text-4xl md:text-5xl">Contact</h1>
-    <p class="mt-4 text-neutral-700">For general questions, use the form below. For trip work, go to <a href="book.html" class="underline">Book</a>.</p>
-    
-    <!-- Contact Form -->
-    <form class="mt-8 grid gap-4" action="https://formspree.io/f/mqayqlvj" method="POST" enctype="multipart/form-data">
-      <label class="grid gap-2 text-sm">
-        <span>Name</span>
-        <input name="name" class="rounded-xl border border-neutral-300 px-3 py-2" placeholder="Your name" required />
-      </label>
+    <!-- MAIN -->
+    <main class="container py-16 md:py-24 max-w-2xl">
+      <h1 class="font-serif text-4xl md:text-5xl">Contact</h1>
+      <p class="mt-4 text-neutral-700">
+        For general questions, use the form below. For trip work, go to <a href="book.html" class="underline">Book</a>.
+      </p>
 
-      <label class="grid gap-2 text-sm">
-        <span>Email</span>
-        <input name="email" type="email" class="rounded-xl border border-neutral-300 px-3 py-2" placeholder="you@domain.com" required />
-      </label>
+      <!-- FORM -->
+      <form id="contact-form"
+            action="https://formspree.io/f/mqayqlvj"
+            method="POST"
+            enctype="multipart/form-data"
+            class="mt-8 grid gap-4">
 
-      <label class="grid gap-2 text-sm">
-        <span>Message</span>
-        <textarea name="message" class="rounded-xl border border-neutral-300 px-3 py-2" rows="4" placeholder="How can we help?" required></textarea>
-      </label>
+        <!-- Name -->
+        <label class="grid gap-2 text-sm">
+          <span>Name</span>
+          <input name="name" required
+                 class="rounded-xl border border-neutral-300 px-3 py-2 outline-none focus:ring-2 focus:ring-neutral-900"
+                 placeholder="Your name" />
+        </label>
 
-      <!-- File Upload -->
-      <label class="grid gap-2 text-sm">
-        <span>Attach a File (optional)</span>
-        <input type="file" name="file" class="block w-full text-sm text-neutral-700 border border-neutral-300 rounded-xl cursor-pointer bg-white p-2 hover:bg-neutral-50" />
-      </label>
+        <!-- Email -->
+        <label class="grid gap-2 text-sm">
+          <span>Email</span>
+          <input name="email" type="email" required
+                 class="rounded-xl border border-neutral-300 px-3 py-2 outline-none focus:ring-2 focus:ring-neutral-900"
+                 placeholder="you@domain.com" />
+        </label>
 
-      <button type="submit" class="inline-flex items-center justify-center rounded-2xl
+        <!-- Message -->
+        <label class="grid gap-2 text-sm">
+          <span>Message</span>
+          <textarea name="message" rows="5" required
+                    class="rounded-xl border border-neutral-300 px-3 py-2 outline-none focus:ring-2 focus:ring-neutral-900"
+                    placeholder="How can we help?"></textarea>
+        </label>
+
+        <!-- Drag & Drop Upload -->
+        <div class="grid gap-2 text-sm">
+          <span>Attach a File (optional)</span>
+
+          <!-- hidden input (fallback for no-JS) -->
+          <input id="file-input" type="file" name="file" class="hidden"
+                 accept=".pdf,.doc,.docx,.png,.jpg,.jpeg" />
+
+          <!-- dropzone -->
+          <div id="dropzone"
+               class="flex flex-col items-center justify-center rounded-2xl border border-dashed border-neutral-300 bg-white px-4 py-8 text-center transition hover:border-neutral-400">
+            <div class="rounded-full bg-neutral-900/90 text-white text-xs px-3 py-1">Upload</div>
+            <p class="mt-3 text-sm text-neutral-700">
+              Drag & drop a file here, or
+              <span id="browse" class="underline cursor-pointer">browse</span>
+            </p>
+            <p class="mt-1 text-xs text-neutral-500">PDF, DOCX, PNG, JPG • up to 5 MB</p>
+            <p id="file-name" class="mt-2 text-xs text-neutral-600 hidden"></p>
+          </div>
+          <p id="file-error" class="mt-1 text-xs text-red-600 hidden"></p>
+        </div>
+
+        <!-- Hidden helpers -->
+        <input type="hidden" name="_subject" value="New inquiry — Skyfare Consulting" />
+        <input type="text" name="_gotcha" style="display:none" />
+        <input type="hidden" name="_next" value="https://sahejsingh06.github.io/Skyfares/contact.html?sent=1" />
+
+        <!-- SUBMIT BUTTON -->
+        <button type="submit"
+                class="inline-flex items-center justify-center rounded-2xl bg-neutral-900 px-5 py-3 text-sm font-medium text-white hover:opacity-90">
+          Send
+        </button>
+
+        <p id="form-status" class="hidden text-sm"></p>
+      </form>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="mt-auto border-t border-neutral-200">
+      <div class="container py-10 text-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div class="text-neutral-600">© <span id="year"></span> Skyfare Consulting. All rights reserved.</div>
+        <div class="flex gap-4 text-neutral-600">
+          <a href="terms.html" class="hover:opacity-70">Terms</a>
+          <a href="privacy.html" class="hover:opacity-70">Privacy</a>
+          <a href="contact.html" class="hover:opacity-70">Contact</a>
+        </div>
+      </div>
+      <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Drag & drop handler
+        (function () {
+          const form = document.getElementById('contact-form');
+          const fileInput = document.getElementById('file-input');
+          const dropzone = document.getElementById('dropzone');
+          const browse = document.getElementById('browse');
+          const fileName = document.getElementById('file-name');
+          const fileError = document.getElementById('file-error');
+          const statusEl = document.getElementById('form-status');
+
+          const MAX = 5 * 1024 * 1024; // 5 MB
+          const ACCEPT = [
+            'application/pdf',
+            'application/msword',
+            'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+            'image/png',
+            'image/jpeg'
+          ];
+
+          function showFile(f) {
+            fileName.textContent = `Selected: ${f.name} (${(f.size/1024/1024).toFixed(2)} MB)`;
+            fileName.classList.remove('hidden');
+          }
+          function showError(msg) { fileError.textContent = msg; fileError.classList.remove('hidden'); }
+          function clearError()   { fileError.classList.add('hidden'); }
+
+          browse.addEventListener('click', () => fileInput.click());
+          ['dragenter','dragover'].forEach(evt => {
+            dropzone.addEventListener(evt, (e) => {
+              e.preventDefault(); e.stopPropagation();
+              dropzone.classList.add('border-neutral-900');
+            });
+          });
+          ['dragleave','drop'].forEach(evt => {
+            dropzone.addEventListener(evt, (e) => {
+              e.preventDefault(); e.stopPropagation();
+              dropzone.classList.remove('border-neutral-900');
+            });
+          });
+          dropzone.addEventListener('drop', (e) => {
+            const f = e.dataTransfer.files && e.dataTransfer.files[0];
+            if (!f) return;
+            fileInput.files = e.dataTransfer.files;
+            validateFile(f);
+          });
+          fileInput.addEventListener('change', () => {
+            const f = fileInput.files && fileInput.files[0];
+            if (f) validateFile(f);
+          });
+
+          function validateFile(f) {
+            clearError();
+            if (f.size > MAX) return showError('File is larger than 5 MB.');
+            if (!ACCEPT.includes(f.type)) return showError('Unsupported file type.');
+            showFile(f);
+          }
+
+          // Submit with fetch → Formspree
+          form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            clearError();
+            statusEl.classList.add('hidden');
+
+            const fd = new FormData(form);
+            const f = fileInput.files && fileInput.files[0];
+            if (f) {
+              if (f.size > MAX) return showError('File is larger than 5 MB.');
+              if (!ACCEPT.includes(f.type)) return showError('Unsupported file type.');
+              fd.set('file', f);
+            }
+
+            try {
+              const resp = await fetch(form.action, {
+                method: 'POST',
+                body: fd,
+                headers: { 'Accept': 'application/json' }
+              });
+              if (resp.ok) {
+                form.reset();
+                fileName.classList.add('hidden');
+                statusEl.classList.remove('hidden');
+                statusEl.className = 'text-sm text-green-700';
+                statusEl.textContent = 'Thanks—your message was sent!';
+              } else {
+                const err = await resp.json().catch(() => ({}));
+                throw new Error(err.errors ? err.errors.map(e=>e.message).join(', ') : 'Submission failed.');
+              }
+            } catch (err) {
+              statusEl.classList.remove('hidden');
+              statusEl.className = 'text-sm text-red-600';
+              statusEl.textContent = 'Couldn’t send. Please email me at sahejsingh1@gmail.com. (' + err.message + ')';
+            }
+          });
+        })();
+      </script>
+    </footer>
+  </body>
+</html>
+
