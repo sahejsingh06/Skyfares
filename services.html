@@ -7,15 +7,12 @@
     <meta name="description" content="Skyfare Consulting — Flight Strategy & Miles Advisory" />
     <link rel="icon" href="favicon.ico" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = { theme: { extend: {} } }
-    </script>
+    <script>tailwind.config = { theme: { extend: {} } }</script>
     <style>
       :root { color-scheme: light; }
       html, body { background:#fafafa; color:#111827; }
       .container { max-width: 80rem; margin: 0 auto; padding: 0 1.5rem; }
       a { text-underline-offset:2px; }
-      /* make the entire card act like a link with visible focus */
       .card-link:focus-visible { outline: 3px solid #111827; outline-offset: 3px; border-radius: 1rem; }
     </style>
   </head>
@@ -29,7 +26,7 @@
         </a>
         <nav class="hidden md:flex items-center gap-6 text-sm">
           <a href="index.html" class="text-neutral-600 hover:opacity-70">Home</a>
-          <a href="services.html" class="text-neutral-600 hover:opacity-70">Services</a>
+          <a href="services.html" class="text-neutral-900 font-medium">Services</a>
           <a href="cases.html" class="text-neutral-600 hover:opacity-70">Case Studies</a>
           <a href="faq.html" class="text-neutral-600 hover:opacity-70">FAQ</a>
           <a href="about.html" class="text-neutral-600 hover:opacity-70">About</a>
@@ -49,60 +46,42 @@
         <a href="assessment.html" class="card-link group rounded-2xl border border-neutral-200 bg-white p-6 transition hover:-translate-y-0.5 hover:shadow-md focus:shadow-md">
           <div class="flex items-baseline justify-between">
             <h3 class="font-medium">Assessment Call</h3>
-            <div class="text-right">
-              <div class="text-2xl font-serif">S$99</div>
-            </div>
+            <div class="text-right"><div class="text-2xl font-serif">S$99</div></div>
           </div>
           <ul class="mt-4 space-y-2 text-sm">
             <li class="flex gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-neutral-900"></span>30-min call: route, dates, constraints</li>
             <li class="flex gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-neutral-900"></span>Quick feasibility & sweet-spot scan</li>
             <li class="flex gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-neutral-900"></span>Action plan + next steps</li>
           </ul>
-          <span
-            data-action="book"
-            data-url="book.html?service=assessment"
-            class="mt-6 inline-flex items-center rounded-2xl border border-neutral-900 px-4 py-2 text-sm font-medium transition group-hover:bg-neutral-900 group-hover:text-white"
-          >Schedule</span>
+          <span data-action="book" data-url="book.html?service=assessment" class="mt-6 inline-flex items-center rounded-2xl border border-neutral-900 px-4 py-2 text-sm font-medium transition group-hover:bg-neutral-900 group-hover:text-white">Schedule</span>
         </a>
 
-        <!-- Itinerary Design (S$99 per trip) -->
+        <!-- Itinerary Design -->
         <a href="itinerary.html" class="card-link group rounded-2xl border border-neutral-200 bg-white p-6 transition hover:-translate-y-0.5 hover:shadow-md focus:shadow-md">
           <div class="flex items-baseline justify-between">
             <h3 class="font-medium">Itinerary Design</h3>
-            <div class="text-right">
-              <div class="text-2xl font-serif">S$99<span class="text-sm align-top">/trip</span></div>
-            </div>
+            <div class="text-right"><div class="text-2xl font-serif">S$99<span class="text-sm align-top">/trip</span></div></div>
           </div>
           <ul class="mt-4 space-y-2 text-sm">
             <li class="flex gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-neutral-900"></span>2–3 optimized options (time vs value)</li>
             <li class="flex gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-neutral-900"></span>Cash vs miles comparisons</li>
             <li class="flex gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-neutral-900"></span>Booking instructions or concierge</li>
           </ul>
-          <span
-            data-action="book"
-            data-url="book.html?service=itinerary"
-            class="mt-6 inline-flex items-center rounded-2xl border border-neutral-900 px-4 py-2 text-sm font-medium transition group-hover:bg-neutral-900 group-hover:text-white"
-          >Start</span>
+          <span data-action="book" data-url="book.html?service=itinerary" class="mt-6 inline-flex items-center rounded-2xl border border-neutral-900 px-4 py-2 text-sm font-medium transition group-hover:bg-neutral-900 group-hover:text-white">Start</span>
         </a>
 
         <!-- Miles Concierge -->
         <a href="concierge.html" class="card-link group rounded-2xl border border-neutral-200 bg-white p-6 transition hover:-translate-y-0.5 hover:shadow-md focus:shadow-md">
           <div class="flex items-baseline justify-between">
             <h3 class="font-medium">Miles Concierge</h3>
-            <div class="text-right">
-              <div class="text-2xl font-serif">S$59<span class="text-sm align-top">/mo</span></div>
-            </div>
+            <div class="text-right"><div class="text-2xl font-serif">S$59<span class="text-sm align-top">/mo</span></div></div>
           </div>
           <ul class="mt-4 space-y-2 text-sm">
             <li class="flex gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-neutral-900"></span>Alerts + transfer timing</li>
             <li class="flex gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-neutral-900"></span>Account strategy & pooling</li>
             <li class="flex gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-neutral-900"></span>Upgrade paths + waitlist mgmt</li>
           </ul>
-          <span
-            data-action="book"
-            data-url="book.html?service=concierge"
-            class="mt-6 inline-flex items-center rounded-2xl border border-neutral-900 px-4 py-2 text-sm font-medium transition group-hover:bg-neutral-900 group-hover:text-white"
-          >Join</span>
+          <span data-action="book" data-url="book.html?service=concierge" class="mt-6 inline-flex items-center rounded-2xl border border-neutral-900 px-4 py-2 text-sm font-medium transition group-hover:bg-neutral-900 group-hover:text-white">Join</span>
         </a>
 
       </div>
@@ -119,16 +98,13 @@
         </div>
       </div>
       <script>
-        // Year stamp
         document.getElementById('year').textContent = new Date().getFullYear();
-
-        // Make the inner "button" spans go straight to booking without leaving card
+        // Inner CTA spans jump straight to booking without following the card link
         document.querySelectorAll('[data-action="book"]').forEach(el => {
           el.addEventListener('click', function (e) {
             e.preventDefault();
             e.stopPropagation();
-            const url = this.getAttribute('data-url') || 'book.html';
-            window.location.href = url;
+            window.location.href = this.getAttribute('data-url');
           }, { passive: true });
         });
       </script>
@@ -136,48 +112,3 @@
   </body>
 </html>
 
-  <main class="container py-16 md:py-24">
-    <h1 class="font-serif text-4xl md:text-5xl">Services</h1>
-    <div class="mt-10 grid md:grid-cols-3 gap-6">
-      <div class="rounded-2xl border border-neutral-200 bg-white p-6">
-        <div class="flex items-baseline justify-between"><h3 class="font-medium">Assessment Call</h3><div class="text-right"><div class="text-2xl font-serif">S$99</div></div></div>
-        <ul class="mt-4 space-y-2 text-sm">
-          <li class="flex gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-neutral-900"></span>30‑min call: route, dates, constraints</li>
-          <li class="flex gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-neutral-900"></span>Quick feasibility & sweet‑spot scan</li>
-          <li class="flex gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-neutral-900"></span>Action plan + next steps</li>
-        </ul>
-        <a href="book.html" class="mt-6 inline-flex items-center rounded-2xl border border-neutral-900 px-4 py-2 text-sm font-medium hover:bg-neutral-900 hover:text-white transition">Schedule</a>
-      </div>
-      <div class="rounded-2xl border border-neutral-200 bg-white p-6">
-        <div class="flex items-baseline justify-between"><h3 class="font-medium">Itinerary Design</h3><div class="text-right"><div class="text-2xl font-serif">S$240+</div></div></div>
-        <ul class="mt-4 space-y-2 text-sm">
-          <li class="flex gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-neutral-900"></span>2–3 optimized options (time vs value)</li>
-          <li class="flex gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-neutral-900"></span>Cash vs miles comparisons</li>
-          <li class="flex gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-neutral-900"></span>Booking instructions or concierge</li>
-        </ul>
-        <a href="book.html" class="mt-6 inline-flex items-center rounded-2xl border border-neutral-900 px-4 py-2 text-sm font-medium hover:bg-neutral-900 hover:text-white transition">Start</a>
-      </div>
-      <div class="rounded-2xl border border-neutral-200 bg-white p-6">
-        <div class="flex items-baseline justify-between"><h3 class="font-medium">Miles Concierge</h3><div class="text-right"><div class="text-2xl font-serif">S$59/mo</div></div></div>
-        <ul class="mt-4 space-y-2 text-sm">
-          <li class="flex gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-neutral-900"></span>Alerts + transfer timing</li>
-          <li class="flex gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-neutral-900"></span>Account strategy & pooling</li>
-          <li class="flex gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-neutral-900"></span>Upgrade paths + waitlist mgmt</li>
-        </ul>
-        <a href="book.html" class="mt-6 inline-flex items-center rounded-2xl border border-neutral-900 px-4 py-2 text-sm font-medium hover:bg-neutral-900 hover:text-white transition">Join</a>
-      </div>
-    </div>
-  </main>
-  <footer class="mt-auto border-t border-neutral-200">
-    <div class="container py-10 text-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-      <div class="text-neutral-600">© <span id="year"></span> Skyfare Consulting. All rights reserved.</div>
-      <div class="flex gap-4 text-neutral-600">
-        <a href="terms.html" class="hover:opacity-70">Terms</a>
-        <a href="privacy.html" class="hover:opacity-70">Privacy</a>
-        <a href="contact.html" class="hover:opacity-70">Contact</a>
-      </div>
-    </div>
-    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-  </footer>
-</body>
-</html>
