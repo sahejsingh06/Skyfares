@@ -6,120 +6,163 @@
     <title>Skyfare Consulting — Flight Strategy & Miles Advisory</title>
     <meta name="description" content="Skyfare Consulting — Flight Strategy & Miles Advisory" />
     <script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = { theme: { extend: {} } }
-</script>
+    <script>
+      tailwind.config = { theme: { extend: {} } }
+    </script>
     <link rel="icon" href="favicon.ico" />
     <style>
       :root { color-scheme: light; }
       html, body { background:#fafafa; color:#111827; }
       .container { max-width: 80rem; margin: 0 auto; padding: 0 1.5rem; }
-      a { text-underline-offset:2px; }
+      a { text-underline-offset:3px; }
     </style>
   </head>
   <body class="min-h-screen flex flex-col">
-  <header class="sticky top-0 z-40 backdrop-blur bg-white/80 border-b border-neutral-200">
-    <div class="container py-4 flex items-center justify-between">
-      <a href="index.html" class="flex items-center gap-3">
-        <div class="h-8 w-8 rounded-xl bg-neutral-900 flex items-center justify-center text-white text-sm font-semibold tracking-wide">CS</div>
-        <span class="font-serif text-lg">Skyfare Consulting</span>
-      </a>
-      <nav class="hidden md:flex items-center gap-6 text-sm">
-        <a href="index.html" class="text-neutral-600 hover:opacity-70">Home</a>
-        <a href="services.html" class="text-neutral-600 hover:opacity-70">Services</a>
-        <a href="cases.html" class="text-neutral-600 hover:opacity-70">Case Studies</a>
-        <a href="faq.html" class="text-neutral-600 hover:opacity-70">FAQ</a>
-        <a href="about.html" class="text-neutral-600 hover:opacity-70">About</a>
-        <a href="contact.html" class="text-neutral-600 hover:opacity-70">Contact</a>
-        <a href="book.html" class="inline-flex items-center rounded-2xl border border-neutral-900 px-4 py-2 text-sm font-medium hover:bg-neutral-900 hover:text-white transition">Book</a>
-      </nav>
-    </div>
-  </header>
+    <!-- HEADER -->
+    <header class="sticky top-0 z-40 backdrop-blur bg-white/85 border-b border-neutral-200">
+      <div class="container py-5 flex items-center justify-between">
+        <a href="index.html" class="flex items-center gap-3">
+          <div class="h-9 w-9 rounded-xl bg-neutral-900 flex items-center justify-center text-white text-sm font-bold tracking-wide">S.C</div>
+          <span class="font-serif text-xl font-semibold">Skyfare Consulting</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-8 text-base font-medium">
+          <a href="index.html"   class="text-neutral-700 hover:text-neutral-900 hover:underline decoration-neutral-400">Home</a>
+          <a href="services.html" class="text-neutral-700 hover:text-neutral-900 hover:underline decoration-neutral-400">Services</a>
+          <a href="cases.html"    class="text-neutral-700 hover:text-neutral-900 hover:underline decoration-neutral-400">Case Studies</a>
+          <a href="faq.html"      class="text-neutral-700 hover:text-neutral-900 hover:underline decoration-neutral-400">FAQ</a>
+          <a href="about.html"    class="text-neutral-700 hover:text-neutral-900 hover:underline decoration-neutral-400">About</a>
+          <a href="contact.html"  class="text-neutral-700 hover:text-neutral-900 hover:underline decoration-neutral-400">Contact</a>
+          <a href="book.html"
+             class="inline-flex items-center rounded-2xl border border-neutral-900 px-4 py-2 font-medium transition hover:bg-neutral-900 hover:text-white">
+            Book
+          </a>
+        </nav>
+      </div>
+    </header>
 
-  <main>
-    <section class="relative overflow-hidden">
-      <div class="absolute inset-0 opacity-5 bg-[radial-gradient(1000px_500px_at_70%_-30%,#111_0%,transparent_60%)]"></div>
-      <div class="container py-20 md:py-28 grid md:grid-cols-2 gap-10 items-center">
-        <div>
-          <h1 class="font-serif text-4xl md:text-6xl leading-tight">Flight Strategy for People Who Value <span class="whitespace-nowrap">Time & Money.</span></h1>
-          <p class="mt-6 text-base md:text-lg text-neutral-700 max-w-xl">Skyfare Consulting designs smarter routes, unlocks premium cabin value, and maximizes your miles. Not a travel agency—your private flight strategist.</p>
-          <div class="mt-8 flex flex-wrap gap-3">
-            <a href="book.html" class="inline-flex items-center rounded-2xl bg-neutral-900 px-5 py-3 text-sm font-medium text-white hover:opacity-90">Book a 30‑min Assessment</a>
-            <a href="services.html" class="inline-flex items-center rounded-2xl border border-neutral-300 px-5 py-3 text-sm font-medium hover:bg-white">Explore Services</a>
+    <main>
+      <!-- HERO -->
+      <section class="relative overflow-hidden">
+        <!-- Subtle color wash for a bit of life -->
+        <div class="pointer-events-none absolute -top-32 -right-40 h-[28rem] w-[28rem] rounded-full bg-gradient-to-tr from-emerald-300/30 via-sky-300/25 to-indigo-300/20 blur-3xl"></div>
+        <!-- Keep light radial for depth -->
+        <div class="absolute inset-0 opacity-5 bg-[radial-gradient(1000px_500px_at_70%_-30%,#111_0%,transparent_60%)]"></div>
+
+        <div class="container py-20 md:py-28 grid md:grid-cols-2 gap-10 items-center relative">
+          <div>
+            <h1 class="font-serif text-4xl md:text-6xl leading-tight">
+              Flight Strategy for People Who Value <span class="whitespace-nowrap">Time & Money.</span>
+            </h1>
+            <p class="mt-6 text-base md:text-lg text-neutral-700 max-w-xl">
+              Skyfare Consulting designs smarter routes, unlocks premium cabin value, and maximizes your miles.
+              Not a travel agency—your private flight strategist.
+            </p>
+            <div class="mt-8 flex flex-wrap gap-3">
+              <a href="book.html"
+                 class="inline-flex items-center rounded-2xl bg-neutral-900 px-5 py-3 text-sm font-medium text-white transition hover:opacity-90 hover:shadow-md">
+                Book a 30-min Assessment
+              </a>
+              <a href="services.html"
+                 class="inline-flex items-center rounded-2xl border border-emerald-600 px-5 py-3 text-sm font-medium text-emerald-700 transition hover:bg-emerald-600 hover:text-white hover:shadow-sm">
+                Explore Services
+              </a>
+            </div>
+            <div class="mt-6 flex items-center gap-6 text-xs text-neutral-600">
+              <div class="flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-emerald-600"></span>Avg savings up to 25–60%*</div>
+              <div class="flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-emerald-600"></span>Premium cabins via sweet-spot miles</div>
+              <div class="flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-emerald-600"></span>Complex multi-city mastered</div>
+            </div>
           </div>
-          <div class="mt-6 flex items-center gap-6 text-xs text-neutral-600">
-            <div class="flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-green-600"></span>Avg savings up to 25–60%*</div>
-            <div class="flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-green-600"></span>Biz/First via miles sweet spots</div>
-            <div class="flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-green-600"></span>Complex multi‑city mastered</div>
+
+          <div class="relative">
+            <div class="rounded-3xl bg-white shadow-xl ring-1 ring-black/5 p-6">
+              <div class="grid grid-cols-2 gap-4 text-sm">
+                <!-- Replaced NPS with Family Savings stat -->
+                <div class="rounded-2xl border border-neutral-200 p-4">
+                  <div class="text-xs text-neutral-500">Avg Family Savings/trip (4 pax)</div>
+                  <div class="mt-1 text-2xl font-serif">$2,450</div>
+                </div>
+                <div class="rounded-2xl border border-neutral-200 p-4">
+                  <div class="text-xs text-neutral-500">Avg Fare Reduction</div>
+                  <div class="mt-1 text-2xl font-serif">38%</div>
+                </div>
+                <div class="rounded-2xl border border-neutral-200 p-4">
+                  <div class="text-xs text-neutral-500">Premium Redemptions</div>
+                  <div class="mt-1 text-2xl font-serif">1.2k<span class="text-base align-top">+</span></div>
+                </div>
+                <div class="rounded-2xl border border-neutral-200 p-4">
+                  <div class="text-xs text-neutral-500">Cities Optimized</div>
+                  <div class="mt-1 text-2xl font-serif">180<span class="text-base align-top">+</span></div>
+                </div>
+              </div>
+              <div class="mt-6 rounded-2xl bg-neutral-900 text-white p-5">
+                <p class="text-xs uppercase tracking-widest text-white/70">Sample Win</p>
+                <p class="mt-2 text-sm leading-relaxed">SIN→JFK round-trip in Business for 98k miles + S$186 taxes (vs S$6,200 cash).</p>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="relative">
-          <div class="rounded-3xl bg-white shadow-xl ring-1 ring-black/5 p-6">
-            <div class="grid grid-cols-2 gap-4 text-sm">
-              <div class="rounded-2xl border border-neutral-200 p-4"><div class="text-xs text-neutral-500">Client NPS</div><div class="mt-1 text-2xl font-serif">92<span class="text-base align-top">/100</span></div></div>
-              <div class="rounded-2xl border border-neutral-200 p-4"><div class="text-xs text-neutral-500">Avg Fare Reduction</div><div class="mt-1 text-2xl font-serif">38%</div></div>
-              <div class="rounded-2xl border border-neutral-200 p-4"><div class="text-xs text-neutral-500">Premium Redemptions</div><div class="mt-1 text-2xl font-serif">1.2k<span class="text-base align-top">+</span></div></div>
-              <div class="rounded-2xl border border-neutral-200 p-4"><div class="text-xs text-neutral-500">Cities Optimized</div><div class="mt-1 text-2xl font-serif">180<span class="text-base align-top">+</span></div></div>
-            </div>
-            <div class="mt-6 rounded-2xl bg-neutral-900 text-white p-5">
-              <p class="text-xs uppercase tracking-widest text-white/70">Sample Win</p>
-              <p class="mt-2 text-sm leading-relaxed">SIN→JFK round‑trip in Business for 98k miles + S$186 taxes (vs S$6,200 cash).</p>
-            </div>
+      </section>
+
+      <!-- PARTNER / AIRLINE LOGOS -->
+      <section class="container py-12 md:py-16">
+        <div class="rounded-3xl bg-white shadow-sm ring-1 ring-black/5 px-6 py-8 md:px-10 md:py-10">
+          <p class="text-center text-sm text-neutral-600">Trusted by travelers who fly with</p>
+
+          <div class="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-x-10 gap-y-6 items-center">
+            <img src="logos/singapore-airlines.svg" alt="Singapore Airlines" class="h-24 w-auto mx-auto object-contain grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition" />
+            <img src="logos/emirates.png"            alt="Emirates"           class="h-24 w-auto mx-auto object-contain grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition" />
+            <img src="logos/ana.png"                 alt="ANA"                class="h-24 w-auto mx-auto object-contain grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition" />
+            <img src="logos/united.png"              alt="United"             class="h-24 w-auto mx-auto object-contain grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition" />
+            <img src="logos/amex.svg"                alt="American Express"   class="h-24 w-auto mx-auto object-contain grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition" />
+            <img src="logos/chase.png"               alt="Chase"              class="h-24 w-auto mx-auto object-contain grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition" />
+          </div>
+
+          <p class="mt-6 text-center text-xs text-neutral-400">
+            Logos are for descriptive use only and do not imply endorsement or partnership.
+          </p>
+        </div>
+      </section>
+
+      <section class="container py-16 md:py-24">
+        <h2 class="font-serif text-3xl md:text-4xl">Why Skyfare Consulting</h2>
+        <div class="mt-10 grid md:grid-cols-3 gap-6">
+          <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-black/5">
+            <h3 class="font-medium">Strategy, not Search</h3>
+            <p class="mt-2 text-sm text-neutral-700">We architect routes, time zones, and fare rules—beyond what commodity search engines surface.</p>
+          </div>
+          <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-black/5">
+            <h3 class="font-medium">Miles Maximized</h3>
+            <p class="mt-2 text-sm text-neutral-700">We exploit alliance charts, transfer bonuses, stopovers, and sweet spots for premium cabins.</p>
+          </div>
+          <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-black/5">
+            <h3 class="font-medium">Complex, Made Simple</h3>
+            <p class="mt-2 text-sm text-neutral-700">Multi-city, open-jaw, family bookings, corporate shuttles—we design itineraries that hold up.</p>
           </div>
         </div>
+      </section>
+
+      <section class="container py-16 md:py-24">
+        <h2 class="font-serif text-3xl md:text-4xl">Start with a quick assessment</h2>
+        <p class="mt-4 text-neutral-700">Tell us your dates, routes, and miles. We’ll propose 1–2 high-value options in 24–48 hours.</p>
+        <div class="mt-6 flex gap-3">
+          <a href="book.html" class="inline-flex items-center rounded-2xl bg-neutral-900 px-5 py-3 text-sm font-medium text-white hover:opacity-90">Book a Call</a>
+          <a href="services.html" class="inline-flex items-center rounded-2xl border border-neutral-300 px-5 py-3 text-sm font-medium hover:bg-white">See Services</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="mt-auto border-t border-neutral-200">
+      <div class="container py-10 text-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div class="text-neutral-600">© <span id="year"></span> Skyfare Consulting. All rights reserved.</div>
+        <div class="flex gap-4 text-neutral-600">
+          <a href="terms.html" class="hover:opacity-70">Terms</a>
+          <a href="privacy.html" class="hover:opacity-70">Privacy</a>
+          <a href="contact.html" class="hover:opacity-70">Contact</a>
+        </div>
       </div>
-    </section>
-
-    <!-- PARTNER / AIRLINE LOGOS -->
-<section class="container py-12 md:py-16">
-  <div class="rounded-3xl bg-white shadow-sm ring-1 ring-black/5 px-6 py-8 md:px-10 md:py-10">
-    <p class="text-center text-sm text-neutral-600">Trusted by travelers who fly with</p>
-
-    <div class="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-x-10 gap-y-6 items-center">
-      <!-- Each <img> points to /logos/*. Replace with your real files -->
-      <img src="logos/singapore-airlines.svg" alt="Singapore Airlines" class="h-24 md:h-26 w-auto mx-auto object-contain grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition" />
-      <img src="logos/emirates.png"            alt="Emirates"           class="h-24 md:h-26 w-auto mx-auto object-contain grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition" />
-      <img src="logos/ana.png"                 alt="ANA"                class="h-24 md:h-26 w-auto mx-auto object-contain grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition" />
-      <img src="logos/united.png"              alt="United"             class="h-24 md:h-26 w-auto mx-auto object-contain grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition" />
-      <img src="logos/amex.svg"                alt="American Express"   class="h-24 md:h-26 w-auto mx-auto object-contain grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition" />
-      <img src="logos/chase.png"               alt="Chase"              class="h-24 md:h-26 w-auto mx-auto object-contain grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition" />
-    </div>
-
-    <!-- Optional fine print -->
-    <p class="mt-6 text-center text-xs text-neutral-400">
-      Logos are for descriptive use only and do not imply endorsement or partnership.
-    </p>
-  </div>
-</section>
-
-    <section class="container py-16 md:py-24">
-      <h2 class="font-serif text-3xl md:text-4xl">Why Skyfare Consulting</h2>
-      <div class="mt-10 grid md:grid-cols-3 gap-6">
-        <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-black/5"><h3 class="font-medium">Strategy, not Search</h3><p class="mt-2 text-sm text-neutral-700">We architect routes, time zones, and fare rules—beyond what commodity search engines surface.</p></div>
-        <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-black/5"><h3 class="font-medium">Miles Maximized</h3><p class="mt-2 text-sm text-neutral-700">We exploit alliance charts, transfer bonuses, stopovers, and sweet spots for premium cabins.</p></div>
-        <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-black/5"><h3 class="font-medium">Complex, Made Simple</h3><p class="mt-2 text-sm text-neutral-700">Multi‑city, open‑jaw, family bookings, corporate shuttles—we design itineraries that hold up.</p></div>
-      </div>
-    </section>
-
-    <section class="container py-16 md:py-24">
-      <h2 class="font-serif text-3xl md:text-4xl">Start with a quick assessment</h2>
-      <p class="mt-4 text-neutral-700">Tell us your dates, routes, and miles. We’ll propose 1–2 high‑value options in 24–48 hours.</p>
-      <div class="mt-6 flex gap-3">
-        <a href="book.html" class="inline-flex items-center rounded-2xl bg-neutral-900 px-5 py-3 text-sm font-medium text-white hover:opacity-90">Book a Call</a>
-        <a href="services.html" class="inline-flex items-center rounded-2xl border border-neutral-300 px-5 py-3 text-sm font-medium hover:bg-white">See Services</a>
-      </div>
-    </section>
-  </main>
-  <footer class="mt-auto border-t border-neutral-200">
-    <div class="container py-10 text-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-      <div class="text-neutral-600">© <span id="year"></span> Skyfare Consulting. All rights reserved.</div>
-      <div class="flex gap-4 text-neutral-600">
-        <a href="terms.html" class="hover:opacity-70">Terms</a>
-        <a href="privacy.html" class="hover:opacity-70">Privacy</a>
-        <a href="contact.html" class="hover:opacity-70">Contact</a>
-      </div>
-    </div>
-    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-  </footer>
-</body>
+      <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+    </footer>
+  </body>
 </html>
+
