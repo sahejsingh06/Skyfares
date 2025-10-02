@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KrisFlyer Miles Purchase — Skyfare Consulting</title>
+  <link rel="icon" href="favicon.ico" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html,body{background:#fafafa;color:#111827}
+    .container{max-width:70rem;margin:0 auto;padding:0 1.25rem}
+    .table{width:100%}
+    .table th,.table td{padding:.75rem;border-bottom:1px solid #e5e7eb;font-size:.9rem}
+    .table th{text-align:left;color:#374151}
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+  <header class="sticky top-0 z-40 backdrop-blur bg-white/80 border-b border-neutral-200">
+    <div class="container py-4 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3">
+        <div class="h-8 w-8 rounded-xl bg-neutral-900 text-white flex items-center justify-center text-sm font-semibold">CS</div>
+        <span class="font-serif text-lg">Skyfare Consulting</span>
+      </a>
+      <a href="book.html?service=krisflyer" class="rounded-2xl border border-neutral-900 px-4 py-2 text-sm hover:bg-neutral-900 hover:text-white transition">Enquire</a>
+    </div>
+  </header>
+
+  <main class="container py-12 md:py-16">
+    <h1 class="font-serif text-3xl md:text-4xl">KrisFlyer Miles Purchase</h1>
+    <p class="mt-3 text-neutral-700">Three ways to get KrisFlyer miles or book immediately via nominee redemption.</p>
+
+    <div class="mt-8 grid md:grid-cols-3 gap-6">
+      <section class="rounded-2xl border border-neutral-200 bg-white p-6">
+        <h2 class="font-medium">Option 1 — Direct Transfer (90 days)</h2>
+        <ul class="mt-3 space-y-2 text-sm">
+          <li>• Future transfers after 90 days are instant (if balance available)</li>
+          <li>• Minimum 200k per person</li>
+          <li>• Pricing: 200k–499k → <b>S$20.9/1k</b>; 500k+ → <b>S$20/1k</b></li>
+        </ul>
+      </section>
+
+      <section class="rounded-2xl border border-neutral-200 bg-white p-6">
+        <h2 class="font-medium">Option 2 — Direct Transfer (3–4 weeks)</h2>
+        <ul class="mt-3 space-y-2 text-sm">
+          <li>• Direct transfer to your KF account in 3–4 weeks</li>
+          <li>• Minimum 100k per account</li>
+          <li>• Pricing: 100k–499k → <b>S$23/1k</b>; 500k–1m → <b>S$22/1k</b></li>
+        </ul>
+      </section>
+
+      <section class="rounded-2xl border border-neutral-200 bg-white p-6">
+        <h2 class="font-medium">Option 3 — Nominee Redemption</h2>
+        <ul class="mt-3 space-y-2 text-sm">
+          <li>• We book and ticket via nominee redemption (confirmed flights only)</li>
+          <li>• No waitlists</li>
+          <li>• SQ taxes charged on top</li>
+          <li>• Pricing: 50k–199k → <b>S$19.9/1k</b>; 200k–499k → <b>S$19/1k</b>; 500k+ → <b>S$17.8/1k</b></li>
+        </ul>
+      </section>
+    </div>
+
+    <a href="book.html?service=krisflyer" class="mt-8 inline-flex items-center rounded-2xl border border-neutral-900 px-5 py-2.5 text-sm font-medium hover:bg-neutral-900 hover:text-white transition">Enquire</a>
+  </main>
+
+  <footer class="mt-auto border-t border-neutral-200">
+    <div class="container py-8 text-sm text-neutral-600">© <span id="year"></span> Skyfare Consulting.</div>
+  </footer>
+  <script>document.getElementById('year').textContent=new Date().getFullYear()</script>
+</body>
+</html>
