@@ -1,51 +1,190 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Assessment Call — Skyfare Consulting</title>
-  <meta name="description" content="Skyfare Consulting — Free 30-min Assessment Call" />
-  <link rel="icon" href="favicon.ico" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    html, body { background: #fafafa; color: #111827; }
-    .container { max-width: 70rem; margin: 0 auto; padding: 0 1.25rem; }
-  </style>
-</head>
-<body class="min-h-screen flex flex-col">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Assessment Call — Skyfare Consulting</title>
+    <meta name="description" content="Skyfare Consulting — Free 20–30 minute assessment to scope your trip and map next steps." />
+    <link rel="icon" href="favicon.ico" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config = { theme: { extend: {} } }</script>
+    <style>
+      :root { color-scheme: light; }
+      html, body { background:#fafafa; color:#111827; }
+      .container { max-width: 80rem; margin: 0 auto; padding: 0 1.5rem; }
+      a { text-underline-offset:2px; }
+      .card { background: rgba(255,255,255,.85); backdrop-filter: blur(8px); }
+    </style>
+  </head>
+  <body class="min-h-screen flex flex-col">
 
-  <!-- Header -->
-  <header class="sticky top-0 z-40 backdrop-blur bg-white/80 border-b border-neutral-200">
-    <div class="container py-4 flex items-center justify-between">
-      <a href="index.html" class="flex items-center gap-3">
-        <div class="h-8 w-8 rounded-xl bg-neutral-900 text-white flex items-center justify-center text-sm font-semibold">CS</div>
-        <span class="font-serif text-lg">Skyfare Consulting</span>
-      </a>
-      <a href="book.html?service=assessment"
-         class="rounded-2xl border border-green-600 px-4 py-2 text-sm font-semibold text-green-600 hover:bg-green-600 hover:text-white transition">
-         Book Free Call
-      </a>
+    <!-- Header -->
+    <header class="sticky top-0 z-40 backdrop-blur bg-white/80 border-b border-neutral-200">
+      <div class="container py-4 flex items-center justify-between">
+        <a href="index.html" class="flex items-center gap-3">
+          <img src="logos/logo.png" alt="Skyfare Consulting Logo" class="h-10 w-auto" />
+          <span class="font-serif text-lg">Skyfare Consulting</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-6 text-sm">
+          <a href="index.html" class="text-neutral-600 hover:opacity-70">Home</a>
+          <a href="services.html" class="text-neutral-600 hover:opacity-70">Services</a>
+          <a href="cases.html" class="text-neutral-600 hover:opacity-70">Case Studies</a>
+          <a href="faq.html" class="text-neutral-600 hover:opacity-70">FAQ</a>
+          <a href="about.html" class="text-neutral-600 hover:opacity-70">About</a>
+          <a href="contact.html" class="text-neutral-600 hover:opacity-70">Contact</a>
+          <a href="book.html" class="inline-flex items-center rounded-2xl border border-neutral-900 px-4 py-2 text-sm font-medium hover:bg-neutral-900 hover:text-white transition">Book</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Soft background accents -->
+    <div class="pointer-events-none absolute inset-0 -z-10">
+      <div class="absolute -top-40 -left-28 h-[28rem] w-[28rem] rounded-full bg-gradient-to-tr from-emerald-300/35 via-sky-300/25 to-indigo-300/25 blur-3xl"></div>
+      <div class="absolute -bottom-40 -right-32 h-[30rem] w-[30rem] rounded-full bg-gradient-to-tr from-indigo-300/25 via-sky-300/25 to-emerald-300/30 blur-3xl"></div>
     </div>
-  </header>
 
-  <!-- Main -->
-  <main class="container py-12 md:py-16">
-    <h1 class="font-serif text-3xl md:text-4xl">Assessment Call</h1>
-    <p class="mt-3 text-neutral-700">A 20–30 minute consult to scope your trip, check feasibility, and map next steps.</p>
+    <!-- Hero -->
+    <main class="container py-14 md:py-20">
+      <div class="flex items-start justify-between gap-6">
+        <div>
+          <h1 class="font-serif text-4xl md:text-5xl">Assessment Call</h1>
+          <p class="mt-3 text-neutral-700 text-lg">
+            A 20–30 minute consult to scope your trip, check feasibility across cash & miles,
+            and map the smartest next steps.
+          </p>
+        </div>
+        <div class="hidden md:flex items-center gap-3 rounded-2xl bg-emerald-50 px-4 py-2 ring-1 ring-emerald-200">
+          <span class="text-xs font-medium text-emerald-700">Price</span>
+          <span class="font-serif text-2xl font-extrabold text-emerald-700">FREE</span>
+        </div>
+      </div>
 
-    <div class="mt-8 grid md:grid-cols-2 gap-6">
-      <!-- What You Get -->
-      <section class="rounded-2xl border border-green-500/40 bg-white p-6">
-        <h2 class="font-medium">What you’ll get</h2>
-        <ul class="mt-3 space-y-2 text-sm">
-          <li>• Route/date feasibility check</li>
-          <li>• Quick “sweet-spot” scan across programs</li>
-          <li>• Action plan email within 24h</li>
-        </ul>
+      <!-- Main two-up -->
+      <div class="mt-8 grid gap-6 md:grid-cols-2">
+        <!-- What you’ll get -->
+        <section class="card rounded-3xl p-6 md:p-8 shadow-sm ring-1 ring-black/5">
+          <h2 class="text-lg font-semibold">What you’ll get</h2>
+          <ul class="mt-4 space-y-3 text-[0.98rem]">
+            <li class="flex gap-3"><span class="mt-[6px] h-1.5 w-1.5 rounded-full bg-emerald-600"></span>Route/date feasibility check</li>
+            <li class="flex gap-3"><span class="mt-[6px] h-1.5 w-1.5 rounded-full bg-emerald-600"></span>Quick “sweet-spot” scan across major programs</li>
+            <li class="flex gap-3"><span class="mt-[6px] h-1.5 w-1.5 rounded-full bg-emerald-600"></span>Action plan email within 24h</li>
+          </ul>
+
+          <div class="mt-8 flex flex-wrap items-center gap-3">
+            <a href="book.html?service=assessment"
+               class="inline-flex items-center rounded-2xl bg-neutral-900 px-5 py-2.5 text-sm font-medium text-white hover:opacity-90 hover:shadow-md">
+              Book Free Call
+            </a>
+            <a href="services.html" class="inline-flex items-center rounded-2xl border border-neutral-300 px-5 py-2.5 text-sm font-medium hover:bg-white">
+              See All Services
+            </a>
+          </div>
+        </section>
+
+        <!-- Price + reassurance -->
+        <section class="card rounded-3xl p-6 md:p-8 shadow-sm ring-1 ring-black/5">
+          <div class="flex items-start justify-between">
+            <h2 class="text-lg font-semibold">Price</h2>
+            <div class="text-right">
+              <div class="font-serif text-4xl font-extrabold text-emerald-700">FREE</div>
+              <div class="mt-1 text-xs text-neutral-600">No obligation</div>
+            </div>
+          </div>
+          <p class="mt-4 text-sm text-neutral-700">
+            If you love the plan, you can move to <a href="itinerary.html" class="underline decoration-neutral-400 hover:text-neutral-900">Itinerary Design</a>.
+            The design fee is <span class="font-semibold">5% of the final ticket value</span> once you confirm your itinerary.
+          </p>
+
+          <!-- Trust mini badges -->
+          <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div class="rounded-xl bg-neutral-50 p-3 ring-1 ring-neutral-200 text-xs">
+              ✅ No sales pressure
+            </div>
+            <div class="rounded-xl bg-neutral-50 p-3 ring-1 ring-neutral-200 text-xs">
+              🔒 Your details stay private
+            </div>
+            <div class="rounded-xl bg-neutral-50 p-3 ring-1 ring-neutral-200 text-xs">
+              ⏱️ 24h follow-up summary
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- How it works -->
+      <section class="mt-12">
+        <h2 class="font-serif text-2xl md:text-3xl">How it works</h2>
+        <div class="mt-6 grid gap-6 md:grid-cols-3">
+          <div class="card rounded-2xl p-6 ring-1 ring-black/5">
+            <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-600/10 text-emerald-700">1</div>
+            <h3 class="font-medium">Share basics</h3>
+            <p class="mt-1 text-sm text-neutral-700">Dates, cities, flexibility, miles/bank points you hold.</p>
+          </div>
+          <div class="card rounded-2xl p-6 ring-1 ring-black/5">
+            <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-600/10 text-emerald-700">2</div>
+            <h3 class="font-medium">Free consult</h3>
+            <p class="mt-1 text-sm text-neutral-700">20–30 min call. We check feasibility & outline sweet spots.</p>
+          </div>
+          <div class="card rounded-2xl p-6 ring-1 ring-black/5">
+            <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-600/10 text-emerald-700">3</div>
+            <h3 class="font-medium">Your next step</h3>
+            <p class="mt-1 text-sm text-neutral-700">Get a summary email. Choose to proceed to Itinerary Design (5%).</p>
+          </div>
+        </div>
       </section>
 
-      <!-- Price -->
-      <section class="rounded-2xl border border-green-500/40 bg-white p-6">
-        <h2 class="font-medium">Price</h2>
-        <p class="mt-3 text-3xl font-serif font-bold text-green-600">FREE</p>
-        <p class="mt-2 text-sm text-neutral-700">No obligation. Move to Itinerary Design
+      <!-- FAQ -->
+      <section class="mt-12">
+        <h2 class="font-serif text-2xl md:text-3xl">FAQ</h2>
+        <div class="mt-6 space-y-4">
+          <details class="card rounded-2xl p-5 ring-1 ring-black/5">
+            <summary class="cursor-pointer font-medium">What counts as one “trip” later on?</summary>
+            <p class="mt-2 text-sm text-neutral-700">A one-way or roundtrip on similar routing for up to 2 passengers.
+              Multi-city or complex routing may be scoped during the call so you know what to expect.</p>
+          </details>
+          <details class="card rounded-2xl p-5 ring-1 ring-black/5">
+            <summary class="cursor-pointer font-medium">When is the 5% fee charged?</summary>
+            <p class="mt-2 text-sm text-neutral-700">Only when you approve and confirm the itinerary we design.
+              If you don’t move forward, there’s no fee.</p>
+          </details>
+          <details class="card rounded-2xl p-5 ring-1 ring-black/5">
+            <summary class="cursor-pointer font-medium">Can you help with booking?</summary>
+            <p class="mt-2 text-sm text-neutral-700">Yes—either step-by-step booking instructions or full concierge booking support (we’ll confirm during the design phase).</p>
+          </details>
+        </div>
+      </section>
+
+      <!-- Primary CTA -->
+      <div class="mt-12 flex flex-wrap gap-3">
+        <a href="book.html?service=assessment"
+           class="inline-flex items-center rounded-2xl bg-neutral-900 px-5 py-3 text-sm font-medium text-white hover:opacity-90 hover:shadow-md">
+          Book Free Call
+        </a>
+        <a href="services.html" class="inline-flex items-center rounded-2xl border border-neutral-300 px-5 py-3 text-sm font-medium hover:bg-white">
+          Back to Services
+        </a>
+      </div>
+    </main>
+
+    <!-- Sticky mobile CTA -->
+    <div class="md:hidden fixed bottom-4 inset-x-4">
+      <a href="book.html?service=assessment"
+         class="flex w-full items-center justify-center rounded-2xl bg-neutral-900 px-5 py-3 text-sm font-medium text-white shadow-lg">
+        Book Free Call
+      </a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-auto border-t border-neutral-200">
+      <div class="container py-10 text-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div class="text-neutral-600">© <span id="year"></span> Skyfare Consulting. All rights reserved.</div>
+        <div class="flex gap-4 text-neutral-600">
+          <a href="terms.html" class="hover:opacity-70">Terms</a>
+          <a href="privacy.html" class="hover:opacity-70">Privacy</a>
+          <a href="contact.html" class="hover:opacity-70">Contact</a>
+        </div>
+      </div>
+      <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+    </footer>
+  </body>
+</html>
+
