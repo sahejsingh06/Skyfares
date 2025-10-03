@@ -7,18 +7,45 @@
     <meta name="description" content="Skyfare Consulting — Flight Strategy & Miles Advisory" />
     <link rel="icon" href="favicon.ico" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>tailwind.config = { theme: { extend: {} } }</script>
+    <script>
+      tailwind.config = { theme: { extend: {} } }
+    </script>
     <style>
       :root { color-scheme: light; }
       html, body { background:#fafafa; color:#111827; }
       .container { max-width: 80rem; margin: 0 auto; padding: 0 1.5rem; }
       a { text-underline-offset:2px; }
       .card-link:focus-visible { outline: 3px solid #111827; outline-offset: 4px; border-radius: 1.25rem; }
+
+      /* Floating WhatsApp button */
+      .whatsapp-float {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        z-index: 50;
+        background-color: #25D366;
+        border-radius: 50%;
+        width: 56px;
+        height: 56px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+      .whatsapp-float:hover {
+        transform: scale(1.08);
+        box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+      }
+      .whatsapp-float img {
+        width: 28px;
+        height: 28px;
+      }
     </style>
   </head>
   <body class="min-h-screen flex flex-col">
 
-    <!-- Header (logo + nav, standardized) -->
+    <!-- Header -->
     <header class="sticky top-0 z-40 backdrop-blur bg-white/80 border-b border-neutral-200">
       <div class="container py-4 flex items-center justify-between">
         <a href="index.html" class="flex items-center gap-3">
@@ -146,6 +173,11 @@
       </p>
     </main>
 
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/6581575306" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+    </a>
+
     <!-- Footer -->
     <footer class="mt-auto border-t border-neutral-200">
       <div class="container py-10 text-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
@@ -159,7 +191,6 @@
 
       <script>
         document.getElementById('year').textContent = new Date().getFullYear();
-        // Inner CTA spans jump straight to booking without following the card link
         document.querySelectorAll('[data-action="book"]').forEach(el => {
           el.addEventListener('click', function (e) {
             e.preventDefault();
@@ -171,4 +202,5 @@
     </footer>
   </body>
 </html>
+
 
