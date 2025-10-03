@@ -13,15 +13,16 @@
       html, body { background:#fafafa; color:#111827; }
       .container { max-width: 80rem; margin: 0 auto; padding: 0 1.5rem; }
       a { text-underline-offset:2px; }
-      .card-link:focus-visible { outline: 3px solid #111827; outline-offset: 3px; border-radius: 1rem; }
+      .card-link:focus-visible { outline: 3px solid #111827; outline-offset: 4px; border-radius: 1.25rem; }
     </style>
   </head>
   <body class="min-h-screen flex flex-col">
-    <!-- Header -->
+
+    <!-- Header (logo + nav, standardized) -->
     <header class="sticky top-0 z-40 backdrop-blur bg-white/80 border-b border-neutral-200">
       <div class="container py-4 flex items-center justify-between">
         <a href="index.html" class="flex items-center gap-3">
-          <div class="h-8 w-8 rounded-xl bg-neutral-900 flex items-center justify-center text-white text-sm font-semibold tracking-wide">CS</div>
+          <img src="logos/logo.png" alt="Skyfare Consulting Logo" class="h-10 w-auto" />
           <span class="font-serif text-lg">Skyfare Consulting</span>
         </a>
         <nav class="hidden md:flex items-center gap-6 text-sm">
@@ -36,72 +37,113 @@
       </div>
     </header>
 
+    <!-- Decorative background -->
+    <div class="pointer-events-none absolute inset-0 -z-10">
+      <div class="absolute -top-40 -left-28 h-[28rem] w-[28rem] rounded-full bg-gradient-to-tr from-emerald-300/35 via-sky-300/25 to-indigo-300/25 blur-3xl"></div>
+      <div class="absolute -bottom-40 -right-32 h-[30rem] w-[30rem] rounded-full bg-gradient-to-tr from-indigo-300/25 via-sky-300/25 to-emerald-300/30 blur-3xl"></div>
+    </div>
+
     <!-- Main -->
     <main class="container py-16 md:py-24">
       <h1 class="font-serif text-4xl md:text-5xl">Services</h1>
 
-      <div class="mt-10 grid md:grid-cols-3 gap-6">
+      <!-- slim value banner -->
+      <div class="mt-6 rounded-2xl bg-white/70 backdrop-blur ring-1 ring-black/5 p-4 md:p-5 flex items-center justify-between gap-4">
+        <p class="text-sm md:text-base text-neutral-700">
+          Start with a <span class="font-semibold text-emerald-700">FREE assessment</span> — pay only
+          <span class="font-semibold">5% of ticket value</span> when you confirm an itinerary.
+        </p>
+        <a href="book.html" class="hidden sm:inline-flex items-center rounded-xl bg-neutral-900 px-4 py-2 text-xs md:text-sm font-medium text-white hover:opacity-90">
+          Book now
+        </a>
+      </div>
 
-        <!-- Assessment Call (FREE) -->
-        <a href="assessment.html" class="card-link group rounded-2xl border border-green-500/40 bg-white p-6 transition hover:-translate-y-0.5 hover:shadow-lg focus:shadow-lg">
-          <div class="flex items-baseline justify-between">
-            <h3 class="font-medium text-xl">Assessment Call</h3>
-            <div class="text-right">
-              <div class="text-3xl font-serif font-bold text-green-600">FREE</div>
+      <!-- Cards -->
+      <div class="mt-10 grid gap-6 md:grid-cols-3">
+
+        <!-- Assessment FREE -->
+        <a href="assessment.html" class="card-link group relative">
+          <div class="rounded-3xl bg-gradient-to-br from-emerald-400/30 via-emerald-300/10 to-transparent p-[1.5px] transition duration-300 group-hover:from-emerald-400/50 group-hover:via-emerald-300/30">
+            <div class="rounded-3xl bg-white/80 backdrop-blur p-6 md:p-8 shadow-sm ring-1 ring-black/5 transition group-hover:shadow-lg group-hover:-translate-y-0.5">
+              <div class="flex items-start justify-between">
+                <h3 class="text-xl md:text-2xl font-semibold tracking-tight">Assessment Call</h3>
+                <div class="text-3xl md:text-4xl font-serif font-extrabold text-emerald-600">FREE</div>
+              </div>
+              <ul class="mt-4 space-y-2 text-[0.95rem]">
+                <li class="flex gap-2"><span>✔</span>20–30 min consult: route, dates, feasibility</li>
+                <li class="flex gap-2"><span>✔</span>Quick sweet-spot scan</li>
+                <li class="flex gap-2"><span>✔</span>Clear action plan + next steps</li>
+              </ul>
+              <span
+                data-action="book" data-url="book.html?service=assessment"
+                class="mt-6 inline-flex items-center rounded-2xl border border-emerald-600 px-5 py-2 text-sm font-semibold text-emerald-700 transition group-hover:bg-emerald-600 group-hover:text-white">
+                Book Free Call
+              </span>
             </div>
           </div>
-          <ul class="mt-4 space-y-2 text-sm">
-            <li>✔ 20–30 min consult: route, dates, feasibility</li>
-            <li>✔ Quick sweet-spot scan</li>
-            <li>✔ Clear action plan + next steps</li>
-          </ul>
-          <span data-action="book" data-url="book.html?service=assessment"
-            class="mt-6 inline-flex items-center rounded-2xl border border-green-600 px-5 py-2 text-sm font-semibold text-green-600 group-hover:bg-green-600 group-hover:text-white transition">
-            Book Free Call
-          </span>
         </a>
 
-        <!-- Itinerary Design (5% fee only) -->
-        <a href="itinerary.html" class="card-link group rounded-2xl border border-neutral-200 bg-white p-6 transition hover:-translate-y-0.5 hover:shadow-md focus:shadow-md">
-          <div class="flex items-baseline justify-between">
-            <h3 class="font-medium text-xl">Itinerary Design</h3>
-            <div class="text-right">
-              <div class="text-3xl font-serif font-bold">5%</div>
-              <div class="text-xs text-neutral-600 mt-1">of total ticket value</div>
+        <!-- Itinerary 5% -->
+        <a href="itinerary.html" class="card-link group relative">
+          <div class="rounded-3xl bg-gradient-to-br from-neutral-900/10 via-neutral-700/5 to-transparent p-[1.5px] transition duration-300 group-hover:from-neutral-900/20">
+            <div class="rounded-3xl bg-white/80 backdrop-blur p-6 md:p-8 shadow-sm ring-1 ring-black/5 transition group-hover:shadow-lg group-hover:-translate-y-0.5">
+              <div class="flex items-start justify-between">
+                <div>
+                  <div class="inline-flex items-center gap-2 rounded-full bg-neutral-900/5 px-3 py-1 text-xs font-medium">
+                    Most popular
+                  </div>
+                  <h3 class="mt-2 text-xl md:text-2xl font-semibold tracking-tight">Itinerary Design</h3>
+                </div>
+                <div class="text-right">
+                  <div class="text-3xl md:text-4xl font-serif font-extrabold">5%</div>
+                  <div class="text-xs text-neutral-600 mt-1">of total ticket value</div>
+                </div>
+              </div>
+              <ul class="mt-4 space-y-2 text-[0.95rem]">
+                <li class="flex gap-2"><span>✔</span>2–3 optimized options (cash vs miles)</li>
+                <li class="flex gap-2"><span>✔</span>Booking steps or concierge booking</li>
+                <li class="flex gap-2"><span>✔</span>Covers one trip (one-way or roundtrip)</li>
+              </ul>
+              <span
+                data-action="book" data-url="book.html?service=itinerary"
+                class="mt-6 inline-flex items-center rounded-2xl border border-neutral-900 px-5 py-2 text-sm font-medium transition group-hover:bg-neutral-900 group-hover:text-white">
+                Start
+              </span>
             </div>
           </div>
-          <ul class="mt-4 space-y-2 text-sm">
-            <li>✔ 2–3 optimized options (cash vs miles)</li>
-            <li>✔ Booking steps or concierge booking</li>
-            <li>✔ Covers one trip (one-way or roundtrip)</li>
-          </ul>
-          <span data-action="book" data-url="book.html?service=itinerary"
-            class="mt-6 inline-flex items-center rounded-2xl border border-neutral-900 px-5 py-2 text-sm font-medium transition group-hover:bg-neutral-900 group-hover:text-white">
-            Start
-          </span>
         </a>
 
-        <!-- KrisFlyer Miles Purchase (replaces Concierge) -->
-        <a href="krisflyer.html" class="card-link group rounded-2xl border border-neutral-200 bg-white p-6 transition hover:-translate-y-0.5 hover:shadow-md focus:shadow-md">
-          <div class="flex items-baseline justify-between">
-            <h3 class="font-medium text-xl">KrisFlyer Miles Purchase</h3>
-            <div class="text-right">
-              <div class="text-3xl font-serif font-bold">S$17.8+</div>
-              <div class="text-xs text-neutral-600 mt-1">per 1,000 miles</div>
+        <!-- KrisFlyer Miles Purchase -->
+        <a href="krisflyer.html" class="card-link group relative">
+          <div class="rounded-3xl bg-gradient-to-br from-sky-400/25 via-sky-300/10 to-transparent p-[1.5px] transition duration-300 group-hover:from-sky-400/40 group-hover:via-sky-300/25">
+            <div class="rounded-3xl bg-white/80 backdrop-blur p-6 md:p-8 shadow-sm ring-1 ring-black/5 transition group-hover:shadow-lg group-hover:-translate-y-0.5">
+              <div class="flex items-start justify-between">
+                <h3 class="text-xl md:text-2xl font-semibold tracking-tight">KrisFlyer Miles Purchase</h3>
+                <div class="text-right">
+                  <div class="text-3xl md:text-4xl font-serif font-extrabold">S$17.8+</div>
+                  <div class="text-xs text-neutral-600 mt-1">per 1,000 miles</div>
+                </div>
+              </div>
+              <ul class="mt-4 space-y-3 text-[0.95rem]">
+                <li>✈ Option 1: Direct transfer (90 days) — <span class="font-medium">S$20.9–20 / 1k</span></li>
+                <li>✈ Option 2: Direct transfer (3–4 weeks) — <span class="font-medium">S$23–22 / 1k</span></li>
+                <li>✈ Option 3: Nominee redemption — <span class="font-medium">S$19.9–17.8 / 1k</span></li>
+              </ul>
+              <span
+                data-action="book" data-url="book.html?service=krisflyer"
+                class="mt-6 inline-flex items-center rounded-2xl border border-neutral-900 px-5 py-2 text-sm font-medium transition group-hover:bg-neutral-900 group-hover:text-white">
+                Enquire
+              </span>
             </div>
           </div>
-          <ul class="mt-4 space-y-2 text-sm">
-            <li>✈ Option 1: Direct transfer (90 days) — <span class="font-medium">S$20.9–20 / 1k</span></li>
-            <li>✈ Option 2: Direct transfer (3–4 weeks) — <span class="font-medium">S$23–22 / 1k</span></li>
-            <li>✈ Option 3: Nominee redemption — <span class="font-medium">S$19.9–17.8 / 1k</span></li>
-          </ul>
-          <span data-action="book" data-url="book.html?service=krisflyer"
-            class="mt-6 inline-flex items-center rounded-2xl border border-neutral-900 px-5 py-2 text-sm font-medium transition group-hover:bg-neutral-900 group-hover:text-white">
-            Enquire
-          </span>
         </a>
 
       </div>
+
+      <!-- tiny note -->
+      <p class="mt-6 text-xs text-neutral-500">
+        * Fees charged only on confirmed itineraries. Taxes, airline fees, and award surcharges are separate.
+      </p>
     </main>
 
     <!-- Footer -->
@@ -114,6 +156,7 @@
           <a href="contact.html" class="hover:opacity-70">Contact</a>
         </div>
       </div>
+
       <script>
         document.getElementById('year').textContent = new Date().getFullYear();
         // Inner CTA spans jump straight to booking without following the card link
@@ -128,3 +171,4 @@
     </footer>
   </body>
 </html>
+
