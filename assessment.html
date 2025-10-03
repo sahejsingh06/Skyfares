@@ -81,7 +81,7 @@
           </div>
         </section>
 
-        <!-- Price + reassurance -->
+        <!-- Price + reassurance (cleaned; no tiny badges here) -->
         <section class="card rounded-3xl p-6 md:p-8 shadow-sm ring-1 ring-black/5">
           <div class="flex items-start justify-between">
             <h2 class="text-lg font-semibold">Price</h2>
@@ -94,21 +94,44 @@
             If you love the plan, you can move to <a href="itinerary.html" class="underline decoration-neutral-400 hover:text-neutral-900">Itinerary Design</a>.
             The design fee is <span class="font-semibold">5% of the final ticket value</span> once you confirm your itinerary.
           </p>
-
-          <!-- Trust mini badges -->
-          <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
-            <div class="rounded-xl bg-neutral-50 p-3 ring-1 ring-neutral-200 text-xs">
-              ✅ No sales pressure
-            </div>
-            <div class="rounded-xl bg-neutral-50 p-3 ring-1 ring-neutral-200 text-xs">
-              🔒 Your details stay private
-            </div>
-            <div class="rounded-xl bg-neutral-50 p-3 ring-1 ring-neutral-200 text-xs">
-              ⏱️ 24h follow-up summary
-            </div>
-          </div>
         </section>
       </div>
+
+      <!-- Feature Highlights (replaces the old tiny badges) -->
+      <section class="mt-10 grid md:grid-cols-3 gap-6">
+        <!-- No Sales Pressure -->
+        <div class="group rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm hover:shadow-md hover:-translate-y-1 transition">
+          <div class="flex items-center gap-3">
+            <span class="text-3xl">🟩</span>
+            <h3 class="text-lg font-semibold">No Sales Pressure</h3>
+          </div>
+          <p class="mt-2 text-sm text-neutral-600">
+            Ask questions freely — no pushy upsells or obligations.
+          </p>
+        </div>
+
+        <!-- Privacy -->
+        <div class="group rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm hover:shadow-md hover:-translate-y-1 transition">
+          <div class="flex items-center gap-3">
+            <span class="text-3xl">🔐</span>
+            <h3 class="text-lg font-semibold">Your Data Stays Private</h3>
+          </div>
+          <p class="mt-2 text-sm text-neutral-600">
+            All trip and profile details are kept secure and never shared.
+          </p>
+        </div>
+
+        <!-- Follow-up Summary -->
+        <div class="group rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm hover:shadow-md hover:-translate-y-1 transition">
+          <div class="flex items-center gap-3">
+            <span class="text-3xl">⏱️</span>
+            <h3 class="text-lg font-semibold">24h Follow-Up Summary</h3>
+          </div>
+          <p class="mt-2 text-sm text-neutral-600">
+            Get a clear action plan in your inbox within 24 hours.
+          </p>
+        </div>
+      </section>
 
       <!-- How it works -->
       <section class="mt-12">
@@ -129,27 +152,6 @@
             <h3 class="font-medium">Your next step</h3>
             <p class="mt-1 text-sm text-neutral-700">Get a summary email. Choose to proceed to Itinerary Design (5%).</p>
           </div>
-        </div>
-      </section>
-
-      <!-- FAQ -->
-      <section class="mt-12">
-        <h2 class="font-serif text-2xl md:text-3xl">FAQ</h2>
-        <div class="mt-6 space-y-4">
-          <details class="card rounded-2xl p-5 ring-1 ring-black/5">
-            <summary class="cursor-pointer font-medium">What counts as one “trip” later on?</summary>
-            <p class="mt-2 text-sm text-neutral-700">A one-way or roundtrip on similar routing for up to 2 passengers.
-              Multi-city or complex routing may be scoped during the call so you know what to expect.</p>
-          </details>
-          <details class="card rounded-2xl p-5 ring-1 ring-black/5">
-            <summary class="cursor-pointer font-medium">When is the 5% fee charged?</summary>
-            <p class="mt-2 text-sm text-neutral-700">Only when you approve and confirm the itinerary we design.
-              If you don’t move forward, there’s no fee.</p>
-          </details>
-          <details class="card rounded-2xl p-5 ring-1 ring-black/5">
-            <summary class="cursor-pointer font-medium">Can you help with booking?</summary>
-            <p class="mt-2 text-sm text-neutral-700">Yes—either step-by-step booking instructions or full concierge booking support (we’ll confirm during the design phase).</p>
-          </details>
         </div>
       </section>
 
@@ -187,4 +189,5 @@
     </footer>
   </body>
 </html>
+
 
