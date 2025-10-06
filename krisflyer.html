@@ -13,6 +13,13 @@
       html, body { background:#fafafa; color:#111827; }
       .container { max-width: 80rem; margin: 0 auto; padding: 0 1.5rem; }
       a { text-underline-offset:2px; }
+
+      /* Subtle motion + blobs */
+      @keyframes floaty { 0%{ transform: translateY(0px) } 50%{ transform: translateY(-6px) } 100%{ transform: translateY(0px) } }
+      @keyframes slowspin { 0%{ transform: rotate(0deg) } 100%{ transform: rotate(360deg) } }
+      .animate-floaty { animation: floaty 6s ease-in-out infinite; }
+      .animate-floaty-delay { animation: floaty 7s ease-in-out 0.6s infinite; }
+      .animate-spin-slow { animation: slowspin 18s linear infinite; }
     </style>
   </head>
   <body class="min-h-screen flex flex-col">
@@ -36,10 +43,10 @@
       </div>
     </header>
 
-    <!-- Decorative background -->
+    <!-- Decorative background (more visible, still subtle) -->
     <div class="pointer-events-none absolute inset-0 -z-10">
-      <div class="absolute -top-40 -left-28 h-[28rem] w-[28rem] rounded-full bg-gradient-to-tr from-sky-300/30 via-emerald-300/25 to-indigo-300/25 blur-3xl"></div>
-      <div class="absolute -bottom-40 -right-32 h-[30rem] w-[30rem] rounded-full bg-gradient-to-tr from-indigo-300/20 via-sky-300/20 to-emerald-300/25 blur-3xl"></div>
+      <div class="absolute -top-32 -left-28 h-[28rem] w-[28rem] rounded-full bg-gradient-to-tr from-sky-300/50 via-emerald-300/35 to-indigo-300/35 blur-3xl animate-floaty"></div>
+      <div class="absolute -bottom-36 -right-32 h-[30rem] w-[30rem] rounded-full bg-gradient-to-tr from-indigo-300/35 via-sky-300/30 to-emerald-300/40 blur-3xl animate-floaty-delay"></div>
     </div>
 
     <main class="container py-16 md:py-20">
@@ -58,21 +65,52 @@
         </div>
       </section>
 
-      <!-- OPTIONS -->
-      <section class="mt-10 grid gap-6 md:grid-cols-3">
+      <!-- OPTIONS (equal heights + motion + visible bubbles) -->
+      <section class="mt-10 grid gap-6 md:grid-cols-3 items-stretch">
+        <!-- CARD TEMPLATE NOTE:
+             - outer wrapper: h-full to make all equal height
+             - inner card: flex flex-col h-full so button sits at bottom with mt-auto
+             - blobs: absolute, more visible (opacity bumped), gentle spin/floating
+        -->
+
         <!-- Option 1 -->
-        <div class="group relative">
-          <div class="absolute -top-4 left-4 inline-flex items-center rounded-full bg-sky-600 text-white text-xs px-3 py-1 shadow-md">Bulk-friendly</div>
-          <div class="rounded-3xl bg-gradient-to-br from-sky-400/25 via-sky-300/10 to-transparent p-[1.5px] group-hover:from-sky-400/40 transition">
-            <div class="rounded-3xl bg-white/85 backdrop-blur p-6 md:p-7 shadow-sm ring-1 ring-black/5 group-hover:shadow-lg group-hover:-translate-y-0.5 transition">
+        <div class="group relative h-full">
+          <div class="absolute -top-4 left-6 inline-flex items-center rounded-full bg-sky-600 text-white text-xs px-3 py-1 shadow-md">Bulk-friendly</div>
+
+          <!-- gradient border + blobs -->
+          <div class="relative h-full rounded-3xl p-[1.5px] bg-gradient-to-br from-sky-400/50 via-sky-300/20 to-transparent group-hover:from-sky-400/70 transition">
+            <!-- floating blobs -->
+            <div class="pointer-events-none absolute -top-6 -left-8 h-24 w-24 rounded-full bg-sky-300/40 blur-2xl animate-floaty"></div>
+            <div class="pointer-events-none absolute -bottom-8 -right-8 h-28 w-28 rounded-full bg-emerald-300/30 blur-2xl animate-spin-slow"></div>
+
+            <div class="relative h-full rounded-3xl bg-white/85 backdrop-blur p-6 md:p-7 shadow-sm ring-1 ring-black/5
+                        group-hover:shadow-lg group-hover:-translate-y-1 transition flex flex-col">
               <h3 class="text-lg md:text-xl font-semibold">Option 1 — Direct Transfer (90 days)</h3>
+
               <ul class="mt-4 space-y-3 text-sm">
                 <li>• Future transfers after 90 days are instant (if balance available)</li>
                 <li>• Minimum <span class="font-medium">200k</span> per person</li>
-                <li>• <span class="font-medium">Pricing</span>: 200k–499k → <span class="font-semibold">S$20.9/1k</span>; 500k+ → <span class="font-semibold">S$20/1k</span></li>
+                <li>• Transparent, bank-to-program process</li>
               </ul>
+
+              <!-- Tiered pricing strip -->
+              <div class="mt-5">
+                <div class="text-xs uppercase tracking-wider text-neutral-600 mb-2">Tiered pricing (per 1,000 miles)</div>
+                <div class="grid grid-cols-2 gap-2">
+                  <div class="rounded-2xl ring-1 ring-sky-200 bg-sky-50 px-3 py-3 text-center">
+                    <div class="text-[11px] text-neutral-600">200k–499k</div>
+                    <div class="mt-1 text-lg font-semibold">S$20.9</div>
+                  </div>
+                  <div class="rounded-2xl ring-1 ring-sky-200 bg-sky-50 px-3 py-3 text-center">
+                    <div class="text-[11px] text-neutral-600">500k+</div>
+                    <div class="mt-1 text-lg font-semibold">S$20</div>
+                  </div>
+                </div>
+              </div>
+
               <a href="book.html?service=krisflyer&option=direct-90d"
-                 class="mt-6 inline-flex items-center rounded-2xl border border-neutral-900 px-5 py-2 text-sm font-medium transition group-hover:bg-neutral-900 group-hover:text-white">
+                 class="mt-auto inline-flex items-center justify-center rounded-2xl border border-neutral-900 px-5 py-2 text-sm font-medium
+                        transition group-hover:bg-neutral-900 group-hover:text-white">
                 Enquire
               </a>
             </div>
@@ -80,18 +118,41 @@
         </div>
 
         <!-- Option 2 -->
-        <div class="group relative">
-          <div class="absolute -top-4 left-4 inline-flex items-center rounded-full bg-emerald-600 text-white text-xs px-3 py-1 shadow-md">Fastest (≈5 working days)</div>
-          <div class="rounded-3xl bg-gradient-to-br from-emerald-400/25 via-emerald-300/10 to-transparent p-[1.5px] group-hover:from-emerald-400/40 transition">
-            <div class="rounded-3xl bg-white/85 backdrop-blur p-6 md:p-7 shadow-sm ring-1 ring-black/5 group-hover:shadow-lg group-hover:-translate-y-0.5 transition">
+        <div class="group relative h-full">
+          <div class="absolute -top-4 left-6 inline-flex items-center rounded-full bg-emerald-600 text-white text-xs px-3 py-1 shadow-md">Fastest (≈5 working days)</div>
+
+          <div class="relative h-full rounded-3xl p-[1.5px] bg-gradient-to-br from-emerald-400/50 via-emerald-300/20 to-transparent group-hover:from-emerald-400/70 transition">
+            <!-- blobs -->
+            <div class="pointer-events-none absolute -top-7 -left-10 h-24 w-24 rounded-full bg-emerald-300/40 blur-2xl animate-floaty-delay"></div>
+            <div class="pointer-events-none absolute -bottom-8 -right-10 h-28 w-28 rounded-full bg-sky-300/30 blur-2xl animate-spin-slow"></div>
+
+            <div class="relative h-full rounded-3xl bg-white/85 backdrop-blur p-6 md:p-7 shadow-sm ring-1 ring-black/5
+                        group-hover:shadow-lg group-hover:-translate-y-1 transition flex flex-col">
               <h3 class="text-lg md:text-xl font-semibold">Option 2 — Direct Transfer (≈5 working days)</h3>
+
               <ul class="mt-4 space-y-3 text-sm">
                 <li>• Direct transfer to your KF account in ~5 business days</li>
                 <li>• Minimum <span class="font-medium">10k</span></li>
-                <li>• <span class="font-medium">Pricing</span>: 100k–499k → <span class="font-semibold">S$24/1k</span>; 500k–1m → <span class="font-semibold">S$23/1k</span></li>
+                <li>• Ideal when timing matters more than unit price</li>
               </ul>
+
+              <!-- Tiered pricing strip -->
+              <div class="mt-5">
+                <div class="text-xs uppercase tracking-wider text-neutral-600 mb-2">Tiered pricing (per 1,000 miles)</div>
+                <div class="grid grid-cols-2 gap-2">
+                  <div class="rounded-2xl ring-1 ring-emerald-200 bg-emerald-50 px-3 py-3 text-center">
+                    <div class="text-[11px] text-neutral-600">100k–499k</div>
+                    <div class="mt-1 text-lg font-semibold">S$24</div>
+                  </div>
+                  <div class="rounded-2xl ring-1 ring-emerald-200 bg-emerald-50 px-3 py-3 text-center">
+                    <div class="text-[11px] text-neutral-600">500k–1m</div>
+                    <div class="mt-1 text-lg font-semibold">S$23</div>
+                  </div>
+                </div>
+              </div>
+
               <a href="book.html?service=krisflyer&option=direct-5d"
-                 class="mt-6 inline-flex items-center rounded-2xl bg-neutral-900 px-5 py-2 text-sm font-medium text-white hover:opacity-90">
+                 class="mt-auto inline-flex items-center justify-center rounded-2xl bg-neutral-900 px-5 py-2 text-sm font-medium text-white hover:opacity-90">
                 Enquire — Fast Transfer
               </a>
             </div>
@@ -99,32 +160,37 @@
         </div>
 
         <!-- Option 3 (Nominee Redemption) -->
-        <div class="group relative">
-          <div class="absolute -top-4 left-4 inline-flex items-center rounded-full bg-indigo-600 text-white text-xs px-3 py-1 shadow-md">Lowest price / Book now</div>
-          <div class="rounded-3xl bg-gradient-to-br from-indigo-400/25 via-indigo-300/10 to-transparent p-[1.5px] group-hover:from-indigo-400/40 transition">
-            <div class="rounded-3xl bg-white/85 backdrop-blur p-6 md:p-7 shadow-sm ring-1 ring-black/5 group-hover:shadow-lg group-hover:-translate-y-0.5 transition">
+        <div class="group relative h-full">
+          <div class="absolute -top-4 left-6 inline-flex items-center rounded-full bg-indigo-600 text-white text-xs px-3 py-1 shadow-md">Lowest price / Book now</div>
+
+          <div class="relative h-full rounded-3xl p-[1.5px] bg-gradient-to-br from-indigo-400/50 via-indigo-300/20 to-transparent group-hover:from-indigo-400/70 transition">
+            <!-- blobs -->
+            <div class="pointer-events-none absolute -top-8 -left-10 h-24 w-24 rounded-full bg-indigo-300/40 blur-2xl animate-floaty"></div>
+            <div class="pointer-events-none absolute -bottom-9 -right-10 h-28 w-28 rounded-full bg-emerald-300/30 blur-2xl animate-spin-slow"></div>
+
+            <div class="relative h-full rounded-3xl bg-white/85 backdrop-blur p-6 md:p-7 shadow-sm ring-1 ring-black/5
+                        group-hover:shadow-lg group-hover:-translate-y-1 transition flex flex-col">
               <h3 class="text-lg md:text-xl font-semibold">Option 3 — Nominee Redemption</h3>
 
-              <!-- Key points -->
               <ul class="mt-4 space-y-3 text-sm">
                 <li>• We book and ticket via nominee redemption (confirmed flights only)</li>
                 <li>• No waitlists; SQ taxes charged on top</li>
                 <li>• Ideal when you need <span class="font-medium">confirmed seats now</span></li>
               </ul>
 
-              <!-- Tiered pricing strip (clear & scannable) -->
+              <!-- Tiered pricing strip -->
               <div class="mt-5">
                 <div class="text-xs uppercase tracking-wider text-neutral-600 mb-2">Tiered pricing (per 1,000 miles)</div>
                 <div class="grid grid-cols-3 gap-2">
-                  <div class="rounded-xl ring-1 ring-indigo-200 bg-indigo-50 px-3 py-3 text-center">
+                  <div class="rounded-2xl ring-1 ring-indigo-200 bg-indigo-50 px-3 py-3 text-center">
                     <div class="text-[11px] text-neutral-600">50k–199k</div>
                     <div class="mt-1 text-lg font-semibold">S$21.5</div>
                   </div>
-                  <div class="rounded-xl ring-1 ring-indigo-200 bg-indigo-50 px-3 py-3 text-center">
+                  <div class="rounded-2xl ring-1 ring-indigo-200 bg-indigo-50 px-3 py-3 text-center">
                     <div class="text-[11px] text-neutral-600">200k–499k</div>
                     <div class="mt-1 text-lg font-semibold">S$20.5</div>
                   </div>
-                  <div class="rounded-xl ring-1 ring-indigo-200 bg-indigo-50 px-3 py-3 text-center">
+                  <div class="rounded-2xl ring-1 ring-indigo-200 bg-indigo-50 px-3 py-3 text-center">
                     <div class="text-[11px] text-neutral-600">500k+</div>
                     <div class="mt-1 text-lg font-semibold">S$19</div>
                   </div>
@@ -132,7 +198,8 @@
               </div>
 
               <a href="book.html?service=krisflyer&option=nominee"
-                 class="mt-6 inline-flex items-center rounded-2xl border border-neutral-900 px-5 py-2 text-sm font-medium transition group-hover:bg-neutral-900 group-hover:text-white">
+                 class="mt-auto inline-flex items-center justify-center rounded-2xl border border-neutral-900 px-5 py-2 text-sm font-medium
+                        transition group-hover:bg-neutral-900 group-hover:text-white">
                 Enquire — Nominee Booking
               </a>
             </div>
@@ -217,6 +284,7 @@
     </footer>
   </body>
 </html>
+
 
 
 
