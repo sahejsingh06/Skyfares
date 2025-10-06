@@ -5,49 +5,99 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Skyfare Consulting — Flight Strategy & Miles Advisory</title>
     <meta name="description" content="Skyfare Consulting — Flight Strategy & Miles Advisory" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>tailwind.config = { theme: { extend: {} } }</script>
     <link rel="icon" href="favicon.ico" />
+
+    <!-- 0) THEME BOOT (no flash, persists across pages) -->
+    <script>
+      (function () {
+        const ls = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = ls ? ls : (prefersDark ? 'dark' : 'light');
+        if (theme === 'dark') document.documentElement.classList.add('dark');
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
+
+    <!-- 1) FONTS -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- 2) TAILWIND -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Plus Jakarta Sans', 'ui-sans-serif', 'system-ui', 'Segoe UI', 'Roboto', 'Arial', 'sans-serif'],
+              serif: ['Cormorant Garamond', 'ui-serif', 'Georgia', 'serif'],
+            }
+          }
+        }
+      }
+    </script>
+
+    <!-- 3) BASE -->
     <style>
-      :root { color-scheme: light; }
+      :root { color-scheme: light dark; }
       html, body { background:#fafafa; color:#111827; }
+      .dark html, .dark body { background:#0a0a0a; color:#e5e7eb; }
       .container { max-width: 80rem; margin: 0 auto; padding: 0 1.5rem; }
       a { text-underline-offset:3px; }
+      @media (prefers-reduced-motion:no-preference){
+        .fade-in{animation:fade .5s ease-out both}
+        @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+      }
     </style>
   </head>
-  <body class="min-h-screen flex flex-col">
+
+  <body class="min-h-screen flex flex-col font-sans">
     <!-- HEADER -->
-    <header class="sticky top-0 z-40 backdrop-blur bg-white/80 border-b border-neutral-200">
+    <header class="sticky top-0 z-40 backdrop-blur bg-white/80 dark:bg-neutral-950/80 border-b border-neutral-200 dark:border-neutral-800">
       <div class="container py-4 flex items-center justify-between">
         <a href="index.html" class="flex items-center gap-3">
           <img src="logos/logo.png" alt="Skyfare Consulting Logo" class="h-10 w-auto" />
           <span class="font-serif text-lg">Skyfare Consulting</span>
         </a>
-        <nav class="hidden md:flex items-center gap-6 text-sm">
-          <a href="index.html"   class="text-neutral-600 hover:opacity-70">Home</a>
-          <a href="services.html" class="text-neutral-600 hover:opacity-70">Services</a>
-          <a href="cases.html"    class="text-neutral-600 hover:opacity-70">Case Studies</a>
-          <a href="faq.html"      class="text-neutral-600 hover:opacity-70">FAQ</a>
-          <a href="about.html"    class="text-neutral-600 hover:opacity-70">About</a>
-          <a href="contact.html"  class="text-neutral-600 hover:opacity-70">Contact</a>
+
+        <nav class="hidden md:flex items-center gap-2 text-sm">
+          <a href="index.html"   class="px-3 py-2 text-neutral-700 dark:text-neutral-300 hover:opacity-80">Home</a>
+          <a href="services.html" class="px-3 py-2 text-neutral-700 dark:text-neutral-300 hover:opacity-80">Services</a>
+          <a href="cases.html"    class="px-3 py-2 text-neutral-700 dark:text-neutral-300 hover:opacity-80">Case Studies</a>
+          <a href="faq.html"      class="px-3 py-2 text-neutral-700 dark:text-neutral-300 hover:opacity-80">FAQ</a>
+          <a href="about.html"    class="px-3 py-2 text-neutral-700 dark:text-neutral-300 hover:opacity-80">About</a>
+          <a href="contact.html"  class="px-3 py-2 text-neutral-700 dark:text-neutral-300 hover:opacity-80">Contact</a>
+
+          <!-- THEME TOGGLE -->
+          <button id="themeToggle"
+                  class="ml-2 inline-flex items-center rounded-2xl border border-neutral-300 dark:border-neutral-700 px-3 py-2 text-sm
+                         text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition"
+                  aria-label="Toggle dark mode">
+            <span class="light-icon">🌙</span>
+            <span class="dark-icon hidden">☀️</span>
+          </button>
+
           <a href="book.html"
-             class="inline-flex items-center rounded-2xl border border-neutral-900 px-4 py-2 text-sm font-medium hover:bg-neutral-900 hover:text-white transition">
+             class="ml-2 inline-flex items-center rounded-2xl border border-neutral-900 dark:border-white px-4 py-2 text-sm font-medium
+                    hover:bg-neutral-900 hover:text-white dark:hover:bg-white dark:hover:text-neutral-900 transition">
             Book
           </a>
         </nav>
       </div>
 
       <!-- ANNOUNCEMENT BAR -->
-      <div id="kf-bar" class="border-t border-neutral-200 bg-gradient-to-r from-indigo-50 via-sky-50 to-emerald-50">
+      <div id="kf-bar" class="border-t border-neutral-200 dark:border-neutral-800 bg-gradient-to-r from-indigo-50 via-sky-50 to-emerald-50 dark:from-neutral-900 dark:via-neutral-900 dark:to-neutral-900">
         <div class="container py-2 text-sm flex items-center justify-between gap-3">
           <div class="flex items-center gap-2">
             <span class="text-xl">✨</span>
-            <span class="text-neutral-700">
+            <span class="text-neutral-700 dark:text-neutral-300">
               New: <strong>KrisFlyer Miles Purchase</strong> — direct transfers in <strong>≈5 working days</strong> or <strong>nominee booking now</strong>.
-              <a href="krisflyer.html" class="underline decoration-sky-400 hover:text-neutral-900">See options</a>
+              <a href="krisflyer.html" class="underline decoration-sky-400 hover:text-neutral-900 dark:hover:text-white">See options</a>
             </span>
           </div>
-          <button aria-label="Dismiss" class="shrink-0 rounded-full border border-neutral-300 px-2 py-0.5 text-xs hover:bg-white" onclick="document.getElementById('kf-bar').style.display='none'">Close</button>
+          <button aria-label="Dismiss"
+                  class="shrink-0 rounded-full border border-neutral-300 dark:border-neutral-700 px-2 py-0.5 text-xs hover:bg-white dark:hover:bg-neutral-800"
+                  onclick="document.getElementById('kf-bar').style.display='none'">Close</button>
         </div>
       </div>
     </header>
@@ -55,50 +105,50 @@
     <main>
       <!-- HERO -->
       <section class="relative overflow-hidden">
-        <!-- Subtle color wash -->
-        <div class="pointer-events-none absolute -top-32 -right-40 h-[28rem] w-[28rem] rounded-full bg-gradient-to-tr from-emerald-300/30 via-sky-300/25 to-indigo-300/20 blur-3xl"></div>
-        <div class="absolute inset-0 opacity-5 bg-[radial-gradient(1000px_500px_at_70%_-30%,#111_0%,transparent_60%)]"></div>
+        <!-- Color washes -->
+        <div class="pointer-events-none absolute -top-32 -right-40 h-[28rem] w-[28rem] rounded-full bg-gradient-to-tr from-emerald-300/40 via-sky-300/30 to-indigo-300/25 blur-3xl"></div>
+        <div class="pointer-events-none absolute -bottom-24 -left-40 h-[26rem] w-[26rem] rounded-full bg-gradient-to-tr from-indigo-300/30 via-sky-300/25 to-emerald-300/25 blur-3xl"></div>
+        <div class="absolute inset-0 opacity-5 dark:opacity-10 bg-[radial-gradient(1000px_500px_at_70%_-30%,#111_0%,transparent_60%)]"></div>
 
         <div class="container py-20 md:py-28 grid md:grid-cols-2 gap-10 items-center relative">
-          <div>
+          <div class="fade-in">
             <h1 class="font-serif text-4xl md:text-6xl leading-tight">
               Flight Strategy for People Who Value <span class="whitespace-nowrap">Time & Money.</span>
             </h1>
 
-           <!-- Beautiful Gradient Tagline -->
-<h2 class="mt-4 text-3xl md:text-4xl font-extrabold tracking-tight bg-gradient-to-r from-emerald-500 via-sky-500 to-indigo-500 bg-clip-text text-transparent relative inline-block">
-  Your Private Flight Strategist
-  <span class="absolute left-0 -bottom-1 w-full h-[3px] bg-gradient-to-r from-emerald-400 via-sky-400 to-indigo-400 rounded-full"></span>
-</h2>
+            <!-- Gradient Tagline -->
+            <h2 class="mt-4 text-3xl md:text-4xl font-extrabold tracking-tight bg-gradient-to-r from-emerald-500 via-sky-500 to-indigo-500 bg-clip-text text-transparent relative inline-block">
+              Your Private Flight Strategist
+              <span class="absolute left-0 -bottom-1 w-full h-[3px] bg-gradient-to-r from-emerald-400 via-sky-400 to-indigo-400 rounded-full"></span>
+            </h2>
 
-
-            <!-- Plain-English Explainer -->
-            <p class="mt-5 text-base md:text-lg text-neutral-700 max-w-xl">
+            <!-- Explainer -->
+            <p class="mt-5 text-base md:text-lg text-neutral-700 dark:text-neutral-300 max-w-xl">
               Skyfare Consulting designs smarter routes, unlocks premium cabin value, and maximizes your miles.
               <strong>We help you use your credit card miles to fly in Business and First Class for a fraction of the cash price — without the hassle.</strong>
             </p>
 
             <div class="mt-8 flex flex-wrap gap-3">
               <a href="book.html"
-                 class="inline-flex items-center rounded-2xl bg-neutral-900 px-5 py-3 text-sm font-medium text-white transition hover:opacity-90 hover:shadow-md">
+                 class="inline-flex items-center rounded-2xl bg-neutral-900 px-5 py-3 text-sm font-medium text-white transition hover:opacity-90 hover:shadow-md dark:bg-white dark:text-neutral-900">
                 Book a 30-min Assessment
               </a>
               <a href="services.html"
-                 class="inline-flex items-center rounded-2xl border border-emerald-600 px-5 py-3 text-sm font-medium text-emerald-700 transition hover:bg-emerald-600 hover:text-white hover:shadow-sm">
+                 class="inline-flex items-center rounded-2xl border border-emerald-600 px-5 py-3 text-sm font-medium text-emerald-700 transition hover:bg-emerald-600 hover:text-white hover:shadow-sm dark:text-emerald-300 dark:border-emerald-400">
                 Explore Services
               </a>
             </div>
 
-            <div class="mt-6 flex items-center gap-6 text-xs text-neutral-600">
+            <div class="mt-6 flex items-center gap-6 text-xs text-neutral-600 dark:text-neutral-400">
               <div class="flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-emerald-600"></span>Avg savings 25–60%*</div>
               <div class="flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-emerald-600"></span>Premium cabins via miles redemption</div>
               <div class="flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-emerald-600"></span>Complex multi-city mastered</div>
             </div>
           </div>
 
-          <!-- IMPACT BOX (revamped stats) -->
-          <div class="relative">
-            <div class="rounded-3xl bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900 shadow-2xl ring-1 ring-black/10 p-6 text-white">
+          <!-- IMPACT BOX -->
+          <div class="relative fade-in">
+            <div class="rounded-3xl bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900 shadow-2xl ring-1 ring-black/10 dark:ring-white/10 p-6 text-white">
               <div class="grid grid-cols-2 gap-4 text-sm">
                 <div class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-4">
                   <div class="text-xs text-white/70">Avg Family Savings/trip (4 pax)</div>
@@ -117,7 +167,7 @@
                   <div class="mt-1 text-3xl font-serif">250<span class="align-top text-base">+</span></div>
                 </div>
               </div>
-              <div class="mt-6 rounded-2xl bg-white text-neutral-900 p-5">
+              <div class="mt-6 rounded-2xl bg-white text-neutral-900 p-5 dark:bg-neutral-100">
                 <p class="text-[11px] uppercase tracking-widest text-neutral-600">Sample Win</p>
                 <p class="mt-2 text-sm leading-relaxed">
                   SIN→JFK one-way in Business for 111k miles + S$186 taxes (vs S$6,200 cash).
@@ -128,46 +178,46 @@
         </div>
       </section>
 
-      <!-- HOW IT WORKS (new) -->
+      <!-- HOW IT WORKS -->
       <section class="container py-10 md:py-14">
-        <div class="rounded-3xl bg-white shadow-sm ring-1 ring-black/5 px-6 py-8 md:px-10 md:py-10">
+        <div class="rounded-3xl bg-white dark:bg-neutral-900 shadow-sm ring-1 ring-black/5 dark:ring-white/10 px-6 py-8 md:px-10 md:py-10">
           <h2 class="font-serif text-3xl md:text-4xl text-center">How It Works</h2>
-          <p class="mt-3 text-center text-neutral-700 max-w-3xl mx-auto">
+          <p class="mt-3 text-center text-neutral-700 dark:text-neutral-300 max-w-3xl mx-auto">
             A simple, guided process — from trip goals to premium seats booked.
           </p>
 
           <div class="mt-10 grid gap-6 sm:grid-cols-2 md:grid-cols-4">
-            <div class="group rounded-2xl p-5 bg-gradient-to-b from-emerald-50 to-white ring-1 ring-emerald-100 hover:-translate-y-0.5 transition">
+            <div class="group rounded-2xl p-5 bg-gradient-to-b from-emerald-50 to-white dark:from-neutral-800 dark:to-neutral-900 ring-1 ring-emerald-100 dark:ring-neutral-700 hover:-translate-y-0.5 transition">
               <div class="text-2xl">📞</div>
               <h3 class="mt-3 font-medium">Tell us your goals</h3>
-              <p class="mt-1 text-sm text-neutral-700">E.g., Singapore → New York in Business Class.</p>
+              <p class="mt-1 text-sm text-neutral-700 dark:text-neutral-300">E.g., Singapore → New York in Business Class.</p>
             </div>
-            <div class="group rounded-2xl p-5 bg-gradient-to-b from-sky-50 to-white ring-1 ring-sky-100 hover:-translate-y-0.5 transition">
+            <div class="group rounded-2xl p-5 bg-gradient-to-b from-sky-50 to-white dark:from-neutral-800 dark:to-neutral-900 ring-1 ring-sky-100 dark:ring-neutral-700 hover:-translate-y-0.5 transition">
               <div class="text-2xl">✈️</div>
               <h3 class="mt-3 font-medium">We design smarter routes</h3>
-              <p class="mt-1 text-sm text-neutral-700">Optimize miles, timing, and sweet spots.</p>
+              <p class="mt-1 text-sm text-neutral-700 dark:text-neutral-300">Optimize miles, timing, and sweet spots.</p>
             </div>
-            <div class="group rounded-2xl p-5 bg-gradient-to-b from-indigo-50 to-white ring-1 ring-indigo-100 hover:-translate-y-0.5 transition">
+            <div class="group rounded-2xl p-5 bg-gradient-to-b from-indigo-50 to-white dark:from-neutral-800 dark:to-neutral-900 ring-1 ring-indigo-100 dark:ring-neutral-700 hover:-translate-y-0.5 transition">
               <div class="text-2xl">💳</div>
               <h3 class="mt-3 font-medium">Use or top up miles</h3>
-              <p class="mt-1 text-sm text-neutral-700">Direct transfer ≈5 days or nominee booking.</p>
+              <p class="mt-1 text-sm text-neutral-700 dark:text-neutral-300">Direct transfer ≈5 days or nominee booking.</p>
             </div>
-            <div class="group rounded-2xl p-5 bg-gradient-to-b from-amber-50 to-white ring-1 ring-amber-100 hover:-translate-y-0.5 transition">
+            <div class="group rounded-2xl p-5 bg-gradient-to-b from-amber-50 to-white dark:from-neutral-800 dark:to-neutral-900 ring-1 ring-amber-100 dark:ring-neutral-700 hover:-translate-y-0.5 transition">
               <div class="text-2xl">🏆</div>
               <h3 class="mt-3 font-medium">Fly in comfort for less</h3>
-              <p class="mt-1 text-sm text-neutral-700">Often less than cash economy fares.</p>
+              <p class="mt-1 text-sm text-neutral-700 dark:text-neutral-300">Often less than cash economy fares.</p>
             </div>
           </div>
 
           <div class="mt-8 flex justify-center">
-            <a href="book.html" class="inline-flex items-center rounded-2xl bg-neutral-900 px-5 py-3 text-sm font-medium text-white hover:opacity-90">
+            <a href="book.html" class="inline-flex items-center rounded-2xl bg-neutral-900 px-5 py-3 text-sm font-medium text-white hover:opacity-90 dark:bg-white dark:text-neutral-900">
               Start with a quick assessment
             </a>
           </div>
         </div>
       </section>
 
-      <!-- ✨ KRISFLYER MILES PROMO (simplified pricing) -->
+      <!-- KRISFLYER PROMO -->
       <section class="container py-6 md:py-8">
         <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-sky-500 via-indigo-500 to-emerald-500 text-white shadow-lg ring-1 ring-black/10">
           <div class="pointer-events-none absolute -top-24 -right-24 h-64 w-64 rounded-full bg-white/10 blur-2xl"></div>
@@ -188,9 +238,8 @@
                   <strong>Nominee Redemption</strong> for confirmed flights at our best rates.
                 </p>
 
-                <!-- simplified chips -->
                 <div class="mt-4 flex flex-wrap gap-2 text-[13px]">
-                  <span class="inline-flex items-center rounded-full bg-white/15 px-3 py-1">Nominee from <b class="ml-1">S$17.9/1k</b></span>
+                  <span class="inline-flex items-center rounded-full bg-white/15 px-3 py-1">Nominee from <b class="ml-1">Best tier pricing</b></span>
                   <span class="inline-flex items-center rounded-full bg-white/15 px-3 py-1">Direct transfer <b class="ml-1">≈5 days</b></span>
                 </div>
 
@@ -218,10 +267,10 @@
         </div>
       </section>
 
-      <!-- PARTNER / AIRLINE LOGOS -->
+      <!-- PARTNERS -->
       <section class="container py-12 md:py-16">
-        <div class="rounded-3xl bg-white shadow-sm ring-1 ring-black/5 px-6 py-8 md:px-10 md:py-10">
-          <p class="text-center text-sm text-neutral-600">Trusted by travelers who fly with</p>
+        <div class="rounded-3xl bg-white dark:bg-neutral-950 shadow-sm ring-1 ring-black/5 dark:ring-white/10 px-6 py-8 md:px-10 md:py-10">
+          <p class="text-center text-sm text-neutral-600 dark:text-neutral-300">Trusted by travelers who fly with</p>
 
           <div class="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-x-10 gap-y-6 items-center">
             <img src="logos/singapore-airlines.svg" alt="Singapore Airlines" class="h-24 w-auto mx-auto object-contain grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition" />
@@ -246,26 +295,26 @@
         <h2 class="relative font-serif text-3xl md:text-4xl text-center">Why Skyfare Consulting</h2>
 
         <div class="relative mt-10 grid md:grid-cols-3 gap-6">
-          <div class="group rounded-2xl bg-white p-6 shadow-md ring-1 ring-black/5 transition hover:shadow-lg hover:-translate-y-1">
-            <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-600/10 text-emerald-700">✈️</div>
+          <div class="group rounded-2xl bg-white dark:bg-neutral-900 p-6 shadow-md ring-1 ring-black/5 dark:ring-white/10 transition hover:shadow-lg hover:-translate-y-1">
+            <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-600/10 text-emerald-700 dark:text-emerald-300">✈️</div>
             <h3 class="font-medium">Strategy, not Search</h3>
-            <p class="mt-2 text-sm text-neutral-700">
+            <p class="mt-2 text-sm text-neutral-700 dark:text-neutral-300">
               We architect routes, time zones, and fare rules—beyond what commodity search engines surface.
             </p>
           </div>
 
-          <div class="group rounded-2xl bg-white p-6 shadow-md ring-1 ring-black/5 transition hover:shadow-lg hover:-translate-y-1">
-            <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-600/10 text-emerald-700">🌍</div>
+          <div class="group rounded-2xl bg-white dark:bg-neutral-900 p-6 shadow-md ring-1 ring-black/5 dark:ring-white/10 transition hover:shadow-lg hover:-translate-y-1">
+            <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-600/10 text-emerald-700 dark:text-emerald-300">🌍</div>
             <h3 class="font-medium">Miles Maximized</h3>
-            <p class="mt-2 text-sm text-neutral-700">
+            <p class="mt-2 text-sm text-neutral-700 dark:text-neutral-300">
               Alliance charts, transfer bonuses, stopovers, and sweet spots—deployed for premium cabins.
             </p>
           </div>
 
-          <div class="group rounded-2xl bg-white p-6 shadow-md ring-1 ring-black/5 transition hover:shadow-lg hover:-translate-y-1">
-            <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-600/10 text-emerald-700">💼</div>
+          <div class="group rounded-2xl bg-white dark:bg-neutral-900 p-6 shadow-md ring-1 ring-black/5 dark:ring-white/10 transition hover:shadow-lg hover:-translate-y-1">
+            <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-600/10 text-emerald-700 dark:text-emerald-300">💼</div>
             <h3 class="font-medium">Complex, Made Simple</h3>
-            <p class="mt-2 text-sm text-neutral-700">
+            <p class="mt-2 text-sm text-neutral-700 dark:text-neutral-300">
               Multi-city, open-jaw, family bookings, corporate shuttles—we design itineraries that hold up.
             </p>
           </div>
@@ -275,21 +324,21 @@
       <!-- CTA -->
       <section class="container py-16 md:py-24 text-center">
         <h2 class="font-serif text-3xl md:text-4xl">Start with a quick assessment</h2>
-        <p class="mt-4 text-neutral-700">Tell us your dates, routes, and miles. We’ll propose 1–2 high-value options in 24–48 hours.</p>
+        <p class="mt-4 text-neutral-700 dark:text-neutral-300">Tell us your dates, routes, and miles. We’ll propose 1–2 high-value options in 24–48 hours.</p>
         <div class="mt-6 flex justify-center gap-3">
-          <a href="book.html" class="inline-flex items-center rounded-2xl bg-neutral-900 px-5 py-3 text-sm font-medium text-white hover:opacity-90">Book a Call</a>
-          <a href="services.html" class="inline-flex items-center rounded-2xl border border-neutral-300 px-5 py-3 text-sm font-medium hover:bg-white">See Services</a>
+          <a href="book.html" class="inline-flex items-center rounded-2xl bg-neutral-900 px-5 py-3 text-sm font-medium text-white hover:opacity-90 dark:bg-white dark:text-neutral-900">Book a Call</a>
+          <a href="services.html" class="inline-flex items-center rounded-2xl border border-neutral-300 dark:border-neutral-700 px-5 py-3 text-sm font-medium hover:bg-white dark:hover:bg-neutral-800">See Services</a>
         </div>
       </section>
     </main>
 
-    <footer class="mt-auto border-t border-neutral-200">
+    <footer class="mt-auto border-t border-neutral-200 dark:border-neutral-800">
       <div class="container py-10 text-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-        <div class="text-neutral-600">© <span id="year"></span> Skyfare Consulting. All rights reserved.</div>
-        <div class="flex gap-4 text-neutral-600">
-          <a href="terms.html" class="hover:opacity-70">Terms</a>
-          <a href="privacy.html" class="hover:opacity-70">Privacy</a>
-          <a href="contact.html" class="hover:opacity-70">Contact</a>
+        <div class="text-neutral-600 dark:text-neutral-400">© <span id="year"></span> Skyfare Consulting. All rights reserved.</div>
+        <div class="flex gap-4 text-neutral-600 dark:text-neutral-400">
+          <a href="terms.html" class="hover:opacity-80">Terms</a>
+          <a href="privacy.html" class="hover:opacity-80">Privacy</a>
+          <a href="contact.html" class="hover:opacity-80">Contact</a>
         </div>
       </div>
       <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
@@ -297,19 +346,50 @@
 
     <!-- Mobile Sticky CTA (dismissible) -->
     <div id="kf-sticky" class="fixed inset-x-0 bottom-3 z-40 px-4 md:hidden">
-      <div class="mx-auto max-w-md rounded-2xl bg-neutral-900 text-white shadow-lg px-4 py-3 flex items-center justify-between gap-3">
+      <div class="mx-auto max-w-md rounded-2xl bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 shadow-lg px-4 py-3 flex items-center justify-between gap-3">
         <div class="text-sm">
           <div class="font-semibold">Buy KrisFlyer miles</div>
-          <div class="text-white/80 text-xs">Fast transfer or nominee booking</div>
+          <div class="text-white/80 dark:text-neutral-700 text-xs">Fast transfer or nominee booking</div>
         </div>
         <div class="flex items-center gap-2">
-          <a href="krisflyer.html" class="rounded-xl bg-white text-neutral-900 px-3 py-2 text-xs font-semibold">View</a>
-          <button aria-label="Close" class="rounded-xl border border-white/30 px-2 py-2 text-xs" onclick="document.getElementById('kf-sticky').remove()">✕</button>
+          <a href="krisflyer.html" class="rounded-xl bg-white text-neutral-900 dark:bg-neutral-900 dark:text-white px-3 py-2 text-xs font-semibold">View</a>
+          <button aria-label="Close" class="rounded-xl border border-white/30 dark:border-neutral-300 px-2 py-2 text-xs" onclick="document.getElementById('kf-sticky').remove()">✕</button>
         </div>
       </div>
     </div>
+
+    <!-- THEME TOGGLE SCRIPT (shared across pages) -->
+    <script>
+      const btn = document.getElementById('themeToggle');
+      if (btn) {
+        const updateIcons = () => {
+          const isDark = document.documentElement.classList.contains('dark');
+          btn.querySelector('.light-icon').classList.toggle('hidden', isDark);
+          btn.querySelector('.dark-icon').classList.toggle('hidden', !isDark);
+        };
+        updateIcons();
+        btn.addEventListener('click', () => {
+          const root = document.documentElement;
+          const isDark = root.classList.toggle('dark');
+          const theme = isDark ? 'dark' : 'light';
+          localStorage.setItem('theme', theme);
+          root.setAttribute('data-theme', theme);
+          updateIcons();
+        });
+        // If user changes OS theme mid-session and no manual choice stored, follow it
+        const mq = window.matchMedia('(prefers-color-scheme: dark)');
+        mq.addEventListener?.('change', e => {
+          if (!localStorage.getItem('theme')) {
+            document.documentElement.classList.toggle('dark', e.matches);
+            document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+            updateIcons();
+          }
+        });
+      }
+    </script>
   </body>
 </html>
+
 
 
 
