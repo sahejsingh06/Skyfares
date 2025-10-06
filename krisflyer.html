@@ -98,17 +98,39 @@
           </div>
         </div>
 
-        <!-- Option 3 -->
+        <!-- Option 3 (Nominee Redemption) -->
         <div class="group relative">
           <div class="absolute -top-4 left-4 inline-flex items-center rounded-full bg-indigo-600 text-white text-xs px-3 py-1 shadow-md">Lowest price / Book now</div>
           <div class="rounded-3xl bg-gradient-to-br from-indigo-400/25 via-indigo-300/10 to-transparent p-[1.5px] group-hover:from-indigo-400/40 transition">
             <div class="rounded-3xl bg-white/85 backdrop-blur p-6 md:p-7 shadow-sm ring-1 ring-black/5 group-hover:shadow-lg group-hover:-translate-y-0.5 transition">
               <h3 class="text-lg md:text-xl font-semibold">Option 3 — Nominee Redemption</h3>
+
+              <!-- Key points -->
               <ul class="mt-4 space-y-3 text-sm">
                 <li>• We book and ticket via nominee redemption (confirmed flights only)</li>
                 <li>• No waitlists; SQ taxes charged on top</li>
-                <li>• <span class="font-medium">Pricing</span>: 50k–199k → <span class="font-semibold">S$19.9/1k</span>; 200k–499k → <span class="font-semibold">S$19/1k</span>; 500k+ → <span class="font-semibold">S$17.9/1k</span></li>
+                <li>• Ideal when you need <span class="font-medium">confirmed seats now</span></li>
               </ul>
+
+              <!-- Tiered pricing strip (clear & scannable) -->
+              <div class="mt-5">
+                <div class="text-xs uppercase tracking-wider text-neutral-600 mb-2">Tiered pricing (per 1,000 miles)</div>
+                <div class="grid grid-cols-3 gap-2">
+                  <div class="rounded-xl ring-1 ring-indigo-200 bg-indigo-50 px-3 py-3 text-center">
+                    <div class="text-[11px] text-neutral-600">50k–199k</div>
+                    <div class="mt-1 text-lg font-semibold">S$21.5</div>
+                  </div>
+                  <div class="rounded-xl ring-1 ring-indigo-200 bg-indigo-50 px-3 py-3 text-center">
+                    <div class="text-[11px] text-neutral-600">200k–499k</div>
+                    <div class="mt-1 text-lg font-semibold">S$20.5</div>
+                  </div>
+                  <div class="rounded-xl ring-1 ring-indigo-200 bg-indigo-50 px-3 py-3 text-center">
+                    <div class="text-[11px] text-neutral-600">500k+</div>
+                    <div class="mt-1 text-lg font-semibold">S$19</div>
+                  </div>
+                </div>
+              </div>
+
               <a href="book.html?service=krisflyer&option=nominee"
                  class="mt-6 inline-flex items-center rounded-2xl border border-neutral-900 px-5 py-2 text-sm font-medium transition group-hover:bg-neutral-900 group-hover:text-white">
                 Enquire — Nominee Booking
@@ -118,9 +140,29 @@
         </div>
       </section>
 
+      <!-- Quick estimator (Nominee) -->
+      <section class="mt-10">
+        <div class="rounded-3xl bg-white p-6 md:p-8 ring-1 ring-black/5 shadow-sm">
+          <h3 class="text-lg md:text-xl font-semibold">Estimate your Nominee cost</h3>
+          <p class="mt-1 text-sm text-neutral-600">Enter total miles you need. We’ll apply the correct tier automatically.</p>
+          <div class="mt-4 flex flex-col sm:flex-row gap-3">
+            <input id="milesInput" type="number" min="10000" step="1000" placeholder="e.g., 111000"
+              class="w-full sm:max-w-sm rounded-xl border border-neutral-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-300" />
+            <button id="estimateBtn"
+              class="rounded-xl bg-neutral-900 text-white px-5 py-2 text-sm font-medium hover:opacity-90">Estimate</button>
+          </div>
+          <div id="estimateOut" class="mt-4 hidden">
+            <div class="text-sm text-neutral-700">Tier applied: <span id="tierLbl" class="font-medium"></span></div>
+            <div class="mt-1 text-2xl font-serif">Estimated cost: <span id="costLbl" class="font-semibold"></span></div>
+            <div class="mt-2 text-xs text-neutral-500">Estimate excludes government/airport taxes and any service fees.</div>
+          </div>
+        </div>
+      </section>
+
       <!-- Notes -->
       <p class="mt-6 text-xs text-neutral-500">
-        Prices in SGD per 1,000 miles. Availability and processing times may vary by account status and volume. Government/airport taxes are additional where applicable.
+        Prices in SGD per 1,000 miles. Availability and processing times may vary by account status and volume.
+        Government/airport taxes are additional where applicable.
       </p>
 
       <!-- CTA -->
@@ -142,9 +184,39 @@
           <a href="contact.html" class="hover:opacity-70">Contact</a>
         </div>
       </div>
-      <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+      <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Simple nominee estimator
+        const milesInput = document.getElementById('milesInput');
+        const estimateBtn = document.getElementById('estimateBtn');
+        const out = document.getElementById('estimateOut');
+        const tierLbl = document.getElementById('tierLbl');
+        const costLbl = document.getElementById('costLbl');
+
+        function formatSGD(n){ return 'S$' + n.toLocaleString(undefined,{minimumFractionDigits:2, maximumFractionDigits:2}); }
+
+        estimateBtn.addEventListener('click', () => {
+          const miles = parseInt(milesInput.value || '0', 10);
+          if (!miles || miles < 50000) {
+            out.classList.remove('hidden');
+            tierLbl.textContent = 'n/a';
+            costLbl.textContent = 'Enter ≥ 50,000 miles';
+            return;
+          }
+          let rate = 21.5, tier = '50k–199k';
+          if (miles >= 200000 && miles < 500000) { rate = 20.5; tier = '200k–499k'; }
+          if (miles >= 500000) { rate = 19; tier = '500k+'; }
+          const units = miles / 1000;
+          const cost = units * rate;
+          out.classList.remove('hidden');
+          tierLbl.textContent = tier + ' @ ' + formatSGD(rate) + '/1k';
+          costLbl.textContent = formatSGD(cost);
+        });
+      </script>
     </footer>
   </body>
 </html>
+
 
 
