@@ -9,7 +9,7 @@
 
     <!-- Theme boot (persist + no flash) -->
     <script>
-      (function() {
+      (function () {
         const ls = localStorage.getItem('theme');
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         const theme = ls ? ls : (prefersDark ? 'dark' : 'light');
@@ -47,26 +47,34 @@
         @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
       }
       .num { font-variant-numeric: tabular-nums; }
-      /* plane silhouette only behind HERO */
+      .usd-tag{font-size:.8rem; vertical-align:top; margin-right:.15rem}
+
+      /* Plane motif behind HERO only (clean, professional) */
       .hero-plane::before{
         content:"";
         position:absolute; inset:auto -10% -12% -10%;
         height:420px; pointer-events:none;
-        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420"><g fill="none" stroke="%23ffffff" stroke-opacity="0.10"><path d="M90 250c120-40 220-60 320-60 220 0 380 120 560 120" stroke-width="40" stroke-linecap="round"/><path d="M1010 305l120 22-100-78 40-10-60-30-45 58z" fill="%23ffffff" fill-opacity="0.06" stroke="none"/></g></svg>');
+        background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420"><g fill="none" stroke="%23ffffff" stroke-opacity=".10"><path d="M90 250c120-40 220-60 320-60 220 0 380 120 560 120" stroke-width="40" stroke-linecap="round"/><path d="M1010 305l120 22-100-78 40-10-60-30-45 58z" fill="%23ffffff" fill-opacity=".06" stroke="none"/></g></svg>');
         background-repeat:no-repeat; background-position:center; background-size:cover;
-        mix-blend-mode:overlay; opacity:0.6;
+        mix-blend-mode:overlay; opacity:.55;
       }
-      .dark .hero-plane::before{ filter:contrast(120%) brightness(80%); opacity:.5 }
-      /* tiny utility so USD never overflows */
-      .usd-tag{font-size:.8rem; vertical-align:top; margin-right:.15rem}
-      /* floating WA button */
+      .dark .hero-plane::before{ filter:contrast(120%) brightness(80%); opacity:.45 }
+
+      /* Mobile drawer animation helpers (no impact on desktop) */
+      .drawer { transform: translateX(100%); }
+      .drawer.open { transform: translateX(0); }
+      .backdrop { opacity:0; }
+      .backdrop.show { opacity:1; }
+      .transition-200 { transition: transform .2s ease, opacity .2s ease; }
+      .safe-top { padding-top: env(safe-area-inset-top); } /* iOS notch */
+      .safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
       .fab-shadow{box-shadow:0 8px 24px rgba(16,185,129,.35)}
     </style>
   </head>
   <body class="min-h-screen flex flex-col">
 
     <!-- HEADER -->
-    <!-- Mobile: solid surface; Desktop: translucent preserved -->
+    <!-- Desktop nav remains translucent; Mobile has opaque drawer -->
     <header class="sticky top-0 z-50 backdrop-blur bg-white dark:bg-neutral-950 md:bg-white/80 md:dark:bg-neutral-950/80 border-b border-neutral-200 dark:border-neutral-800 shadow-sm md:shadow-none">
       <div class="container mx-auto flex items-center justify-between py-4 px-4">
         <a href="index.html" class="flex items-center gap-3">
@@ -74,85 +82,80 @@
           <span class="font-serif text-lg">Skyfare Consulting</span>
         </a>
 
-        <!-- Desktop nav (unchanged for laptop/desktop) -->
+        <!-- Desktop nav -->
         <nav class="hidden md:flex items-center gap-3 text-sm">
-          <a href="index.html"    aria-current="page" class="px-3 py-2 text-neutral-900 dark:text-white font-medium">Home</a>
+          <a href="index.html" aria-current="page" class="px-3 py-2 text-neutral-900 dark:text-white font-medium">Home</a>
           <a href="services.html" class="px-3 py-2 text-neutral-700 dark:text-neutral-300 hover:opacity-80">Services</a>
-          <a href="cases.html"    class="px-3 py-2 text-neutral-700 dark:text-neutral-300 hover:opacity-80">Case Studies</a>
-          <a href="faq.html"      class="px-3 py-2 text-neutral-700 dark:text-neutral-300 hover:opacity-80">FAQ</a>
-          <a href="about.html"    class="px-3 py-2 text-neutral-700 dark:text-neutral-300 hover:opacity-80">About</a>
-          <a href="contact.html"  class="px-3 py-2 text-neutral-700 dark:text-neutral-300 hover:opacity-80">Contact</a>
+          <a href="cases.html" class="px-3 py-2 text-neutral-700 dark:text-neutral-300 hover:opacity-80">Case Studies</a>
+          <a href="faq.html" class="px-3 py-2 text-neutral-700 dark:text-neutral-300 hover:opacity-80">FAQ</a>
+          <a href="about.html" class="px-3 py-2 text-neutral-700 dark:text-neutral-300 hover:opacity-80">About</a>
+          <a href="contact.html" class="px-3 py-2 text-neutral-700 dark:text-neutral-300 hover:opacity-80">Contact</a>
 
-          <!-- Theme toggle (desktop) -->
           <button id="themeToggle"
-                  class="ml-2 inline-flex items-center rounded-2xl border border-neutral-300 dark:border-neutral-700 px-3 py-2 text-sm
-                         text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition"
-                  aria-label="Toggle dark mode" aria-pressed="false">
-            <span class="light-icon">🌙</span>
-            <span class="dark-icon hidden">☀️</span>
+            class="ml-2 inline-flex items-center rounded-2xl border border-neutral-300 dark:border-neutral-700 px-3 py-2 text-sm
+                   text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition"
+            aria-label="Toggle dark mode" aria-pressed="false">
+            <span class="light-icon">🌙</span><span class="dark-icon hidden">☀️</span>
           </button>
 
           <a href="book.html"
-             class="ml-2 inline-flex items-center rounded-2xl border border-neutral-900 dark:border-white px-4 py-2 text-sm font-medium
-                    hover:bg-neutral-900 hover:text-white dark:hover:bg-white dark:hover:text-neutral-900 transition">
+            class="ml-2 inline-flex items-center rounded-2xl border border-neutral-900 dark:border-white px-4 py-2 text-sm font-medium
+                   hover:bg-neutral-900 hover:text-white dark:hover:bg-white dark:hover:text-neutral-900 transition">
             Book
           </a>
         </nav>
 
-        <!-- Hamburger (mobile only) -->
+        <!-- Mobile hamburger -->
         <button id="mobileMenuBtn"
-                class="md:hidden inline-flex items-center justify-center rounded-xl border border-neutral-300 dark:border-neutral-700
-                       p-2 text-lg text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800"
-                aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false">
-          ☰
-        </button>
+          class="md:hidden inline-flex items-center justify-center rounded-xl border border-neutral-300 dark:border-neutral-700
+                 p-2 text-lg text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800"
+          aria-label="Open menu" aria-controls="mobileSheet" aria-expanded="false">☰</button>
       </div>
 
-      <!-- Mobile slide-in menu (scoped to mobile, solid background) -->
-      <div id="mobileMenu" class="md:hidden fixed inset-0 z-[100] hidden">
-        <div id="mobileBackdrop" class="absolute inset-0 bg-black/45 backdrop-blur-sm"></div>
-        <div class="absolute inset-y-0 right-0 w-[85%] max-w-sm bg-white dark:bg-neutral-950 shadow-xl
-                    ring-1 ring-black/10 dark:ring-white/10 p-4 flex flex-col translate-x-full transition-transform">
-          <div class="flex items-center justify-between">
+      <!-- Mobile overlay + drawer (phones only) -->
+      <div id="mobileOverlay" class="md:hidden fixed inset-0 z-[100] hidden">
+        <div id="mobileBackdrop" class="backdrop absolute inset-0 bg-black/50 transition-200"></div>
+        <aside id="mobileSheet"
+          class="drawer transition-200 absolute inset-y-0 right-0 w-[86%] max-w-sm bg-white dark:bg-neutral-950 shadow-2xl ring-1 ring-black/10 dark:ring-white/10 safe-top safe-bottom
+                 flex flex-col">
+          <div class="flex items-center justify-between px-4 py-3 border-b border-neutral-200 dark:border-neutral-800">
             <div class="flex items-center gap-2">
               <img src="logos/logo.png" alt="Skyfare" class="h-8 w-auto" />
               <span class="font-serif text-lg">Menu</span>
             </div>
-            <button id="mobileMenuClose"
+            <button id="mobileClose"
               class="rounded-xl border border-neutral-300 dark:border-neutral-700 px-2 py-1 text-sm
                      text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800"
               aria-label="Close menu">✕</button>
           </div>
 
-          <nav class="mt-4 flex flex-col text-base text-neutral-800 dark:text-neutral-100">
-            <a class="px-3 py-3 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800" href="index.html">Home</a>
-            <a class="px-3 py-3 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800" href="services.html">Services</a>
-            <a class="px-3 py-3 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800" href="cases.html">Case Studies</a>
-            <a class="px-3 py-3 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800" href="faq.html">FAQ</a>
-            <a class="px-3 py-3 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800" href="about.html">About</a>
-            <a class="px-3 py-3 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800" href="contact.html">Contact</a>
+          <nav class="px-2 py-2 text-base text-neutral-800 dark:text-neutral-100 overflow-y-auto">
+            <a class="block px-3 py-3 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800" href="index.html">Home</a>
+            <a class="block px-3 py-3 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800" href="services.html">Services</a>
+            <a class="block px-3 py-3 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800" href="cases.html">Case Studies</a>
+            <a class="block px-3 py-3 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800" href="faq.html">FAQ</a>
+            <a class="block px-3 py-3 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800" href="about.html">About</a>
+            <a class="block px-3 py-3 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800" href="contact.html">Contact</a>
 
             <button id="themeToggleMobile"
-              class="mt-2 inline-flex items-center gap-2 rounded-2xl border border-neutral-300 dark:border-neutral-700 px-3 py-2 text-sm
+              class="mt-2 w-full inline-flex items-center justify-center gap-2 rounded-2xl border border-neutral-300 dark:border-neutral-700 px-3 py-2 text-sm
                      text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition">
-              <span class="light-icon">🌙</span>
-              <span class="dark-icon hidden">☀️</span>
-              <span>Theme</span>
+              <span class="light-icon">🌙</span><span class="dark-icon hidden">☀️</span><span>Theme</span>
             </button>
 
             <a href="book.html"
-              class="mt-3 inline-flex items-center justify-center rounded-2xl bg-neutral-900 text-white dark:bg-white dark:text-neutral-900
+              class="mt-3 block text-center rounded-2xl bg-neutral-900 text-white dark:bg-white dark:text-neutral-900
                      px-4 py-3 font-medium hover:opacity-90">Book</a>
           </nav>
 
-          <div class="mt-auto pt-4 text-xs text-neutral-500 dark:text-neutral-400">
+          <div class="mt-auto px-4 py-3 text-xs text-neutral-500 dark:text-neutral-400 border-t border-neutral-200 dark:border-neutral-800">
             © <span id="mobileYear"></span> Skyfare Consulting
           </div>
-        </div>
+        </aside>
       </div>
     </header>
 
-    <!-- HERO (with subtle plane silhouette only here) -->
+    <!-- HERO -->
     <section class="relative overflow-hidden hero-plane">
       <div class="pointer-events-none absolute -top-32 -right-40 h-[28rem] w-[28rem] rounded-full bg-gradient-to-tr from-emerald-300/30 via-sky-300/25 to-indigo-300/20 blur-3xl"></div>
       <div class="pointer-events-none absolute -bottom-28 -left-36 h-[26rem] w-[26rem] rounded-full bg-gradient-to-tr from-indigo-300/25 via-sky-300/20 to-emerald-300/20 blur-3xl"></div>
@@ -190,15 +193,13 @@
           </div>
         </div>
 
-        <!-- Impact box (numbers never overflow on mobile) -->
+        <!-- Impact box -->
         <div class="relative fade-in">
           <div class="rounded-3xl bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900 shadow-2xl ring-1 ring-black/10 p-6 text-white">
             <div class="grid grid-cols-2 gap-4 text-sm">
               <div class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-4">
                 <div class="text-xs text-white/70">Avg Family Savings/trip (4 pax)</div>
-                <div class="mt-1 font-serif num text-[26px] md:text-3xl leading-tight">
-                  <span class="usd-tag">USD</span>$2,450
-                </div>
+                <div class="mt-1 font-serif num text-[26px] md:text-3xl leading-tight"><span class="usd-tag">USD</span>$2,450</div>
               </div>
               <div class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-4">
                 <div class="text-xs text-white/70">Avg Fare Reduction</div>
@@ -222,13 +223,11 @@
       </div>
     </section>
 
-    <!-- HOW IT WORKS (no emojis; clean SVG icons) -->
+    <!-- HOW IT WORKS -->
     <section class="container mx-auto px-4 py-10 md:py-14">
       <div class="rounded-3xl bg-white dark:bg-neutral-900 shadow-sm ring-1 ring-black/5 dark:ring-white/10 px-6 py-8 md:px-10 md:py-10">
         <h2 class="font-serif text-3xl md:text-4xl text-center">How It Works</h2>
-        <p class="mt-3 text-center text-neutral-700 dark:text-neutral-300 max-w-3xl mx-auto">
-          A simple, guided process — from trip goals to premium seats booked.
-        </p>
+        <p class="mt-3 text-center text-neutral-700 dark:text-neutral-300 max-w-3xl mx-auto">A simple, guided process — from trip goals to premium seats booked.</p>
 
         <div class="mt-10 grid gap-6 sm:grid-cols-2 md:grid-cols-4">
           <div class="group rounded-2xl p-5 bg-gradient-to-b from-emerald-50 to-white dark:from-neutral-800 dark:to-neutral-900 ring-1 ring-emerald-100 dark:ring-neutral-700 hover:-translate-y-0.5 hover:shadow-md transition">
@@ -261,7 +260,7 @@
       </div>
     </section>
 
-    <!-- KRISFLYER PROMO (kept; no emojis, replaced with icons) -->
+    <!-- KRISFLYER PROMO -->
     <section class="container mx-auto px-4 py-6 md:py-8">
       <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-sky-500 via-indigo-500 to-emerald-500 text-white shadow-lg ring-1 ring-black/10">
         <div class="pointer-events-none absolute -top-24 -right-24 h-64 w-64 rounded-full bg-white/10 blur-2xl"></div>
@@ -326,11 +325,10 @@
       </div>
     </section>
 
-    <!-- PARTNERS (unchanged, spacing refined) -->
+    <!-- PARTNERS -->
     <section class="container mx-auto px-4 py-12 md:py-16">
       <div class="rounded-3xl bg-white dark:bg-neutral-950 shadow-sm ring-1 ring-black/5 dark:ring-white/10 px-6 py-8 md:px-10 md:py-10">
         <p class="text-center text-sm text-neutral-600 dark:text-neutral-300">Trusted by travelers who fly with</p>
-
         <div class="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-x-10 gap-y-6 items-center">
           <img src="logos/singapore-airlines.svg" alt="Singapore Airlines" class="h-24 w-auto mx-auto object-contain grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition" />
           <img src="logos/emirates.png"            alt="Emirates"           class="h-24 w-auto mx-auto object-contain grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition" />
@@ -339,14 +337,11 @@
           <img src="logos/amex.svg"                alt="American Express"   class="h-24 w-auto mx-auto object-contain grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition" />
           <img src="logos/chase.png"               alt="Chase"              class="h-24 w-auto mx-auto object-contain grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition" />
         </div>
-
-        <p class="mt-6 text-center text-xs text-neutral-400">
-          Logos are for descriptive use only and do not imply endorsement or partnership.
-        </p>
+        <p class="mt-6 text-center text-xs text-neutral-400">Logos are for descriptive use only and do not imply endorsement or partnership.</p>
       </div>
     </section>
 
-    <!-- WHY SKYFARE (polished cards) -->
+    <!-- WHY SKYFARE -->
     <section id="why" class="relative container mx-auto px-4 py-16 md:py-24">
       <div class="pointer-events-none absolute -top-20 -left-24 h-72 w-72 rounded-full bg-gradient-to-tr from-emerald-300/25 via-sky-300/20 to-indigo-300/20 blur-3xl"></div>
       <div class="pointer-events-none absolute -bottom-16 -right-24 h-72 w-72 rounded-full bg-gradient-to-tr from-indigo-300/20 via-sky-300/20 to-emerald-300/25 blur-3xl"></div>
@@ -359,9 +354,7 @@
             <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h7l4-8 7 16H3z"/></svg>
           </div>
           <h3 class="font-medium">Strategy, not Search</h3>
-          <p class="mt-2 text-sm text-neutral-700 dark:text-neutral-300">
-            We architect routes, time zones, and fare rules—beyond what commodity search engines surface.
-          </p>
+          <p class="mt-2 text-sm text-neutral-700 dark:text-neutral-300">We architect routes, time zones, and fare rules—beyond what commodity search engines surface.</p>
         </div>
 
         <div class="group rounded-2xl bg-white dark:bg-neutral-900 p-6 shadow-md ring-1 ring-black/5 dark:ring-white/10 transition hover:shadow-lg hover:-translate-y-1">
@@ -369,9 +362,7 @@
             <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 17l6-6 4 4 6-6"/></svg>
           </div>
           <h3 class="font-medium">Miles Maximized</h3>
-          <p class="mt-2 text-sm text-neutral-700 dark:text-neutral-300">
-            Alliance charts, transfer bonuses, stopovers, and sweet spots—deployed for premium cabins.
-          </p>
+          <p class="mt-2 text-sm text-neutral-700 dark:text-neutral-300">Alliance charts, transfer bonuses, stopovers, and sweet spots—deployed for premium cabins.</p>
         </div>
 
         <div class="group rounded-2xl bg-white dark:bg-neutral-900 p-6 shadow-md ring-1 ring-black/5 dark:ring-white/10 transition hover:shadow-lg hover:-translate-y-1">
@@ -379,14 +370,12 @@
             <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h6l3 5h11l-5 9H8l-3-5H2z"/></svg>
           </div>
           <h3 class="font-medium">Complex, Made Simple</h3>
-          <p class="mt-2 text-sm text-neutral-700 dark:text-neutral-300">
-            Multi-city, open-jaw, family bookings, corporate shuttles—we design itineraries that hold up.
-          </p>
+          <p class="mt-2 text-sm text-neutral-700 dark:text-neutral-300">Multi-city, open-jaw, family bookings, corporate shuttles—we design itineraries that hold up.</p>
         </div>
       </div>
     </section>
 
-    <!-- CTA (revitalized; adds WhatsApp) -->
+    <!-- CTA -->
     <section class="container mx-auto px-4 py-16 md:py-24 text-center">
       <h2 class="font-serif text-3xl md:text-4xl">Start with a quick assessment</h2>
       <p class="mt-4 text-neutral-700 dark:text-neutral-300">Tell us your dates, routes, and miles. We’ll propose 1–2 high-value options in 24–48 hours.</p>
@@ -412,11 +401,10 @@
       </div>
     </footer>
 
-    <!-- Floating WhatsApp button (bottom-right) -->
+    <!-- Floating WhatsApp -->
     <a href="https://api.whatsapp.com/send?phone=6592701253&text=Hi%20Skyfare%2C%20I%27d%20like%20to%20book%20an%20assessment"
        class="fixed bottom-5 right-5 z-50 inline-flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500 text-white fab-shadow hover:bg-emerald-600"
        aria-label="Chat on WhatsApp">
-      <!-- WA glyph (no external icons) -->
       <svg viewBox="0 0 24 24" class="w-6 h-6" fill="currentColor" aria-hidden="true"><path d="M20 12.04A8 8 0 1 1 12 4a8 8 0 0 1 8 8.04zM6.5 19.5l1.6-.47a9 9 0 1 0-3.13-3.1l-.47 1.57c-.14.46.3.9.76.76h.24z"/><path fill="#fff" d="M16.61 13.83c-.23-.12-1.34-.66-1.55-.74-.2-.07-.35-.12-.49.12-.14.23-.56.74-.69.89-.13.14-.25.17-.48.06-.23-.12-.96-.35-1.83-1.12-.68-.6-1.13-1.35-1.26-1.57-.13-.23-.01-.35.1-.47.1-.1.23-.25.34-.38.11-.13.15-.23.23-.38.08-.14.04-.27-.02-.38-.06-.12-.49-1.18-.67-1.62-.18-.43-.36-.37-.49-.38l-.42-.01c-.14 0-.37.05-.57.27-.2.23-.76.74-.76 1.81s.78 2.1.89 2.24c.12.14 1.54 2.34 3.73 3.28 2.2.94 2.2.63 2.6.59.4-.04 1.34-.55 1.53-1.08.19-.53.19-.98.14-1.08-.04-.1-.21-.17-.44-.28z"/></svg>
     </a>
 
@@ -446,42 +434,45 @@
         syncIcons(btn);
       });
 
-      // Mobile menu (only mobile; desktop nav unaffected)
-      const mmBtn = document.getElementById('mobileMenuBtn');
-      const mm = document.getElementById('mobileMenu');
-      const sheet = mm?.querySelector('div.absolute.inset-y-0.right-0');
-      const mmClose = document.getElementById('mobileMenuClose');
-      const mmBackdrop = document.getElementById('mobileBackdrop');
+      // Mobile drawer logic (phones only; desktop unaffected)
+      const overlay   = document.getElementById('mobileOverlay');
+      const sheet     = document.getElementById('mobileSheet');
+      const backdrop  = document.getElementById('mobileBackdrop');
+      const openBtn   = document.getElementById('mobileMenuBtn');
+      const closeBtn  = document.getElementById('mobileClose');
 
-      function openMenu(){
-        mm.classList.remove('hidden');
-        requestAnimationFrame(() => sheet.classList.remove('translate-x-full'));
-        document.body.classList.add('overflow-hidden');
-        mmBtn?.setAttribute('aria-expanded','true');
+      function openMenu() {
+        overlay.classList.remove('hidden');
+        requestAnimationFrame(() => {
+          sheet.classList.add('open');
+          backdrop.classList.add('show');
+        });
+        document.body.classList.add('overflow-hidden'); // lock scroll
+        openBtn?.setAttribute('aria-expanded','true');
       }
-      function closeMenu(){
-        sheet.classList.add('translate-x-full');
-        setTimeout(()=> mm.classList.add('hidden'), 200);
-        document.body.classList.remove('overflow-hidden');
-        mmBtn?.setAttribute('aria-expanded','false');
+      function closeMenu() {
+        sheet.classList.remove('open');
+        backdrop.classList.remove('show');
+        setTimeout(() => overlay.classList.add('hidden'), 200);
+        document.body.classList.remove('overflow-hidden'); // restore scroll
+        openBtn?.setAttribute('aria-expanded','false');
       }
-      mmBtn?.addEventListener('click', openMenu);
-      mmClose?.addEventListener('click', closeMenu);
-      mmBackdrop?.addEventListener('click', closeMenu);
-      window.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && !mm.classList.contains('hidden')) closeMenu(); });
-      mm?.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+      openBtn?.addEventListener('click', openMenu);
+      closeBtn?.addEventListener('click', closeMenu);
+      backdrop?.addEventListener('click', closeMenu);
+      window.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !overlay.classList.contains('hidden')) closeMenu(); });
+      sheet?.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
 
-      // Guard: if viewport resized to desktop while menu open, restore scroll
+      // If user rotates or widens to desktop while open, close & restore
       const mq = window.matchMedia('(min-width: 768px)');
       mq.addEventListener?.('change', () => { if (mq.matches) closeMenu(); });
 
-      // Improve :active focus ring on FAB in iOS
-      document.querySelectorAll('a,button').forEach(el=>{
-        el.addEventListener('touchstart',()=>{}, {passive:true});
-      });
+      // iOS active fix (improves tap feedback)
+      document.querySelectorAll('a,button').forEach(el => el.addEventListener('touchstart',()=>{}, {passive:true}));
     </script>
   </body>
 </html>
+
 
 
 
