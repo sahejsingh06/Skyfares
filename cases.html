@@ -1,185 +1,392 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="h-full">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Case Studies — Skyfare Consulting</title>
     <meta name="description" content="Real examples of how Skyfare helps travelers unlock Business Class value using miles." />
     <link rel="icon" href="favicon.ico" />
+
+    <!-- Fonts to match index -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter','system-ui','ui-sans-serif','Segoe UI','Helvetica','Arial'],
+              serif: ['"DM Serif Display"','Georgia','ui-serif','serif']
+            },
+            colors: { brand:{600:'#3478f6',700:'#1d60dc'} },
+            boxShadow: { soft:'0 10px 30px rgba(0,0,0,.08)' }
+          }
+        }
+      }
+    </script>
     <style>
-      :root { color-scheme: light; }
-      html, body { background:#fafafa; color:#111827; }
-      .container { max-width: 80rem; margin: 0 auto; padding: 0 1.5rem; }
+      :root { color-scheme: light dark; }
+      html, body { height: 100%; }
+      .container { max-width: 1100px; }
+      table { border-collapse: separate; border-spacing: 0; }
+      table thead th { position: sticky; top: 0; backdrop-filter: blur(4px); }
     </style>
+
+    <!-- Persist theme (same key as other pages: 'sf-theme') -->
+    <script>
+      (function(){
+        const pref = localStorage.getItem('sf-theme');
+        const mql = window.matchMedia('(prefers-color-scheme: dark)');
+        const wantsDark = pref ? pref==='dark' : mql.matches;
+        if (wantsDark) document.documentElement.classList.add('dark');
+      })();
+    </script>
   </head>
-  <body class="min-h-screen flex flex-col">
+
+  <body class="min-h-screen flex flex-col bg-white text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100">
     <!-- Header -->
-    <header class="sticky top-0 z-40 backdrop-blur bg-white/80 border-b border-neutral-200">
-      <div class="container py-4 flex items-center justify-between">
+    <header class="sticky top-0 z-40 backdrop-blur bg-white/75 dark:bg-neutral-950/70 border-b border-neutral-200/70 dark:border-neutral-800/70">
+      <div class="container mx-auto px-4 py-4 flex items-center justify-between">
         <a href="index.html" class="flex items-center gap-3">
-          <img src="logos/logo.png" alt="Skyfare Consulting Logo" class="h-10 w-auto" />
-          <span class="font-serif text-lg">Skyfare Consulting</span>
+          <img src="logos/logo.png" alt="Skyfare Consulting Logo" class="h-9 w-auto" />
+          <span class="font-serif text-xl">Skyfare Consulting</span>
         </a>
         <nav class="hidden md:flex items-center gap-6 text-sm">
-          <a href="index.html" class="text-neutral-600 hover:opacity-70">Home</a>
-          <a href="services.html" class="text-neutral-600 hover:opacity-70">Services</a>
-          <a href="cases.html" class="text-neutral-900 font-medium">Case Studies</a>
-          <a href="faq.html" class="text-neutral-600 hover:opacity-70">FAQ</a>
-          <a href="about.html" class="text-neutral-600 hover:opacity-70">About</a>
-          <a href="contact.html" class="text-neutral-600 hover:opacity-70">Contact</a>
+          <a href="index.html" class="hover:opacity-80">Home</a>
+          <a href="services.html" class="hover:opacity-80">Services</a>
+          <a href="cases.html" class="font-medium">Case Studies</a>
+          <a href="faq.html" class="hover:opacity-80">FAQ</a>
+          <a href="about.html" class="hover:opacity-80">About</a>
+          <a href="contact.html" class="hover:opacity-80">Contact</a>
+          <a href="book.html" class="inline-flex items-center rounded-2xl border border-neutral-900 dark:border-neutral-200 px-4 py-2 font-medium hover:bg-neutral-900 hover:text-white dark:hover:bg-white dark:hover:text-neutral-900 transition">Book</a>
+          <button id="themeToggle" class="ml-2 inline-flex items-center justify-center rounded-full border border-neutral-300 dark:border-neutral-700 w-9 h-9 text-xs hover:bg-neutral-100 dark:hover:bg-neutral-800" aria-label="Toggle theme">
+            <span id="themeIcon" aria-hidden="true">☾</span>
+          </button>
         </nav>
       </div>
     </header>
 
-    <main class="container py-16 md:py-24">
-      <h1 class="font-serif text-4xl md:text-5xl text-center">Case Studies</h1>
-      <p class="mt-4 text-center text-neutral-700 max-w-2xl mx-auto">
-        Real trips our clients booked — <span class="font-medium">Business Class for economy-ish prices</span> using smarter miles strategies.
-      </p>
+    <main class="flex-1">
+      <!-- Hero -->
+      <section class="container mx-auto px-4 pt-14 md:pt-20 pb-6 text-center">
+        <h1 class="font-serif text-4xl md:text-5xl">Case Studies</h1>
+        <p class="mt-4 text-neutral-600 dark:text-neutral-300 max-w-2xl mx-auto">
+          Real trips our clients booked — <span class="font-medium">Business Class for economy-ish prices</span> using smart miles strategies and nominee redemptions.
+        </p>
+        <div class="mt-6 flex flex-wrap items-center justify-center gap-3 text-xs">
+          <span class="rounded-full px-3 py-1 ring-1 ring-neutral-200 dark:ring-neutral-800 bg-white dark:bg-neutral-900">Seat-first search (no waitlists)</span>
+          <span class="rounded-full px-3 py-1 ring-1 ring-neutral-200 dark:ring-neutral-800 bg-white dark:bg-neutral-900">Transparent per-1k pricing</span>
+          <span class="rounded-full px-3 py-1 ring-1 ring-neutral-200 dark:ring-neutral-800 bg-white dark:bg-neutral-900">Concierge ticketing</span>
+        </div>
+      </section>
 
-      <!-- quick credibility strip -->
-      <div class="mt-8 grid sm:grid-cols-3 gap-3 max-w-3xl mx-auto">
-        <div class="rounded-xl bg-white p-3 ring-1 ring-black/5 text-xs flex items-center justify-center gap-2"><span>🧠</span> Partner sweet spots + transfer bonuses</div>
-        <div class="rounded-xl bg-white p-3 ring-1 ring-black/5 text-xs flex items-center justify-center gap-2"><span>🔎</span> Availability timed for release windows</div>
-        <div class="rounded-xl bg-white p-3 ring-1 ring-black/5 text-xs flex items-center justify-center gap-2"><span>💳</span> Bank point conversions + fee minimization</div>
-      </div>
-
-      <!-- Case Studies -->
-      <div class="mt-12 grid gap-10">
-        <!-- CASE 1: SIN -> JFK (Business) -->
-        <article class="group rounded-3xl bg-white p-6 md:p-8 shadow-md ring-1 ring-black/5 hover:shadow-lg transition">
-          <div class="flex flex-wrap items-center justify-between gap-3">
-            <div>
-              <h2 class="font-serif text-2xl md:text-3xl">Singapore → New York (JFK) — Business Class</h2>
-              <p class="text-sm text-neutral-600 mt-1">One-way • Single traveler • Booked 4 months out</p>
-            </div>
-            <div class="flex items-center gap-2">
-              <span class="rounded-full bg-emerald-600/10 px-4 py-1 text-sm text-emerald-700 font-medium">Saved ~68%</span>
-              <span class="rounded-full bg-indigo-600/10 px-4 py-1 text-sm text-indigo-700 font-medium">Long-haul sweet spot</span>
-            </div>
-          </div>
-
-          <!-- visual price compare -->
-          <div class="mt-6 grid md:grid-cols-2 gap-6 items-stretch">
-            <div class="rounded-2xl border border-neutral-200 p-5">
-              <p class="text-xs uppercase tracking-wide text-neutral-500">Cash price others paid</p>
-              <p class="mt-1 text-3xl font-serif text-neutral-800">S$6,200</p>
-              <p class="text-sm text-neutral-500">Business Class one-way (typical seasonal fare)</p>
-              <div class="mt-4 rounded-xl bg-neutral-50 p-4 text-sm text-neutral-700">
-                <p>Why so high: non-stop ultra-long-haul, peak demand, limited J inventory.</p>
+      <!-- ****** YOUR TWO ORIGINAL CASE STUDIES (unchanged) ****** -->
+      <section class="container mx-auto px-4">
+        <div class="mt-6 grid gap-10">
+          <!-- CASE 1: SIN -> JFK (Business) -->
+          <article class="group rounded-3xl bg-white dark:bg-neutral-900 p-6 md:p-8 shadow-md ring-1 ring-black/5 dark:ring-white/5 hover:shadow-lg transition">
+            <div class="flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <h2 class="font-serif text-2xl md:text-3xl">Singapore → New York (JFK) — Business Class</h2>
+                <p class="text-sm text-neutral-600 dark:text-neutral-300 mt-1">One-way • Single traveler • Booked 4 months out</p>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="rounded-full bg-emerald-600/10 px-4 py-1 text-sm text-emerald-700 dark:text-emerald-400 font-medium">Saved ~68%</span>
+                <span class="rounded-full bg-indigo-600/10 px-4 py-1 text-sm text-indigo-700 dark:text-indigo-400 font-medium">Long-haul sweet spot</span>
               </div>
             </div>
 
-            <div class="relative">
-              <div class="absolute inset-0 bg-emerald-50 rounded-2xl -z-10"></div>
-              <div class="h-full p-5 rounded-2xl border border-emerald-200">
-                <p class="text-xs uppercase tracking-wide text-emerald-600">What our client paid</p>
-                <p class="mt-1 text-3xl font-serif">111,000 miles + S$186 taxes</p>
-                <ul class="mt-3 text-sm text-neutral-700 space-y-2">
-                  <li>• 20% bank transfer bonus → fewer points needed</li>
-                  <li>• Partner program with lower award chart to North America</li>
-                  <li>• Space released at schedule change; booked instantly</li>
-                </ul>
-                <div class="mt-4 flex flex-wrap gap-2 text-xs">
-                  <span class="rounded-full bg-white px-3 py-1 ring-1 ring-emerald-200">Lie-flat seat</span>
-                  <span class="rounded-full bg-white px-3 py-1 ring-1 ring-emerald-200">Lounge access</span>
-                  <span class="rounded-full bg-white px-3 py-1 ring-1 ring-emerald-200">2×32kg bags</span>
+            <div class="mt-6 grid md:grid-cols-2 gap-6 items-stretch">
+              <div class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5">
+                <p class="text-xs uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Cash price others paid</p>
+                <p class="mt-1 text-3xl font-serif text-neutral-800 dark:text-neutral-100">S$6,200</p>
+                <p class="text-sm text-neutral-500 dark:text-neutral-400">Business Class one-way (typical seasonal fare)</p>
+                <div class="mt-4 rounded-xl bg-neutral-50 dark:bg-neutral-800 p-4 text-sm text-neutral-700 dark:text-neutral-200">
+                  <p>Why so high: non-stop ultra-long-haul, peak demand, limited J inventory.</p>
+                </div>
+              </div>
+
+              <div class="relative">
+                <div class="absolute inset-0 bg-emerald-50 dark:bg-emerald-900/20 rounded-2xl -z-10"></div>
+                <div class="h-full p-5 rounded-2xl border border-emerald-200 dark:border-emerald-900/40">
+                  <p class="text-xs uppercase tracking-wide text-emerald-600 dark:text-emerald-400">What our client paid</p>
+                  <p class="mt-1 text-3xl font-serif">111,000 miles + S$186 taxes</p>
+                  <ul class="mt-3 text-sm text-neutral-700 dark:text-neutral-200 space-y-2">
+                    <li>• 20% bank transfer bonus → fewer points needed</li>
+                    <li>• Partner program with lower award chart to North America</li>
+                    <li>• Space released at schedule change; booked instantly</li>
+                  </ul>
+                  <div class="mt-4 flex flex-wrap gap-2 text-xs">
+                    <span class="rounded-full bg-white dark:bg-neutral-900 px-3 py-1 ring-1 ring-emerald-200 dark:ring-emerald-900/40">Lie-flat seat</span>
+                    <span class="rounded-full bg-white dark:bg-neutral-900 px-3 py-1 ring-1 ring-emerald-200 dark:ring-emerald-900/40">Lounge access</span>
+                    <span class="rounded-full bg-white dark:bg-neutral-900 px-3 py-1 ring-1 ring-emerald-200 dark:ring-emerald-900/40">2×32kg bags</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <!-- CTA -->
-          <div class="mt-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-            <p class="text-sm text-neutral-700 max-w-2xl">
-              We identified a <span class="font-medium">partner sweet spot</span> and stacked a limited-time transfer bonus. Result: Business Class comfort at a fraction of the cash fare.
-            </p>
-            <a href="krisflyer.html" class="inline-flex items-center rounded-2xl bg-neutral-900 px-5 py-2 text-sm font-medium text-white hover:opacity-90">
-              See how to buy miles →
-            </a>
-          </div>
-        </article>
-
-        <!-- CASE 2: SIN -> DEL (Business) — 43k miles -->
-        <article class="group rounded-3xl bg-white p-6 md:p-8 shadow-md ring-1 ring-black/5 hover:shadow-lg transition">
-          <div class="flex flex-wrap items-center justify-between gap-3">
-            <div>
-              <h2 class="font-serif text-2xl md:text-3xl">Singapore → Delhi — Business Class</h2>
-              <p class="text-sm text-neutral-600 mt-1">One-way • Single traveler • “Crazy good” value</p>
+            <div class="mt-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+              <p class="text-sm text-neutral-700 dark:text-neutral-200 max-w-2xl">
+                We identified a <span class="font-medium">partner sweet spot</span> and stacked a limited-time transfer bonus. Result: Business Class comfort at a fraction of the cash fare.
+              </p>
+              <a href="krisflyer.html" class="inline-flex items-center rounded-2xl bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 px-5 py-2 text-sm font-medium hover:opacity-90">
+                See how to buy miles →
+              </a>
             </div>
-            <div class="flex items-center gap-2">
-              <span class="rounded-full bg-pink-600/10 px-4 py-1 text-sm text-pink-700 font-semibold">🔥 Crazy good deal</span>
-              <span class="rounded-full bg-emerald-600/10 px-4 py-1 text-sm text-emerald-700 font-medium">Saved ~70%+</span>
-            </div>
-          </div>
+          </article>
 
-          <div class="mt-6 grid md:grid-cols-2 gap-6 items-stretch">
-            <!-- cash side -->
-            <div class="rounded-2xl border border-neutral-200 p-5">
-              <p class="text-xs uppercase tracking-wide text-neutral-500">Typical cash price</p>
-              <p class="mt-1 text-3xl font-serif text-neutral-800">S$1,350</p>
-              <p class="text-sm text-neutral-500">Business Class one-way (regional)</p>
-              <div class="mt-4 rounded-xl bg-neutral-50 p-4 text-sm text-neutral-700">
-                <p>Regional J fares swing with demand; school holidays often push fares above S$1.3k.</p>
+          <!-- CASE 2: SIN -> DEL (Business) — 43k miles -->
+          <article class="group rounded-3xl bg-white dark:bg-neutral-900 p-6 md:p-8 shadow-md ring-1 ring-black/5 dark:ring-white/5 hover:shadow-lg transition">
+            <div class="flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <h2 class="font-serif text-2xl md:text-3xl">Singapore → Delhi — Business Class</h2>
+                <p class="text-sm text-neutral-600 dark:text-neutral-300 mt-1">One-way • Single traveler • “Crazy good” value</p>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="rounded-full bg-pink-600/10 px-4 py-1 text-sm text-pink-700 dark:text-pink-400 font-semibold">🔥 Crazy good deal</span>
+                <span class="rounded-full bg-emerald-600/10 px-4 py-1 text-sm text-emerald-700 dark:text-emerald-400 font-medium">Saved ~70%+</span>
               </div>
             </div>
 
-            <!-- miles side -->
-            <div class="relative">
-              <div class="absolute inset-0 bg-rose-50 rounded-2xl -z-10"></div>
-              <div class="h-full p-5 rounded-2xl border border-rose-200">
-                <p class="text-xs uppercase tracking-wide text-rose-600">What our client paid</p>
-                <p class="mt-1 text-3xl font-serif">43,000 miles + S$82 taxes</p>
-                <ul class="mt-3 text-sm text-neutral-700 space-y-2">
-                  <li>• Region-based chart with excellent <span class="font-medium">Southeast Asia → India</span> pricing</li>
-                  <li>• Saver space monitored; ticketed the same day it opened</li>
-                  <li>• Optional add-on: companion at similar rate when space allows</li>
-                </ul>
-                <div class="mt-4 flex flex-wrap gap-2 text-xs">
-                  <span class="rounded-full bg-white px-3 py-1 ring-1 ring-rose-200">Flat bed (selected aircraft)</span>
-                  <span class="rounded-full bg-white px-3 py-1 ring-1 ring-rose-200">Priority check-in</span>
-                  <span class="rounded-full bg-white px-3 py-1 ring-1 ring-rose-200">Lounge access</span>
+            <div class="mt-6 grid md:grid-cols-2 gap-6 items-stretch">
+              <div class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5">
+                <p class="text-xs uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Typical cash price</p>
+                <p class="mt-1 text-3xl font-serif text-neutral-800 dark:text-neutral-100">S$1,350</p>
+                <p class="text-sm text-neutral-500 dark:text-neutral-400">Business Class one-way (regional)</p>
+                <div class="mt-4 rounded-xl bg-neutral-50 dark:bg-neutral-800 p-4 text-sm text-neutral-700 dark:text-neutral-200">
+                  <p>Regional J fares swing with demand; school holidays often push fares above S$1.3k.</p>
+                </div>
+              </div>
+
+              <div class="relative">
+                <div class="absolute inset-0 bg-rose-50 dark:bg-rose-900/20 rounded-2xl -z-10"></div>
+                <div class="h-full p-5 rounded-2xl border border-rose-200 dark:border-rose-900/40">
+                  <p class="text-xs uppercase tracking-wide text-rose-600 dark:text-rose-400">What our client paid</p>
+                  <p class="mt-1 text-3xl font-serif">43,000 miles + S$82 taxes</p>
+                  <ul class="mt-3 text-sm text-neutral-700 dark:text-neutral-200 space-y-2">
+                    <li>• Region-based chart with excellent <span class="font-medium">Southeast Asia → India</span> pricing</li>
+                    <li>• Saver space monitored; ticketed the same day it opened</li>
+                    <li>• Optional add-on: companion at similar rate when space allows</li>
+                  </ul>
+                  <div class="mt-4 flex flex-wrap gap-2 text-xs">
+                    <span class="rounded-full bg-white dark:bg-neutral-900 px-3 py-1 ring-1 ring-rose-200 dark:ring-rose-900/40">Flat bed (selected aircraft)</span>
+                    <span class="rounded-full bg-white dark:bg-neutral-900 px-3 py-1 ring-1 ring-rose-200 dark:ring-rose-900/40">Priority check-in</span>
+                    <span class="rounded-full bg-white dark:bg-neutral-900 px-3 py-1 ring-1 ring-rose-200 dark:ring-rose-900/40">Lounge access</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <!-- CTA -->
-          <div class="mt-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-            <p class="text-sm text-neutral-700 max-w-2xl">
-              This route is a <span class="font-medium">known sweet spot</span>: just <strong>43k miles</strong> beats cash by a mile. If you’re short on miles, see our KrisFlyer top-up options.
-            </p>
-            <div class="flex gap-3">
-              <a href="krisflyer.html" class="inline-flex items-center rounded-2xl bg-neutral-900 px-5 py-2 text-sm font-medium text-white hover:opacity-90">
-                Buy/transfer miles →
-              </a>
-              <a href="book.html?service=itinerary" class="inline-flex items-center rounded-2xl border border-neutral-900 px-5 py-2 text-sm font-medium hover:bg-neutral-900 hover:text-white transition">
-                Plan a similar trip
-              </a>
+            <div class="mt-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+              <p class="text-sm text-neutral-700 dark:text-neutral-200 max-w-2xl">
+                This route is a <span class="font-medium">known sweet spot</span>: just <strong>43k miles</strong> beats cash by a mile. If you’re short on miles, see our KrisFlyer top-up options.
+              </p>
+              <div class="flex gap-3">
+                <a href="krisflyer.html" class="inline-flex items-center rounded-2xl bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 px-5 py-2 text-sm font-medium hover:opacity-90">
+                  Buy/transfer miles →
+                </a>
+                <a href="book.html?service=itinerary" class="inline-flex items-center rounded-2xl border border-neutral-900 dark:border-neutral-200 px-5 py-2 text-sm font-medium hover:bg-neutral-900 hover:text-white dark:hover:bg-white dark:hover:text-neutral-900 transition">
+                  Plan a similar trip
+                </a>
+              </div>
             </div>
-          </div>
-        </article>
-      </div>
+          </article>
+        </div>
+      </section>
+      <!-- ****** END original case studies ****** -->
 
-      <!-- gentle disclaimer -->
-      <p class="mt-10 text-xs text-neutral-500">
-        *Examples reflect typical award space and public cash fares seen during 2024–2025 windows. Exact availability and pricing vary by date, airline, and transfer bonuses.
-      </p>
+      <!-- Nominee Redemption Guide (illustrative) -->
+      <section class="container mx-auto px-4 mt-12 md:mt-16">
+        <div class="flex items-end justify-between gap-4">
+          <div>
+            <h3 class="font-semibold text-xl">Nominee Redemption — Indicative Miles (one-way, Business)</h3>
+            <p class="text-sm text-neutral-600 dark:text-neutral-300 mt-1">Saver vs Advantage from Singapore. Figures are indicative and may vary by chart updates and seasonality.</p>
+          </div>
+          <div class="hidden sm:flex items-center gap-2">
+            <label class="text-xs opacity-70">Filter:</label>
+            <select id="regionFilter" class="rounded-lg border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 px-3 py-2 text-sm">
+              <option value="all">All regions</option>
+              <option value="SEA">Southeast Asia</option>
+              <option value="S.Asia">South Asia</option>
+              <option value="NE.Asia">Northeast Asia</option>
+              <option value="Oceania">Oceania</option>
+              <option value="Europe">Europe</option>
+              <option value="N.America">North America</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="mt-4 rounded-3xl border border-neutral-200 dark:border-neutral-800 overflow-hidden shadow-soft">
+          <div class="overflow-auto max-h-[460px]">
+            <table class="min-w-full text-sm">
+              <thead class="bg-neutral-50/70 dark:bg-neutral-900/70">
+                <tr class="text-left">
+                  <th class="p-3 font-medium">From → To</th>
+                  <th class="p-3 font-medium">Region</th>
+                  <th class="p-3 font-medium">Saver (mi)</th>
+                  <th class="p-3 font-medium">Advantage (mi)</th>
+                  <th class="p-3 font-medium">Est. nominee cost*</th>
+                </tr>
+              </thead>
+              <tbody id="awardBody" class="divide-y divide-neutral-200 dark:divide-neutral-800 bg-white dark:bg-neutral-950">
+                <!-- rows injected by JS -->
+              </tbody>
+            </table>
+          </div>
+
+          <div class="p-3 text-xs text-neutral-500 dark:text-neutral-400 border-t border-neutral-200 dark:border-neutral-800">
+            *Estimated using current nominee per-1k tiers (S$21.5 / S$20.5 / S$19). Taxes charged by airline are additional.
+          </div>
+        </div>
+
+        <!-- mini helper -->
+        <div class="mt-4 flex flex-col sm:flex-row gap-3 items-start sm:items-center">
+          <div class="text-sm opacity-80">Quick check: if I need</div>
+          <input id="quickMiles" type="number" min="10000" step="1000" placeholder="e.g., 68000"
+                 class="w-full sm:w-48 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 px-3 py-2 text-sm">
+          <button id="quickCalc" class="rounded-lg bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 px-4 py-2 text-sm font-medium">Estimate nominee cost</button>
+          <div id="quickOut" class="text-sm"></div>
+        </div>
+
+        <div class="mt-6">
+          <a href="krisflyer.html" class="inline-flex items-center rounded-2xl bg-brand-600 text-white px-5 py-3 font-medium hover:bg-brand-700">Buy / Nominee booking</a>
+          <a href="book.html?service=itinerary" class="ml-2 inline-flex items-center rounded-2xl border border-neutral-300 dark:border-neutral-700 px-5 py-3 font-medium hover:bg-neutral-50 dark:hover:bg-neutral-800">Plan my redemption</a>
+        </div>
+      </section>
+
+      <!-- Social proof strip -->
+      <section class="container mx-auto px-4 mt-12 md:mt-16">
+        <div class="grid sm:grid-cols-3 gap-4">
+          <div class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-4">
+            <h4 class="font-medium">Seat-first approach</h4>
+            <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-300">We search where seats actually exist, not waitlists.</p>
+          </div>
+          <div class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-4">
+            <h4 class="font-medium">Concierge handling</h4>
+            <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-300">From search to ticketing, we do the heavy lifting.</p>
+          </div>
+          <div class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-4">
+            <h4 class="font-medium">Clear pricing</h4>
+            <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-300">Know your tier and expected spend before you commit.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Disclaimer -->
+      <section class="container mx-auto px-4 mt-10 text-xs text-neutral-500 dark:text-neutral-400">
+        Examples and mileage figures are indicative for guidance. Programs update charts and rules periodically; availability varies by date, aircraft and route.
+      </section>
     </main>
 
-    <footer class="mt-auto border-t border-neutral-200">
-      <div class="container py-10 text-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-        <div class="text-neutral-600">© <span id="year"></span> Skyfare Consulting. All rights reserved.</div>
-        <div class="flex gap-4 text-neutral-600">
-          <a href="terms.html" class="hover:opacity-70">Terms</a>
-          <a href="privacy.html" class="hover:opacity-70">Privacy</a>
-          <a href="contact.html" class="hover:opacity-70">Contact</a>
+    <!-- Footer -->
+    <footer class="mt-12 border-top border-t border-neutral-200 dark:border-neutral-800">
+      <div class="container mx-auto px-4 py-8 text-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div class="text-neutral-600 dark:text-neutral-300">© <span id="year"></span> Skyfare Consulting. All rights reserved.</div>
+        <div class="flex gap-4 text-neutral-600 dark:text-neutral-300">
+          <a href="terms.html" class="hover:opacity-80">Terms</a>
+          <a href="privacy.html" class="hover:opacity-80">Privacy</a>
+          <a href="contact.html" class="hover:opacity-80">Contact</a>
         </div>
       </div>
-      <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
     </footer>
+
+    <!-- Sticky bottom CTA -->
+    <div class="fixed bottom-3 inset-x-3 md:inset-x-auto md:right-6 md:w-96 z-40 rounded-2xl shadow-soft border border-neutral-200 dark:border-neutral-800 bg-white/95 dark:bg-neutral-900/95 backdrop-blur">
+      <div class="p-3">
+        <div class="text-sm font-medium">Ready to price your trip?</div>
+        <div class="mt-2 flex gap-2">
+          <a href="krisflyer.html" class="flex-1 inline-flex items-center justify-center rounded-lg bg-brand-600 text-white px-3 py-2 text-sm font-medium hover:bg-brand-700">Nominee booking</a>
+          <a href="book.html?service=itinerary" class="inline-flex items-center justify-center rounded-lg border border-neutral-300 dark:border-neutral-700 px-3 py-2 text-sm font-medium hover:bg-neutral-50 dark:hover:bg-neutral-800">Itinerary help</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- WhatsApp bubble -->
+    <a href="https://wa.me/6580000000" target="_blank" rel="noopener"
+       class="fixed bottom-24 right-6 md:bottom-28 md:right-6 z-40 inline-flex items-center justify-center w-12 h-12 rounded-full shadow-soft bg-emerald-500 text-white hover:opacity-90"
+       aria-label="WhatsApp us">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20.52 3.48A11.94 11.94 0 0 0 12.01 0C5.39.01.03 5.37.02 11.99A11.9 11.9 0 0 0 2.1 18.2L0 24l5.98-2.06a11.96 11.96 0 0 0 6.03 1.62h.01c6.62-.01 11.98-5.37 11.98-11.99 0-3.2-1.25-6.2-3.48-8.43ZM12.02 22a9.93 9.93 0 0 1-5.07-1.4l-.36-.21-3.55 1.22 1.22-3.46-.23-.37A9.95 9.95 0 1 1 22 12c0 5.51-4.47 10-9.98 10Zm5.7-7.48c-.31-.16-1.82-.9-2.1-1.01-.28-.1-.49-.16-.69.16-.2.31-.79 1.01-.97 1.21-.18.2-.36.23-.67.08-.31-.16-1.31-.48-2.5-1.53-.92-.81-1.54-1.81-1.72-2.11-.18-.31-.02-.48.13-.64.13-.13.31-.34.46-.51.15-.18.2-.31.31-.51.1-.2.05-.38-.02-.54-.08-.16-.69-1.66-.95-2.27-.25-.6-.5-.52-.69-.53h-.59c-.2 0-.51.07-.77.38-.26.31-1.01.98-1.01 2.39 0 1.4 1.03 2.76 1.17 2.95.15.2 2.03 3.12 4.93 4.37.69.3 1.22.48 1.64.62.69.22 1.31.19 1.8.12.55-.08 1.82-.74 2.08-1.45.26-.72.26-1.34.18-1.45-.07-.12-.28-.19-.59-.35Z"/></svg>
+    </a>
+
+    <!-- Scripts -->
+    <script>
+      // Footer year
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Theme toggle persistence
+      const toggle = document.getElementById('themeToggle');
+      const icon = document.getElementById('themeIcon');
+      function setTheme(mode){ localStorage.setItem('sf-theme', mode); document.documentElement.classList.toggle('dark', mode==='dark'); icon.textContent = mode==='dark' ? '☀' : '☾'; }
+      toggle?.addEventListener('click', () => setTheme(document.documentElement.classList.contains('dark') ? 'light' : 'dark'));
+      icon.textContent = document.documentElement.classList.contains('dark') ? '☀' : '☾';
+
+      // Helper: currency format
+      const sgd = n => 'S$' + n.toLocaleString(undefined,{minimumFractionDigits:2, maximumFractionDigits:2});
+
+      // Nominee cost from miles (tiered)
+      function nomineeCost(miles){
+        if (!miles) return '';
+        let rate = 21.5; if (miles >= 200000 && miles < 500000) rate = 20.5; if (miles >= 500000) rate = 19;
+        return sgd((miles/1000)*rate);
+      }
+
+      // Indicative dataset (Business, one-way, from SIN). Numbers are illustrative.
+      const awards = [
+        {to:'Bangkok (BKK)',    region:'SEA',       saver:24000, advantage:39000},
+        {to:'Bali (DPS)',       region:'SEA',       saver:27000, advantage:43000},
+        {to:'Delhi (DEL)',      region:'S.Asia',    saver:43000, advantage:65000},
+        {to:'Mumbai (BOM)',     region:'S.Asia',    saver:43000, advantage:65000},
+        {to:'Tokyo (NRT/HND)',  region:'NE.Asia',   saver:52000, advantage:70000},
+        {to:'Seoul (ICN)',      region:'NE.Asia',   saver:52000, advantage:70000},
+        {to:'Sydney (SYD)',     region:'Oceania',   saver:68000, advantage:90000},
+        {to:'Melbourne (MEL)',  region:'Oceania',   saver:68000, advantage:90000},
+        {to:'London (LHR)',     region:'Europe',    saver:103000, advantage:123000},
+        {to:'Frankfurt (FRA)',  region:'Europe',    saver:103000, advantage:123000},
+        {to:'San Francisco (SFO)',region:'N.America',saver:111000, advantage:143000},
+        {to:'New York (JFK/EWR)',region:'N.America',saver:111000, advantage:143000},
+      ];
+
+      const body = document.getElementById('awardBody');
+      const filter = document.getElementById('regionFilter');
+
+      function render(rows){
+        body.innerHTML = '';
+        rows.forEach(r => {
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td class="p-3">Singapore → ${r.to}</td>
+            <td class="p-3">${r.region}</td>
+            <td class="p-3 font-medium">${r.saver.toLocaleString()} mi</td>
+            <td class="p-3">${r.advantage.toLocaleString()} mi</td>
+            <td class="p-3">${nomineeCost(r.saver)} – ${nomineeCost(r.advantage)}</td>
+          `;
+          body.appendChild(tr);
+        });
+      }
+      render(awards);
+
+      filter?.addEventListener('change', () => {
+        const val = filter.value;
+        render(val==='all' ? awards : awards.filter(a => a.region===val));
+      });
+
+      // Quick helper
+      const qIn = document.getElementById('quickMiles');
+      const qBtn = document.getElementById('quickCalc');
+      const qOut = document.getElementById('quickOut');
+      qBtn.addEventListener('click', () => {
+        const miles = parseInt(qIn.value || '0', 10);
+        if (!miles || miles < 10000) { qOut.textContent = ' Enter a valid mileage (≥10,000).'; return; }
+        qOut.textContent = ' ≈ ' + nomineeCost(miles) + ' (excl. taxes)';
+      });
+    </script>
   </body>
 </html>
+
 
 
