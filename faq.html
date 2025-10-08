@@ -22,15 +22,24 @@
     </script>
 
     <!-- Theme boot (persist + no flash) -->
-    <script>
-      (function () {
-        const ls = localStorage.getItem('theme');
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const theme = ls ? ls : (prefersDark ? 'dark' : 'light');
-        if (theme === 'dark') document.documentElement.classList.add('dark');
-        document.documentElement.setAttribute('data-theme', theme);
-      })();
-    </script>
+   <script>
+  // Toggle dark / light and persist
+  const btn = document.getElementById('themeToggle');
+  const syncIcons = () => {
+    // If you used the two SVGs with dark:block / dark:hidden this is optional.
+    // Force reflow of icons for some browsers:
+    const t = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', t);
+  };
+
+  btn?.addEventListener('click', () => {
+    const isDark = document.documentElement.classList.toggle('dark');
+    const theme = isDark ? 'dark' : 'light';
+    localStorage.setItem('theme', theme);
+    syncIcons();
+  });
+</script>
+
 
     <style>
       :root { color-scheme: light dark; }
