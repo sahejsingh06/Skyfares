@@ -9,7 +9,7 @@
 
     <!-- Theme boot (persist + no flash) -->
     <script>
-      (function () {
+      (function() {
         const ls = localStorage.getItem('theme');
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         const theme = ls ? ls : (prefersDark ? 'dark' : 'light');
@@ -60,21 +60,17 @@
       }
       .dark .hero-plane::before{ filter:contrast(120%) brightness(80%); opacity:.45 }
 
-      /* Mobile drawer animation helpers (no impact on desktop) */
-      .drawer { transform: translateX(100%); }
-      .drawer.open { transform: translateX(0); }
-      .backdrop { opacity:0; }
-      .backdrop.show { opacity:1; }
-      .transition-200 { transition: transform .2s ease, opacity .2s ease; }
-      .safe-top { padding-top: env(safe-area-inset-top); } /* iOS notch */
-      .safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
-      .fab-shadow{box-shadow:0 8px 24px rgba(16,185,129,.35)}
+      /* Mobile FAB (fan menu) */
+      .fab-item{ opacity:0; transform:translate(0,0) scale(.8); pointer-events:none }
+      .fab-open .fab-item{ opacity:1; transform:scale(1); pointer-events:auto }
+      .fab-transition{ transition: transform .2s ease, opacity .2s ease; }
+      .fab-shadow{ box-shadow:0 8px 24px rgba(16,185,129,.35) }
     </style>
   </head>
   <body class="min-h-screen flex flex-col">
 
     <!-- HEADER -->
-    <!-- Desktop nav remains translucent; Mobile has opaque drawer -->
+    <!-- Desktop nav remains; mobile shows just logo (no hamburger) -->
     <header class="sticky top-0 z-50 backdrop-blur bg-white dark:bg-neutral-950 md:bg-white/80 md:dark:bg-neutral-950/80 border-b border-neutral-200 dark:border-neutral-800 shadow-sm md:shadow-none">
       <div class="container mx-auto flex items-center justify-between py-4 px-4">
         <a href="index.html" class="flex items-center gap-3">
@@ -104,54 +100,6 @@
             Book
           </a>
         </nav>
-
-        <!-- Mobile hamburger -->
-        <button id="mobileMenuBtn"
-          class="md:hidden inline-flex items-center justify-center rounded-xl border border-neutral-300 dark:border-neutral-700
-                 p-2 text-lg text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800"
-          aria-label="Open menu" aria-controls="mobileSheet" aria-expanded="false">☰</button>
-      </div>
-
-      <!-- Mobile overlay + drawer (phones only) -->
-      <div id="mobileOverlay" class="md:hidden fixed inset-0 z-[100] hidden">
-        <div id="mobileBackdrop" class="backdrop absolute inset-0 bg-black/50 transition-200"></div>
-        <aside id="mobileSheet"
-          class="drawer transition-200 absolute inset-y-0 right-0 w-[86%] max-w-sm bg-white dark:bg-neutral-950 shadow-2xl ring-1 ring-black/10 dark:ring-white/10 safe-top safe-bottom
-                 flex flex-col">
-          <div class="flex items-center justify-between px-4 py-3 border-b border-neutral-200 dark:border-neutral-800">
-            <div class="flex items-center gap-2">
-              <img src="logos/logo.png" alt="Skyfare" class="h-8 w-auto" />
-              <span class="font-serif text-lg">Menu</span>
-            </div>
-            <button id="mobileClose"
-              class="rounded-xl border border-neutral-300 dark:border-neutral-700 px-2 py-1 text-sm
-                     text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800"
-              aria-label="Close menu">✕</button>
-          </div>
-
-          <nav class="px-2 py-2 text-base text-neutral-800 dark:text-neutral-100 overflow-y-auto">
-            <a class="block px-3 py-3 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800" href="index.html">Home</a>
-            <a class="block px-3 py-3 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800" href="services.html">Services</a>
-            <a class="block px-3 py-3 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800" href="cases.html">Case Studies</a>
-            <a class="block px-3 py-3 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800" href="faq.html">FAQ</a>
-            <a class="block px-3 py-3 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800" href="about.html">About</a>
-            <a class="block px-3 py-3 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800" href="contact.html">Contact</a>
-
-            <button id="themeToggleMobile"
-              class="mt-2 w-full inline-flex items-center justify-center gap-2 rounded-2xl border border-neutral-300 dark:border-neutral-700 px-3 py-2 text-sm
-                     text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition">
-              <span class="light-icon">🌙</span><span class="dark-icon hidden">☀️</span><span>Theme</span>
-            </button>
-
-            <a href="book.html"
-              class="mt-3 block text-center rounded-2xl bg-neutral-900 text-white dark:bg-white dark:text-neutral-900
-                     px-4 py-3 font-medium hover:opacity-90">Book</a>
-          </nav>
-
-          <div class="mt-auto px-4 py-3 text-xs text-neutral-500 dark:text-neutral-400 border-t border-neutral-200 dark:border-neutral-800">
-            © <span id="mobileYear"></span> Skyfare Consulting
-          </div>
-        </aside>
       </div>
     </header>
 
@@ -223,11 +171,13 @@
       </div>
     </section>
 
-    <!-- HOW IT WORKS -->
+    <!-- HOW IT WORKS (icons, no emojis) -->
     <section class="container mx-auto px-4 py-10 md:py-14">
       <div class="rounded-3xl bg-white dark:bg-neutral-900 shadow-sm ring-1 ring-black/5 dark:ring-white/10 px-6 py-8 md:px-10 md:py-10">
         <h2 class="font-serif text-3xl md:text-4xl text-center">How It Works</h2>
-        <p class="mt-3 text-center text-neutral-700 dark:text-neutral-300 max-w-3xl mx-auto">A simple, guided process — from trip goals to premium seats booked.</p>
+        <p class="mt-3 text-center text-neutral-700 dark:text-neutral-300 max-w-3xl mx-auto">
+          A simple, guided process — from trip goals to premium seats booked.
+        </p>
 
         <div class="mt-10 grid gap-6 sm:grid-cols-2 md:grid-cols-4">
           <div class="group rounded-2xl p-5 bg-gradient-to-b from-emerald-50 to-white dark:from-neutral-800 dark:to-neutral-900 ring-1 ring-emerald-100 dark:ring-neutral-700 hover:-translate-y-0.5 hover:shadow-md transition">
@@ -329,6 +279,7 @@
     <section class="container mx-auto px-4 py-12 md:py-16">
       <div class="rounded-3xl bg-white dark:bg-neutral-950 shadow-sm ring-1 ring-black/5 dark:ring-white/10 px-6 py-8 md:px-10 md:py-10">
         <p class="text-center text-sm text-neutral-600 dark:text-neutral-300">Trusted by travelers who fly with</p>
+
         <div class="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-x-10 gap-y-6 items-center">
           <img src="logos/singapore-airlines.svg" alt="Singapore Airlines" class="h-24 w-auto mx-auto object-contain grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition" />
           <img src="logos/emirates.png"            alt="Emirates"           class="h-24 w-auto mx-auto object-contain grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition" />
@@ -337,7 +288,10 @@
           <img src="logos/amex.svg"                alt="American Express"   class="h-24 w-auto mx-auto object-contain grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition" />
           <img src="logos/chase.png"               alt="Chase"              class="h-24 w-auto mx-auto object-contain grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition" />
         </div>
-        <p class="mt-6 text-center text-xs text-neutral-400">Logos are for descriptive use only and do not imply endorsement or partnership.</p>
+
+        <p class="mt-6 text-center text-xs text-neutral-400">
+          Logos are for descriptive use only and do not imply endorsement or partnership.
+        </p>
       </div>
     </section>
 
@@ -354,7 +308,9 @@
             <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h7l4-8 7 16H3z"/></svg>
           </div>
           <h3 class="font-medium">Strategy, not Search</h3>
-          <p class="mt-2 text-sm text-neutral-700 dark:text-neutral-300">We architect routes, time zones, and fare rules—beyond what commodity search engines surface.</p>
+          <p class="mt-2 text-sm text-neutral-700 dark:text-neutral-300">
+            We architect routes, time zones, and fare rules—beyond what commodity search engines surface.
+          </p>
         </div>
 
         <div class="group rounded-2xl bg-white dark:bg-neutral-900 p-6 shadow-md ring-1 ring-black/5 dark:ring-white/10 transition hover:shadow-lg hover:-translate-y-1">
@@ -362,7 +318,9 @@
             <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 17l6-6 4 4 6-6"/></svg>
           </div>
           <h3 class="font-medium">Miles Maximized</h3>
-          <p class="mt-2 text-sm text-neutral-700 dark:text-neutral-300">Alliance charts, transfer bonuses, stopovers, and sweet spots—deployed for premium cabins.</p>
+          <p class="mt-2 text-sm text-neutral-700 dark:text-neutral-300">
+            Alliance charts, transfer bonuses, stopovers, and sweet spots—deployed for premium cabins.
+          </p>
         </div>
 
         <div class="group rounded-2xl bg-white dark:bg-neutral-900 p-6 shadow-md ring-1 ring-black/5 dark:ring-white/10 transition hover:shadow-lg hover:-translate-y-1">
@@ -370,7 +328,9 @@
             <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h6l3 5h11l-5 9H8l-3-5H2z"/></svg>
           </div>
           <h3 class="font-medium">Complex, Made Simple</h3>
-          <p class="mt-2 text-sm text-neutral-700 dark:text-neutral-300">Multi-city, open-jaw, family bookings, corporate shuttles—we design itineraries that hold up.</p>
+          <p class="mt-2 text-sm text-neutral-700 dark:text-neutral-300">
+            Multi-city, open-jaw, family bookings, corporate shuttles—we design itineraries that hold up.
+          </p>
         </div>
       </div>
     </section>
@@ -401,19 +361,42 @@
       </div>
     </footer>
 
-    <!-- Floating WhatsApp -->
-    <a href="https://api.whatsapp.com/send?phone=6592701253&text=Hi%20Skyfare%2C%20I%27d%20like%20to%20book%20an%20assessment"
-       class="fixed bottom-5 right-5 z-50 inline-flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500 text-white fab-shadow hover:bg-emerald-600"
-       aria-label="Chat on WhatsApp">
-      <svg viewBox="0 0 24 24" class="w-6 h-6" fill="currentColor" aria-hidden="true"><path d="M20 12.04A8 8 0 1 1 12 4a8 8 0 0 1 8 8.04zM6.5 19.5l1.6-.47a9 9 0 1 0-3.13-3.1l-.47 1.57c-.14.46.3.9.76.76h.24z"/><path fill="#fff" d="M16.61 13.83c-.23-.12-1.34-.66-1.55-.74-.2-.07-.35-.12-.49.12-.14.23-.56.74-.69.89-.13.14-.25.17-.48.06-.23-.12-.96-.35-1.83-1.12-.68-.6-1.13-1.35-1.26-1.57-.13-.23-.01-.35.1-.47.1-.1.23-.25.34-.38.11-.13.15-.23.23-.38.08-.14.04-.27-.02-.38-.06-.12-.49-1.18-.67-1.62-.18-.43-.36-.37-.49-.38l-.42-.01c-.14 0-.37.05-.57.27-.2.23-.76.74-.76 1.81s.78 2.1.89 2.24c.12.14 1.54 2.34 3.73 3.28 2.2.94 2.2.63 2.6.59.4-.04 1.34-.55 1.53-1.08.19-.53.19-.98.14-1.08-.04-.1-.21-.17-.44-.28z"/></svg>
-    </a>
+    <!-- MOBILE-ONLY: WhatsApp FAB with radial quick actions -->
+    <div id="fabRoot" class="md:hidden fixed right-5 bottom-5 z-50">
+      <!-- Fan items -->
+      <div class="relative">
+        <!-- Arrange in a gentle 110° fan -->
+        <a href="book.html" title="Book"
+           class="fab-item fab-transition absolute right-[72px] bottom-[8px] inline-flex items-center justify-center w-11 h-11 rounded-full bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 shadow-md">B</a>
+        <a href="services.html" title="Services"
+           class="fab-item fab-transition absolute right-[58px] bottom-[60px] inline-flex items-center justify-center w-11 h-11 rounded-full bg-emerald-600 text-white shadow-md">S</a>
+        <a href="faq.html" title="FAQ"
+           class="fab-item fab-transition absolute right-[8px] bottom-[72px] inline-flex items-center justify-center w-11 h-11 rounded-full bg-sky-600 text-white shadow-md">?</a>
+        <a href="contact.html" title="Contact"
+           class="fab-item fab-transition absolute right-[-38px] bottom-[58px] inline-flex items-center justify-center w-11 h-11 rounded-full bg-indigo-600 text-white shadow-md">@</a>
+        <a href="about.html" title="About"
+           class="fab-item fab-transition absolute right-[-56px] bottom-[18px] inline-flex items-center justify-center w-11 h-11 rounded-full bg-amber-600 text-white shadow-md">i</a>
+        <a href="index.html" title="Home"
+           class="fab-item fab-transition absolute right-[-42px] bottom-[-24px] inline-flex items-center justify-center w-11 h-11 rounded-full bg-neutral-700 text-white shadow-md">H</a>
+      </div>
+
+      <!-- Main WhatsApp FAB -->
+      <button id="fabMain"
+        class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-emerald-500 text-white fab-shadow focus:outline-none"
+        aria-expanded="false" aria-label="Open quick actions">
+        <!-- WA glyph -->
+        <svg viewBox="0 0 24 24" class="w-7 h-7" fill="currentColor" aria-hidden="true"><path d="M20 12.04A8 8 0 1 1 12 4a8 8 0 0 1 8 8.04zM6.5 19.5l1.6-.47a9 9 0 1 0-3.13-3.1l-.47 1.57c-.14.46.3.9.76.76h.24z"/><path fill="#fff" d="M16.61 13.83c-.23-.12-1.34-.66-1.55-.74-.2-.07-.35-.12-.49.12-.14.23-.56.74-.69.89-.13.14-.25.17-.48.06-.23-.12-.96-.35-1.83-1.12-.68-.6-1.13-1.35-1.26-1.57-.13-.23-.01-.35.1-.47.1-.1.23-.25.34-.38.11-.13.15-.23.23-.38.08-.14.04-.27-.02-.38-.06-.12-.49-1.18-.67-1.62-.18-.43-.36-.37-.49-.38l-.42-.01c-.14 0-.37.05-.57.27-.2.23-.76.74-.76 1.81s.78 2.1.89 2.24c.12.14 1.54 2.34 3.73 3.28 2.2.94 2.2.63 2.6.59.4-.04 1.34-.55 1.53-1.08.19-.53.19-.98.14-1.08-.04-.1-.21-.17-.44-.28z"/></svg>
+      </button>
+
+      <!-- Invisible link overlay when not expanded (tap to chat) -->
+      <a id="fabChatLink" href="https://api.whatsapp.com/send?phone=6592701253&text=Hi%20Skyfare%2C%20I%27d%20like%20to%20book%20an%20assessment" class="absolute inset-0" aria-label="Chat on WhatsApp"></a>
+    </div>
 
     <!-- SCRIPTS -->
     <script>
       document.getElementById('year').textContent = new Date().getFullYear();
-      const mobileYearEl = document.getElementById('mobileYear'); if (mobileYearEl) mobileYearEl.textContent = new Date().getFullYear();
 
-      // Theme toggle (desktop + mobile) keep icons in sync
+      // Theme toggle (desktop)
       function syncIcons(btn) {
         if (!btn) return;
         const isDark = document.documentElement.classList.contains('dark');
@@ -421,54 +404,37 @@
         btn.querySelector('.dark-icon')?.classList.toggle('hidden', !isDark);
         btn.setAttribute('aria-pressed', isDark ? 'true' : 'false');
       }
-      const toggles = [document.getElementById('themeToggle'), document.getElementById('themeToggleMobile')];
-      toggles.forEach(btn => {
-        btn?.addEventListener('click', () => {
-          const root = document.documentElement;
-          const isDark = root.classList.toggle('dark');
-          const theme = isDark ? 'dark' : 'light';
-          localStorage.setItem('theme', theme);
-          root.setAttribute('data-theme', theme);
-          toggles.forEach(syncIcons);
-        });
-        syncIcons(btn);
+      const themeBtn = document.getElementById('themeToggle');
+      themeBtn?.addEventListener('click', () => {
+        const root = document.documentElement;
+        const isDark = root.classList.toggle('dark');
+        const theme = isDark ? 'dark' : 'light';
+        localStorage.setItem('theme', theme);
+        root.setAttribute('data-theme', theme);
+        syncIcons(themeBtn);
+      });
+      syncIcons(themeBtn);
+
+      // FAB fan logic (mobile only)
+      const fabRoot = document.getElementById('fabRoot');
+      const fabMain = document.getElementById('fabMain');
+      const fabChatLink = document.getElementById('fabChatLink');
+      function toggleFab(){
+        const open = fabRoot.classList.toggle('fab-open');
+        fabMain.setAttribute('aria-expanded', open ? 'true' : 'false');
+        // When expanded, disable direct chat overlay so fan buttons are clickable
+        fabChatLink.style.pointerEvents = open ? 'none' : 'auto';
+      }
+      fabMain.addEventListener('click', toggleFab);
+
+      // Close fan when scrolling a lot or tapping elsewhere
+      document.addEventListener('scroll', () => { if (fabRoot.classList.contains('fab-open')) toggleFab(); }, {passive:true});
+      document.addEventListener('click', (e) => {
+        if (!fabRoot.contains(e.target) && fabRoot.classList.contains('fab-open')) toggleFab();
       });
 
-      // Mobile drawer logic (phones only; desktop unaffected)
-      const overlay   = document.getElementById('mobileOverlay');
-      const sheet     = document.getElementById('mobileSheet');
-      const backdrop  = document.getElementById('mobileBackdrop');
-      const openBtn   = document.getElementById('mobileMenuBtn');
-      const closeBtn  = document.getElementById('mobileClose');
-
-      function openMenu() {
-        overlay.classList.remove('hidden');
-        requestAnimationFrame(() => {
-          sheet.classList.add('open');
-          backdrop.classList.add('show');
-        });
-        document.body.classList.add('overflow-hidden'); // lock scroll
-        openBtn?.setAttribute('aria-expanded','true');
-      }
-      function closeMenu() {
-        sheet.classList.remove('open');
-        backdrop.classList.remove('show');
-        setTimeout(() => overlay.classList.add('hidden'), 200);
-        document.body.classList.remove('overflow-hidden'); // restore scroll
-        openBtn?.setAttribute('aria-expanded','false');
-      }
-      openBtn?.addEventListener('click', openMenu);
-      closeBtn?.addEventListener('click', closeMenu);
-      backdrop?.addEventListener('click', closeMenu);
-      window.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !overlay.classList.contains('hidden')) closeMenu(); });
-      sheet?.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
-
-      // If user rotates or widens to desktop while open, close & restore
-      const mq = window.matchMedia('(min-width: 768px)');
-      mq.addEventListener?.('change', () => { if (mq.matches) closeMenu(); });
-
-      // iOS active fix (improves tap feedback)
-      document.querySelectorAll('a,button').forEach(el => el.addEventListener('touchstart',()=>{}, {passive:true}));
+      // iOS active fix
+      document.querySelectorAll('a,button').forEach(el=>el.addEventListener('touchstart',()=>{}, {passive:true}));
     </script>
   </body>
 </html>
