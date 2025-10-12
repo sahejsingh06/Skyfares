@@ -7,6 +7,21 @@
     <meta name="description" content="Skyfare Consulting — Flight Strategy & Miles Advisory" />
     <link rel="icon" href="favicon.ico" />
 
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1267035445107637');
+    fbq('track', 'PageView');
+    </script>
+    <!-- End Meta Pixel Code -->
+
     <!-- Theme boot (persist + no flash) -->
     <script>
       (function() {
@@ -68,6 +83,11 @@
     </style>
   </head>
   <body class="min-h-screen flex flex-col">
+    <!-- Meta Pixel (noscript) -->
+    <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=1267035445107637&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel (noscript) -->
 
     <!-- HEADER -->
     <!-- Desktop nav remains; mobile shows just logo (no hamburger) -->
@@ -132,7 +152,7 @@
 
           <div class="mt-8 flex flex-wrap gap-3">
             <a href="book.html"
-               class="inline-flex items-center rounded-2xl bg-neutral-900 px-5 py-3 text-sm font-medium text-white transition hover:opacity-90 hover:shadow-md">
+               class="book-cta inline-flex items-center rounded-2xl bg-neutral-900 px-5 py-3 text-sm font-medium text-white transition hover:opacity-90 hover:shadow-md">
               Book a 30-min Assessment
             </a>
             <a href="services.html"
@@ -210,7 +230,7 @@
         </div>
 
         <div class="mt-8 flex justify-center">
-          <a href="book.html" class="inline-flex items-center rounded-2xl bg-neutral-900 px-5 py-3 text-sm font-medium text-white hover:opacity-90 dark:bg-white dark:text-neutral-900">
+          <a href="book.html" class="book-cta inline-flex items-center rounded-2xl bg-neutral-900 px-5 py-3 text-sm font-medium text-white hover:opacity-90 dark:bg-white dark:text-neutral-900">
             Start with a quick assessment
           </a>
         </div>
@@ -347,7 +367,7 @@
       <h2 class="font-serif text-3xl md:text-4xl">Start with a quick assessment</h2>
       <p class="mt-4 text-neutral-700 dark:text-neutral-300">Tell us your dates, routes, and miles. We’ll propose 1–2 high-value options in 24–48 hours.</p>
       <div class="mt-6 flex flex-wrap justify-center gap-3">
-        <a href="book.html" class="inline-flex items-center rounded-2xl bg-neutral-900 px-5 py-3 text-sm font-medium text-white hover:opacity-90 dark:bg-white dark:text-neutral-900">Book a Call</a>
+        <a href="book.html" class="book-cta inline-flex items-center rounded-2xl bg-neutral-900 px-5 py-3 text-sm font-medium text-white hover:opacity-90 dark:bg-white dark:text-neutral-900">Book a Call</a>
         <a href="services.html" class="inline-flex items-center rounded-2xl border border-neutral-300 dark:border-neutral-700 px-5 py-3 text-sm font-medium hover:bg-white dark:hover:bg-neutral-800">See Services</a>
         <a href="https://api.whatsapp.com/send?phone=6592701253&text=Hi%20Skyfare%2C%20I%27d%20like%20to%20book%20an%20assessment"
            class="inline-flex items-center rounded-2xl bg-emerald-600 px-5 py-3 text-sm font-medium text-white hover:bg-emerald-700 transition">
@@ -440,11 +460,19 @@
         if (!fabRoot.contains(e.target) && fabRoot.classList.contains('fab-open')) toggleFab();
       });
 
+      // Track key events (Meta Pixel)
+      document.querySelectorAll('.book-cta').forEach(el => {
+        el.addEventListener('click', () => { try { fbq('trackCustom', 'BookCTA'); } catch(e) {} });
+      });
+      // Track WhatsApp tap when collapsed (direct chat)
+      fabChatLink.addEventListener('click', () => { try { fbq('trackCustom', 'WhatsAppChat'); } catch(e) {} });
+
       // iOS active fix
       document.querySelectorAll('a,button').forEach(el=>el.addEventListener('touchstart',()=>{}, {passive:true}));
     </script>
   </body>
 </html>
+
 
 
 
