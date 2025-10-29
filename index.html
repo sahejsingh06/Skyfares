@@ -9,16 +9,16 @@
 
     <!-- Meta Pixel Code -->
     <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1267035445107637');
-    fbq('track', 'PageView');
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '1267035445107637');
+      fbq('track', 'PageView');
     </script>
     <!-- End Meta Pixel Code -->
 
@@ -60,11 +60,13 @@
       @media (prefers-reduced-motion:no-preference){
         .fade-in{animation:fade .45s ease-out both}
         @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+        .rise-in{animation:rise .5s ease-out both}
+        @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
       }
       .num { font-variant-numeric: tabular-nums; }
       .usd-tag{font-size:.8rem; vertical-align:top; margin-right:.15rem}
 
-      /* Plane motif behind HERO only (clean, professional) */
+      /* Plane motif behind HERO only */
       .hero-plane::before{
         content:"";
         position:absolute; inset:auto -10% -12% -10%;
@@ -81,16 +83,10 @@
       .fab-transition{ transition: transform .2s ease, opacity .2s ease; }
       .fab-shadow{ box-shadow:0 8px 24px rgba(16,185,129,.35) }
 
-      /* ADDED: carousel basic (no external lib) */
-      .carousel-track{ display:flex; gap:1rem; transition: transform .35s ease }
-      .carousel-card{ min-width: 260px }
-
-      /* ADDED: sticky mobile bar (xs only) */
-      @media (max-width: 767px){
-        .sticky-mobile-bar{ position: fixed; left:0; right:0; bottom:0; z-index:40; display:none }
-        .sticky-mobile-bar.show{ display:block }
-        body.has-sticky-padding { padding-bottom: 72px; }
-      }
+      /* Pretty accordion */
+      .faq-item{border-radius:1rem; overflow:hidden}
+      .faq-item[open] .faq-q{background:linear-gradient(to right, rgba(16,185,129,.08), transparent)}
+      .faq-q{cursor:pointer}
     </style>
   </head>
   <body class="min-h-screen flex flex-col">
@@ -101,20 +97,13 @@
     <!-- End Meta Pixel (noscript) -->
 
     <!-- HEADER -->
-    <!-- Desktop nav remains; mobile shows just logo (no hamburger) -->
     <header class="sticky top-0 z-50 backdrop-blur bg-white dark:bg-neutral-950 md:bg-white/80 md:dark:bg-neutral-950/80 border-b border-neutral-200 dark:border-neutral-800 shadow-sm md:shadow-none">
       <div class="container mx-auto flex items-center justify-between py-4 px-4">
-       <a href="index.html" class="flex items-center space-x-3">
-  <img 
-    src="logos/logo.png" 
-    alt="Skyfare Consulting Logo" 
-    class="h-14 w-auto object-contain drop-shadow-[0_0_8px_rgba(59,130,246,0.4)] transition-transform duration-300 hover:scale-105"
-  />
-  <span class="text-xl font-semibold text-gray-900 dark:text-white tracking-wide">
-    Skyfare Consulting
-  </span>
-</a>
-
+        <a href="index.html" class="flex items-center space-x-3">
+          <img src="logos/logo.png" alt="Skyfare Consulting Logo"
+               class="h-14 w-auto object-contain drop-shadow-[0_0_8px_rgba(59,130,246,0.4)] transition-transform duration-300 hover:scale-105"/>
+          <span class="text-xl font-semibold text-gray-900 dark:text-white tracking-wide">Skyfare Consulting</span>
+        </a>
 
         <!-- Desktop nav -->
         <nav class="hidden md:flex items-center gap-3 text-sm">
@@ -148,35 +137,32 @@
 
       <div class="container mx-auto grid md:grid-cols-2 gap-10 items-center px-4 py-16 md:py-24">
         <div class="fade-in">
+          <!-- Swap any headline option here -->
           <h1 class="font-serif text-4xl md:text-6xl leading-tight">
-            Flight Strategy for People Who Value <span class="whitespace-nowrap">Time & Money.</span>
+            Premium cabins without premium prices.
           </h1>
+
           <h2 class="mt-4 text-3xl md:text-4xl font-extrabold tracking-tight bg-gradient-to-r from-emerald-500 via-sky-500 to-indigo-500 bg-clip-text text-transparent relative inline-block">
             Your Private Flight Strategist
             <span class="absolute left-0 -bottom-1 w-full h-[3px] bg-gradient-to-r from-emerald-400 via-sky-400 to-indigo-400 rounded-full"></span>
           </h2>
-
-          <!-- ADDED: Value Strip (problem framing + proof) -->
-          <div class="mt-4 flex flex-wrap items-center gap-2 text-[13px] text-neutral-700 dark:text-neutral-300">
-            <span class="inline-flex items-center rounded-full bg-neutral-100 px-3 py-1 ring-1 ring-black/5 dark:bg-neutral-800 dark:ring-white/10">Premium fares are inflated & complex.</span>
-            <span class="inline-flex items-center rounded-full bg-neutral-100 px-3 py-1 ring-1 ring-black/5 dark:bg-neutral-800 dark:ring-white/10">Miles are confusing & often waitlisted.</span>
-            <span class="inline-flex items-center rounded-full bg-emerald-50 text-emerald-800 px-3 py-1 ring-1 ring-emerald-100 dark:bg-emerald-900/20 dark:text-emerald-300 dark:ring-emerald-800/40"><strong class="mr-1">54%</strong> Avg fare reduction</span>
-            <span class="inline-flex items-center rounded-full bg-emerald-50 text-emerald-800 px-3 py-1 ring-1 ring-emerald-100 dark:bg-emerald-900/20 dark:text-emerald-300 dark:ring-emerald-800/40"><strong class="mr-1">USD $2,450</strong> avg family save</span>
-            <span class="inline-flex items-center rounded-full bg-emerald-50 text-emerald-800 px-3 py-1 ring-1 ring-emerald-100 dark:bg-emerald-900/20 dark:text-emerald-300 dark:ring-emerald-800/40"><strong>20M+</strong> premium redemptions</span>
-          </div>
 
           <p class="mt-5 text-base md:text-lg text-neutral-700 dark:text-neutral-300 max-w-xl">
             Skyfare Consulting designs smarter routes, unlocks premium cabin value, and maximizes your miles.
             <strong>We help you use your credit card miles to fly in Business and First Class for a fraction of the cash price — without the hassle.</strong>
           </p>
 
+          <div class="mt-4 flex flex-wrap gap-2 text-[13px]">
+            <span class="inline-flex items-center rounded-full bg-emerald-100 text-emerald-800 px-3 py-1 dark:bg-emerald-900/30 dark:text-emerald-200">Premium fares are inflated & complex.</span>
+            <span class="inline-flex items-center rounded-full bg-sky-100 text-sky-800 px-3 py-1 dark:bg-sky-900/30 dark:text-sky-200">Miles are confusing & often waitlisted.</span>
+            <span class="inline-flex items-center rounded-full bg-indigo-100 text-indigo-800 px-3 py-1 dark:bg-indigo-900/30 dark:text-indigo-200">We turn miles into confirmed premium seats.</span>
+          </div>
+
           <div class="mt-8 flex flex-wrap gap-3">
-            <a href="book.html"
-               class="book-cta inline-flex items-center rounded-2xl bg-neutral-900 px-5 py-3 text-sm font-medium text-white transition hover:opacity-90 hover:shadow-md">
+            <a href="book.html" class="book-cta inline-flex items-center rounded-2xl bg-neutral-900 px-5 py-3 text-sm font-medium text-white transition hover:opacity-90 hover:shadow-md">
               Book a 30-min Assessment
             </a>
-            <a href="services.html"
-               class="inline-flex items-center rounded-2xl border border-emerald-600 px-5 py-3 text-sm font-medium text-emerald-700 transition hover:bg-emerald-600 hover:text-white hover:shadow-sm">
+            <a href="services.html" class="inline-flex items-center rounded-2xl border border-emerald-600 px-5 py-3 text-sm font-medium text-emerald-700 transition hover:bg-emerald-600 hover:text-white hover:shadow-sm">
               Explore Services
             </a>
           </div>
@@ -188,8 +174,8 @@
           </div>
         </div>
 
-        <!-- Impact box (existing) + ADDED: Miles ROI mini calc -->
-        <div class="relative fade-in space-y-4">
+        <!-- Impact box -->
+        <div class="relative fade-in">
           <div class="rounded-3xl bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900 shadow-2xl ring-1 ring-black/10 p-6 text-white">
             <div class="grid grid-cols-2 gap-4 text-sm">
               <div class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-4">
@@ -213,99 +199,59 @@
               <p class="text-[11px] uppercase tracking-widest text-neutral-600">Sample Win</p>
               <p class="mt-2 text-sm leading-relaxed">SIN→JFK one-way in Business for 111k miles + S$186 taxes (vs S$6,200 cash).</p>
             </div>
-          </div>
 
-          <!-- ADDED: Miles ROI Calculator -->
-          <div class="rounded-3xl bg-white dark:bg-neutral-900 ring-1 ring-black/5 dark:ring-white/10 p-5">
-            <div class="flex items-center justify-between">
-              <h3 class="font-medium">Miles ROI — “Is this worth it?”</h3>
-              <span class="text-xs text-neutral-500 dark:text-neutral-400">Quick estimate</span>
+            <!-- Value Proof Strip (replaces calculator) -->
+            <div class="mt-4 grid gap-3 sm:grid-cols-3 text-sm">
+              <div class="rounded-xl bg-white/5 px-4 py-3 ring-1 ring-white/10">No waitlists via nominee redemption</div>
+              <div class="rounded-xl bg-white/5 px-4 py-3 ring-1 ring-white/10">Direct transfers ≈ 5 business days</div>
+              <div class="rounded-xl bg-white/5 px-4 py-3 ring-1 ring-white/10">Concierge booking available</div>
             </div>
-            <div class="mt-3 grid grid-cols-2 gap-3 text-sm">
-              <label class="block">
-                <span class="text-neutral-600 dark:text-neutral-300">Cash fare (S$)</span>
-                <input id="calcFare" type="number" min="0" inputmode="decimal" class="mt-1 w-full rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 px-3 py-2" placeholder="e.g. 6200" />
-              </label>
-              <label class="block">
-                <span class="text-neutral-600 dark:text-neutral-300">Miles needed (k)</span>
-                <input id="calcMiles" type="number" min="0" inputmode="decimal" class="mt-1 w-full rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 px-3 py-2" placeholder="e.g. 111" />
-              </label>
-              <label class="block col-span-2">
-                <span class="text-neutral-600 dark:text-neutral-300">Taxes & fees (S$)</span>
-                <input id="calcTaxes" type="number" min="0" inputmode="decimal" class="mt-1 w-full rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 px-3 py-2" placeholder="e.g. 186" />
-              </label>
-            </div>
-            <button id="calcBtn" class="mt-3 inline-flex items-center rounded-2xl bg-neutral-900 px-4 py-2 text-sm font-medium text-white hover:opacity-90">Estimate Savings</button>
-            <div id="calcOut" class="mt-3 text-sm text-neutral-800 dark:text-neutral-200 hidden">
-              <div><strong>Est. % saved:</strong> <span id="calcPct">—</span></div>
-              <div><strong>Assumed miles cost:</strong> <span id="calcCostPerK">S$20 / 1k</span> <span class="text-xs text-neutral-500">(Nominee often lower)</span></div>
-            </div>
-            <div class="mt-3 flex gap-2">
-              <a href="book.html" class="book-cta inline-flex items-center rounded-2xl border border-neutral-900 px-4 py-2 text-sm font-medium hover:bg-neutral-900 hover:text-white">Get My Options</a>
-              <a href="https://api.whatsapp.com/send?phone=6592701253&text=Hi%20Skyfare%2C%20Calculator%20says%20I%20should%20book.%20Help%20me%20optimise%20my%20route."
-                 class="inline-flex items-center rounded-2xl bg-emerald-600 px-4 py-2 text-sm font-medium text-white hover:bg-emerald-700">Chat on WhatsApp</a>
-            </div>
+            <p class="mt-3 text-xs text-white/70">“Worth every mile. We saved thousands and finally slept.” — A.S., Singapore</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ADDED: Problem → Pain → Solution band (before How It Works) -->
-    <section class="container mx-auto px-4 py-10 md:py-12">
+    <!-- PROBLEM → SOLUTION -->
+    <section class="container mx-auto px-4 py-10 md:py-14">
       <div class="grid md:grid-cols-2 gap-6">
-        <div class="rounded-3xl bg-white dark:bg-neutral-900 ring-1 ring-black/5 dark:ring-white/10 p-6">
-          <h3 class="font-serif text-2xl">The Problem</h3>
-          <div class="mt-4 grid gap-3 text-sm">
-            <div class="rounded-xl p-3 ring-1 ring-neutral-200 dark:ring-neutral-800">Cash fares for premium cabins have surged 25–60%.</div>
-            <div class="rounded-xl p-3 ring-1 ring-neutral-200 dark:ring-neutral-800">Award space is inconsistent and often waitlisted.</div>
-            <div class="rounded-xl p-3 ring-1 ring-neutral-200 dark:ring-neutral-800">Miles programs have rules, transfer delays, and traps.</div>
+        <!-- Problem -->
+        <div class="rounded-3xl bg-white dark:bg-neutral-900 ring-1 ring-black/5 dark:ring-white/10 p-6 md:p-8">
+          <h3 class="font-serif text-2xl md:text-3xl">The Problem</h3>
+          <div class="mt-5 space-y-4">
+            <div class="rise-in rounded-2xl ring-1 ring-neutral-200 dark:ring-neutral-700 p-4 flex gap-3 items-start">
+              <svg class="h-5 w-5 text-neutral-500 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 6-6"/></svg>
+              <p>Cash fares for premium cabins have surged 25–60%.</p>
+            </div>
+            <div class="rise-in rounded-2xl ring-1 ring-neutral-200 dark:ring-neutral-700 p-4 flex gap-3 items-start">
+              <svg class="h-5 w-5 text-neutral-500 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h12M3 18h6"/></svg>
+              <p>Award space is inconsistent and often waitlisted.</p>
+            </div>
+            <div class="rise-in rounded-2xl ring-1 ring-neutral-200 dark:ring-neutral-700 p-4 flex gap-3 items-start">
+              <svg class="h-5 w-5 text-neutral-500 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2h8v4H8z"/><path d="M3 10h18M6 14h12M9 18h6"/></svg>
+              <p>Miles programs have rules, transfer delays, and traps.</p>
+            </div>
           </div>
         </div>
-        <div class="rounded-3xl bg-white dark:bg-neutral-900 ring-1 ring-black/5 dark:ring-white/10 p-6">
-          <h3 class="font-serif text-2xl">Our Solution</h3>
-          <ul class="mt-4 grid gap-3 text-sm">
-            <li class="rounded-xl p-3 ring-1 ring-emerald-200/80 dark:ring-emerald-800/40">Smarter routes with alliance sweet spots & stopovers.</li>
-            <li class="rounded-xl p-3 ring-1 ring-emerald-200/80 dark:ring-emerald-800/40">Nominee redemptions (no waitlists) or fast direct transfers (~5 biz days).</li>
-            <li class="rounded-xl p-3 ring-1 ring-emerald-200/80 dark:ring-emerald-800/40">Concierge booking — we handle rules, you just fly.</li>
-          </ul>
-          <div class="mt-4 text-xs text-neutral-500">Proof: 54% average fare reduction · USD $2,450 average family saving · 20M+ premium redemptions.</div>
-        </div>
-      </div>
-    </section>
 
-    <!-- ADDED: Before/After Comparisons -->
-    <section class="container mx-auto px-4 py-4 md:py-6">
-      <div class="rounded-3xl bg-white dark:bg-neutral-900 ring-1 ring-black/5 dark:ring-white/10 p-6">
-        <h3 class="font-serif text-2xl">Before / After (Real Patterns)</h3>
-        <div class="mt-4 grid gap-4 md:grid-cols-3 text-sm">
-          <div class="rounded-2xl ring-1 ring-neutral-200 dark:ring-neutral-800 p-4">
-            <div class="font-medium">SIN → JFK (Business)</div>
-            <div class="mt-2 grid grid-cols-3 gap-2">
-              <div class="rounded-lg p-2 bg-neutral-50 dark:bg-neutral-800"><div class="text-xs">Cash</div><div class="font-semibold">S$6,200</div></div>
-              <div class="rounded-lg p-2 bg-neutral-50 dark:bg-neutral-800"><div class="text-xs">Miles</div><div class="font-semibold">111k + S$186</div></div>
-              <div class="rounded-lg p-2 bg-emerald-50 dark:bg-emerald-900/20"><div class="text-xs">% Saved</div><div class="font-semibold">~69%</div></div>
+        <!-- Solution -->
+        <div class="rounded-3xl bg-gradient-to-br from-emerald-50 to-white dark:from-neutral-800 dark:to-neutral-900 ring-1 ring-emerald-100 dark:ring-neutral-700 p-6 md:p-8">
+          <h3 class="font-serif text-2xl md:text-3xl">Our Solution</h3>
+          <div class="mt-5 space-y-4">
+            <div class="rise-in rounded-2xl ring-1 ring-emerald-200/60 dark:ring-emerald-700/60 p-4 flex gap-3 items-start bg-white/70 dark:bg-white/5">
+              <svg class="h-5 w-5 text-emerald-600 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 17l6-6 4 4 6-6"/></svg>
+              <p>Smarter routes with alliance sweet spots & strategic stopovers.</p>
+            </div>
+            <div class="rise-in rounded-2xl ring-1 ring-emerald-200/60 dark:ring-emerald-700/60 p-4 flex gap-3 items-start bg-white/70 dark:bg-white/5">
+              <svg class="h-5 w-5 text-emerald-600 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h20"/><path d="M12 2v20"/></svg>
+              <p>Nominee redemptions (no waitlists) or fast direct transfers (~5 biz days).</p>
+            </div>
+            <div class="rise-in rounded-2xl ring-1 ring-emerald-200/60 dark:ring-emerald-700/60 p-4 flex gap-3 items-start bg-white/70 dark:bg-white/5">
+              <svg class="h-5 w-5 text-emerald-600 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 7h7l-5.5 4 2.5 7L12 16l-7 4 2.5-7L2 9h7z"/></svg>
+              <p>Concierge booking — we handle rules, you just fly.</p>
             </div>
           </div>
-          <div class="rounded-2xl ring-1 ring-neutral-200 dark:ring-neutral-800 p-4">
-            <div class="font-medium">SIN → LHR (Business)</div>
-            <div class="mt-2 grid grid-cols-3 gap-2">
-              <div class="rounded-lg p-2 bg-neutral-50 dark:bg-neutral-800"><div class="text-xs">Cash</div><div class="font-semibold">S$4,900</div></div>
-              <div class="rounded-lg p-2 bg-neutral-50 dark:bg-neutral-800"><div class="text-xs">Miles</div><div class="font-semibold">103k + S$210</div></div>
-              <div class="rounded-lg p-2 bg-emerald-50 dark:bg-emerald-900/20"><div class="text-xs">% Saved</div><div class="font-semibold">~58%</div></div>
-            </div>
-          </div>
-          <div class="rounded-2xl ring-1 ring-neutral-200 dark:ring-neutral-800 p-4">
-            <div class="font-medium">SIN → SFO (Business)</div>
-            <div class="mt-2 grid grid-cols-3 gap-2">
-              <div class="rounded-lg p-2 bg-neutral-50 dark:bg-neutral-800"><div class="text-xs">Cash</div><div class="font-semibold">S$5,600</div></div>
-              <div class="rounded-lg p-2 bg-neutral-50 dark:bg-neutral-800"><div class="text-xs">Miles</div><div class="font-semibold">116k + S$190</div></div>
-              <div class="rounded-lg p-2 bg-emerald-50 dark:bg-emerald-900/20"><div class="text-xs">% Saved</div><div class="font-semibold">~64%</div></div>
-            </div>
-          </div>
-        </div>
-        <div class="mt-4 flex flex-wrap gap-2">
-          <a href="cases.html" class="inline-flex items-center rounded-2xl border border-neutral-300 dark:border-neutral-700 px-4 py-2 text-sm hover:bg-white dark:hover:bg-neutral-800">See more examples</a>
-          <a href="book.html" class="book-cta inline-flex items-center rounded-2xl bg-neutral-900 px-4 py-2 text-sm font-medium text-white hover:opacity-90">Book Free Assessment</a>
+          <p class="mt-4 text-xs text-neutral-600 dark:text-neutral-400">Proof: 54% average fare reduction · USD $2,450 average family saving · 20M+ premium redemptions.</p>
         </div>
       </div>
     </section>
@@ -313,7 +259,7 @@
     <!-- HOW IT WORKS (icons, no emojis) -->
     <section class="container mx-auto px-4 py-10 md:py-14">
       <div class="rounded-3xl bg-white dark:bg-neutral-900 shadow-sm ring-1 ring-black/5 dark:ring-white/10 px-6 py-8 md:px-10 md:py-10">
-        <h2 class="font-serif text-3xl md:4xl text-center">How It Works</h2>
+        <h2 class="font-serif text-3xl md:text-4xl text-center">How It Works</h2>
         <p class="mt-3 text-center text-neutral-700 dark:text-neutral-300 max-w-3xl mx-auto">
           A simple, guided process — from trip goals to premium seats booked.
         </p>
@@ -349,7 +295,32 @@
       </div>
     </section>
 
-    <!-- KRISFLYER PROMO (existing; enhanced with micro-table + anchor line) -->
+    <!-- “Is this for you?” scenario tiles -->
+    <section class="container mx-auto px-4 py-10 md:py-14">
+      <div class="rounded-3xl ring-1 ring-black/5 dark:ring-white/10 p-6 md:p-8 bg-gradient-to-b from-white to-emerald-50/40 dark:from-neutral-900 dark:to-neutral-900/40">
+        <h3 class="font-serif text-2xl md:text-3xl">Is this for you?</h3>
+        <div class="mt-5 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="rounded-2xl p-5 bg-white dark:bg-neutral-800 ring-1 ring-neutral-200 dark:ring-neutral-700 hover:-translate-y-0.5 hover:shadow-md transition">
+            <div class="text-sm font-semibold">Family travel</div>
+            <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-300">Lie-flat comfort and adjacent seats without paying cash premiums.</p>
+          </div>
+          <div class="rounded-2xl p-5 bg-white dark:bg-neutral-800 ring-1 ring-neutral-200 dark:ring-neutral-700 hover:-translate-y-0.5 hover:shadow-md transition">
+            <div class="text-sm font-semibold">Last-minute work trips</div>
+            <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-300">Beat sky-high fares with strategic award paths.</p>
+          </div>
+          <div class="rounded-2xl p-5 bg-white dark:bg-neutral-800 ring-1 ring-neutral-200 dark:ring-neutral-700 hover:-translate-y-0.5 hover:shadow-md transition">
+            <div class="text-sm font-semibold">Round-the-world</div>
+            <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-300">Multi-stop itineraries stitched to maximize lounge + lay-flat time.</p>
+          </div>
+          <div class="rounded-2xl p-5 bg-white dark:bg-neutral-800 ring-1 ring-neutral-200 dark:ring-neutral-700 hover:-translate-y-0.5 hover:shadow-md transition">
+            <div class="text-sm font-semibold">Honeymoon</div>
+            <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-300">Stretch the budget and arrive fresh; we handle the rules.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- KRISFLYER PROMO (unchanged core, still emphasized) -->
     <section class="container mx-auto px-4 py-6 md:py-8">
       <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-sky-500 via-indigo-500 to-emerald-500 text-white shadow-lg ring-1 ring-black/10">
         <div class="pointer-events-none absolute -top-24 -right-24 h-64 w-64 rounded-full bg-white/10 blur-2xl"></div>
@@ -382,26 +353,6 @@
               </div>
 
               <a href="krisflyer.html" class="mt-3 inline-block underline decoration-white/60 hover:decoration-white">See full pricing & FAQs</a>
-
-              <!-- ADDED: Anchor line & micro table -->
-              <p class="mt-4 text-sm text-white/90">Typical Business return to Europe: <strong>~184–232k miles + taxes</strong>.</p>
-              <div class="mt-3 grid sm:grid-cols-3 gap-2 text-[13px]">
-                <div class="rounded-xl bg-white/10 p-3 ring-1 ring-white/20">
-                  <div class="font-semibold">Nominee Redemption</div>
-                  <div>S$17.8–19.9 / 1k</div>
-                  <div class="text-white/80 text-xs">Best for confirmed flights</div>
-                </div>
-                <div class="rounded-xl bg-white/10 p-3 ring-1 ring-white/20">
-                  <div class="font-semibold">Direct Transfer (~5 days)</div>
-                  <div>S$20–21 / 1k</div>
-                  <div class="text-white/80 text-xs">Fastest direct</div>
-                </div>
-                <div class="rounded-xl bg-white/10 p-3 ring-1 ring-white/20">
-                  <div class="font-semibold">Direct Transfer (3–4 wks)</div>
-                  <div>S$22–23 / 1k</div>
-                  <div class="text-white/80 text-xs">Lower priority</div>
-                </div>
-              </div>
             </div>
 
             <div class="mt-6 md:mt-0 flex gap-3">
@@ -410,7 +361,7 @@
                 Explore options
               </a>
               <a href="book.html?service=krisflyer"
-                 class="kf-enquire inline-flex items-center rounded-2xl border border-white/70 px-5 py-3 text-sm font-semibold text-white hover:bg-white/10 transition">
+                 class="inline-flex items-center rounded-2xl border border-white/70 px-5 py-3 text-sm font-semibold text-white hover:bg-white/10 transition">
                 Enquire now
               </a>
             </div>
@@ -434,11 +385,10 @@
       </div>
     </section>
 
-    <!-- PARTNERS (existing) -->
+    <!-- PARTNERS (kept) -->
     <section class="container mx-auto px-4 py-12 md:py-16">
       <div class="rounded-3xl bg-white dark:bg-neutral-950 shadow-sm ring-1 ring-black/5 dark:ring-white/10 px-6 py-8 md:px-10 md:py-10">
         <p class="text-center text-sm text-neutral-600 dark:text-neutral-300">Trusted by travelers who fly with</p>
-
         <div class="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-x-10 gap-y-6 items-center">
           <img src="logos/singapore-airlines.svg" alt="Singapore Airlines" class="h-24 w-auto mx-auto object-contain grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition" />
           <img src="logos/emirates.png"            alt="Emirates"           class="h-24 w-auto mx-auto object-contain grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition" />
@@ -447,28 +397,11 @@
           <img src="logos/amex.svg"                alt="American Express"   class="h-24 w-auto mx-auto object-contain grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition" />
           <img src="logos/chase.png"               alt="Chase"              class="h-24 w-auto mx-auto object-contain grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition" />
         </div>
-
-        <p class="mt-6 text-center text-xs text-neutral-400">
-          Logos are for descriptive use only and do not imply endorsement or partnership.
-        </p>
+        <p class="mt-6 text-center text-xs text-neutral-400">Logos are for descriptive use only and do not imply endorsement or partnership.</p>
       </div>
     </section>
 
-    <!-- ADDED: Audience chips -->
-    <section class="container mx-auto px-4 py-6">
-      <div class="rounded-3xl bg-white dark:bg-neutral-900 ring-1 ring-black/5 dark:ring-white/10 p-6">
-        <h3 class="font-serif text-2xl">Is this for you?</h3>
-        <div class="mt-3 flex flex-wrap gap-2">
-          <button class="aud-chip rounded-full px-3 py-1 text-sm ring-1 ring-neutral-300 dark:ring-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-800" data-aud="family">Family travel</button>
-          <button class="aud-chip rounded-full px-3 py-1 text-sm ring-1 ring-neutral-300 dark:ring-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-800" data-aud="work">Last-minute work trips</button>
-          <button class="aud-chip rounded-full px-3 py-1 text-sm ring-1 ring-neutral-300 dark:ring-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-800" data-aud="rtw">Round-the-world</button>
-          <button class="aud-chip rounded-full px-3 py-1 text-sm ring-1 ring-neutral-300 dark:ring-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-800" data-aud="honeymoon">Honeymoon</button>
-        </div>
-        <div id="audSwap" class="mt-4 text-sm text-neutral-700 dark:text-neutral-300"></div>
-      </div>
-    </section>
-
-    <!-- WHY SKYFARE (existing) -->
+    <!-- WHY SKYFARE (kept) -->
     <section id="why" class="relative container mx-auto px-4 py-16 md:py-24">
       <div class="pointer-events-none absolute -top-20 -left-24 h-72 w-72 rounded-full bg-gradient-to-tr from-emerald-300/25 via-sky-300/20 to-indigo-300/20 blur-3xl"></div>
       <div class="pointer-events-none absolute -bottom-16 -right-24 h-72 w-72 rounded-full bg-gradient-to-tr from-indigo-300/20 via-sky-300/20 to-emerald-300/25 blur-3xl"></div>
@@ -481,9 +414,7 @@
             <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h7l4-8 7 16H3z"/></svg>
           </div>
           <h3 class="font-medium">Strategy, not Search</h3>
-          <p class="mt-2 text-sm text-neutral-700 dark:text-neutral-300">
-            We architect routes, time zones, and fare rules—beyond what commodity search engines surface.
-          </p>
+          <p class="mt-2 text-sm text-neutral-700 dark:text-neutral-300">We architect routes, time zones, and fare rules—beyond what commodity search engines surface.</p>
         </div>
 
         <div class="group rounded-2xl bg-white dark:bg-neutral-900 p-6 shadow-md ring-1 ring-black/5 dark:ring-white/10 transition hover:shadow-lg hover:-translate-y-1">
@@ -491,9 +422,7 @@
             <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 17l6-6 4 4 6-6"/></svg>
           </div>
           <h3 class="font-medium">Miles Maximized</h3>
-          <p class="mt-2 text-sm text-neutral-700 dark:text-neutral-300">
-            Alliance charts, transfer bonuses, stopovers, and sweet spots—deployed for premium cabins.
-          </p>
+          <p class="mt-2 text-sm text-neutral-700 dark:text-neutral-300">Alliance charts, transfer bonuses, stopovers, and sweet spots—deployed for premium cabins.</p>
         </div>
 
         <div class="group rounded-2xl bg-white dark:bg-neutral-900 p-6 shadow-md ring-1 ring-black/5 dark:ring-white/10 transition hover:shadow-lg hover:-translate-y-1">
@@ -501,50 +430,42 @@
             <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h6l3 5h11l-5 9H8l-3-5H2z"/></svg>
           </div>
           <h3 class="font-medium">Complex, Made Simple</h3>
-          <p class="mt-2 text-sm text-neutral-700 dark:text-neutral-300">
-            Multi-city, open-jaw, family bookings, corporate shuttles—we design itineraries that hold up.
-          </p>
+          <p class="mt-2 text-sm text-neutral-700 dark:text-neutral-300">Multi-city, open-jaw, family bookings, corporate shuttles—we design itineraries that hold up.</p>
         </div>
       </div>
     </section>
 
-    <!-- ADDED: Client Notes (light carousel) -->
-    <section class="container mx-auto px-4 py-6">
-      <div class="rounded-3xl bg-white dark:bg-neutral-900 ring-1 ring-black/5 dark:ring-white/10 p-6">
-        <h3 class="font-serif text-2xl">Client Notes</h3>
-        <div class="mt-4 overflow-hidden">
-          <div id="carTrack" class="carousel-track">
-            <div class="carousel-card rounded-2xl ring-1 ring-neutral-200 dark:ring-neutral-800 p-4">
-              “Saved 52% on SIN→JFK Biz. Clear steps, zero waitlist.” <div class="text-xs text-neutral-500 mt-2">— Finance family of 4</div>
-            </div>
-            <div class="carousel-card rounded-2xl ring-1 ring-neutral-200 dark:ring-neutral-800 p-4">
-              “Nominee redemption = instant confirmation. No stress.” <div class="text-xs text-neutral-500 mt-2">— Solo executive</div>
-            </div>
-            <div class="carousel-card rounded-2xl ring-1 ring-neutral-200 dark:ring-neutral-800 p-4">
-              “Got two Lie-Flat returns for our honeymoon within 48h.” <div class="text-xs text-neutral-500 mt-2">— Newlyweds</div>
-            </div>
-            <div class="carousel-card rounded-2xl ring-1 ring-neutral-200 dark:ring-neutral-800 p-4">
-              “Their route beat my cash fare by S$3.1k per ticket.” <div class="text-xs text-neutral-500 mt-2">— Tech founder</div>
-            </div>
-          </div>
-        </div>
-        <div class="mt-3 flex gap-2">
-          <button id="carPrev" class="rounded-xl border px-3 py-1 text-sm">‹ Prev</button>
-          <button id="carNext" class="rounded-xl border px-3 py-1 text-sm">Next ›</button>
+    <!-- FAQs (styled) -->
+    <section class="container mx-auto px-4 pb-10 md:pb-16">
+      <div class="rounded-3xl ring-1 ring-black/5 dark:ring-white/10 p-6 md:p-8 bg-white dark:bg-neutral-900">
+        <h3 class="font-serif text-2xl md:text-3xl">FAQs (quick)</h3>
+        <div class="mt-4 space-y-3">
+          <details class="faq-item ring-1 ring-neutral-200 dark:ring-neutral-700">
+            <summary class="faq-q px-4 md:px-5 py-4 flex items-center justify-between">
+              <span class="font-medium">What if there’s no award space on my dates?</span>
+              <span>▾</span>
+            </summary>
+            <div class="px-5 pb-5 text-sm text-neutral-700 dark:text-neutral-300">We propose 1–2 alternates (date/route) and can use nominee redemption paths that avoid waitlists.</div>
+          </details>
+          <details class="faq-item ring-1 ring-neutral-200 dark:ring-neutral-700">
+            <summary class="faq-q px-4 md:px-5 py-4 flex items-center justify-between">
+              <span class="font-medium">Do I need to add you as a nominee?</span>
+              <span>▾</span>
+            </summary>
+            <div class="px-5 pb-5 text-sm text-neutral-700 dark:text-neutral-300">Only if you choose nominee redemption; we’ll share simple, step-by-step instructions. Direct transfer works, too.</div>
+          </details>
+          <details class="faq-item ring-1 ring-neutral-200 dark:ring-neutral-700">
+            <summary class="faq-q px-4 md:px-5 py-4 flex items-center justify-between">
+              <span class="font-medium">How fast can I fly?</span>
+              <span>▾</span>
+            </summary>
+            <div class="px-5 pb-5 text-sm text-neutral-700 dark:text-neutral-300">Nominee bookings can be immediate once space is secured. Direct transfers typically complete in ~5 business days.</div>
+          </details>
         </div>
       </div>
     </section>
 
-    <!-- CTA (existing) + ADDED: Trust bar above it -->
-    <section class="container mx-auto px-4">
-      <div class="mt-6 mb-2 rounded-2xl bg-white dark:bg-neutral-900 ring-1 ring-black/5 dark:ring-white/10 p-4 text-sm flex flex-wrap items-center gap-3 justify-center">
-        <div class="inline-flex items-center gap-2"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 7v5l3 3"/></svg> Transparent pricing</div>
-        <div class="inline-flex items-center gap-2"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10Z"/><path d="m7.5 12 2.5 2.5 6.5-6.5"/></svg> Private & secure handling</div>
-        <div class="inline-flex items-center gap-2"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M12 5v14"/></svg> Concierge booking available</div>
-      </div>
-    </section>
-
-    <!-- CTA (existing) -->
+    <!-- CTA -->
     <section class="container mx-auto px-4 py-16 md:py-24 text-center">
       <h2 class="font-serif text-3xl md:text-4xl">Start with a quick assessment</h2>
       <p class="mt-4 text-neutral-700 dark:text-neutral-300">Tell us your dates, routes, and miles. We’ll propose 1–2 high-value options in 24–48 hours.</p>
@@ -558,37 +479,7 @@
       </div>
     </section>
 
-    <!-- ADDED: FAQ micro-accordion -->
-    <section class="container mx-auto px-4 pb-10">
-      <div class="rounded-3xl bg-white dark:bg-neutral-900 ring-1 ring-black/5 dark:ring-white/10 p-6">
-        <h3 class="font-serif text-2xl">FAQs (quick)</h3>
-        <div class="mt-4 divide-y divide-neutral-200 dark:divide-neutral-800">
-          <details class="py-3 group">
-            <summary class="cursor-pointer list-none flex items-center justify-between">
-              <span>What if there’s no award space on my dates?</span>
-              <span class="transition group-open:rotate-180">⌄</span>
-            </summary>
-            <div class="mt-2 text-sm text-neutral-700 dark:text-neutral-300">We propose 1–2 alternates (date/route) and can use nominee redemption paths that avoid waitlists.</div>
-          </details>
-          <details class="py-3 group">
-            <summary class="cursor-pointer list-none flex items-center justify-between">
-              <span>Do I need to add you as a nominee?</span>
-              <span class="transition group-open:rotate-180">⌄</span>
-            </summary>
-            <div class="mt-2 text-sm text-neutral-700 dark:text-neutral-300">Only if opting for nominee redemption. Otherwise, we guide direct transfers to your account.</div>
-          </details>
-          <details class="py-3 group">
-            <summary class="cursor-pointer list-none flex items-center justify-between">
-              <span>How fast can I fly?</span>
-              <span class="transition group-open:rotate-180">⌄</span>
-            </summary>
-            <div class="mt-2 text-sm text-neutral-700 dark:text-neutral-300">Nominee: instant once confirmed. Direct transfers: typically ~5 business days depending on bank/program.</div>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <!-- FOOTER (existing) -->
+    <!-- FOOTER -->
     <footer class="mt-auto border-t border-neutral-200 dark:border-neutral-800">
       <div class="container mx-auto py-10 text-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-6 px-4">
         <div class="text-neutral-600 dark:text-neutral-400">© <span id="year"></span> Skyfare Consulting. All rights reserved.</div>
@@ -600,7 +491,7 @@
       </div>
     </footer>
 
-    <!-- MOBILE-ONLY: WhatsApp FAB with radial quick actions (existing) -->
+    <!-- MOBILE-ONLY: WhatsApp FAB with radial quick actions -->
     <div id="fabRoot" class="md:hidden fixed right-5 bottom-5 z-50">
       <div class="relative">
         <a href="book.html" title="Book"
@@ -622,17 +513,7 @@
         aria-expanded="false" aria-label="Open quick actions">
         <svg viewBox="0 0 24 24" class="w-7 h-7" fill="currentColor" aria-hidden="true"><path d="M20 12.04A8 8 0 1 1 12 4a8 8 0 0 1 8 8.04zM6.5 19.5l1.6-.47a9 9 0 1 0-3.13-3.1l-.47 1.57c-.14.46.3.9.76.76h.24z"/><path fill="#fff" d="M16.61 13.83c-.23-.12-1.34-.66-1.55-.74-.2-.07-.35-.12-.49.12-.14.23-.56.74-.69.89-.13.14-.25.17-.48.06-.23-.12-.96-.35-1.83-1.12-.68-.6-1.13-1.35-1.26-1.57-.13-.23-.01-.35.1-.47.1-.1.23-.25.34-.38.11-.13.15-.23.23-.38.08-.14.04-.27-.02-.38-.06-.12-.49-1.18-.67-1.62-.18-.43-.36-.37-.49-.38l-.42-.01c-.14 0-.37.05-.57.27-.2.23-.76.74-.76 1.81s.78 2.1.89 2.24c.12.14 1.54 2.34 3.73 3.28 2.2.94 2.2.63 2.6.59.4-.04 1.34-.55 1.53-1.08.19-.53.19-.98.14-1.08-.04-.1-.21-.17-.44-.28z"/></svg>
       </button>
-
       <a id="fabChatLink" href="https://api.whatsapp.com/send?phone=6592701253&text=Hi%20Skyfare%2C%20I%27d%20like%20to%20book%20an%20assessment" class="absolute inset-0" aria-label="Chat on WhatsApp"></a>
-    </div>
-
-    <!-- ADDED: Sticky Mobile Bottom Bar (non-conflicting) -->
-    <div id="stickyBar" class="sticky-mobile-bar md:hidden">
-      <div class="mx-3 mb-3 rounded-2xl bg-white dark:bg-neutral-900 ring-1 ring-black/5 dark:ring-white/10 shadow-lg p-2 flex items-center gap-2 justify-between">
-        <a href="book.html" class="book-cta inline-flex-1 inline-flex items-center justify-center rounded-xl bg-neutral-900 text-white px-4 py-2 text-sm font-medium">Book Free Assessment</a>
-        <a href="https://api.whatsapp.com/send?phone=6592701253&text=Hi%20Skyfare%2C%20I%20want%20help%20with%20miles%20now."
-           class="inline-flex-1 inline-flex items-center justify-center rounded-xl bg-emerald-600 text-white px-4 py-2 text-sm font-medium">WhatsApp</a>
-      </div>
     </div>
 
     <!-- SCRIPTS -->
@@ -665,82 +546,20 @@
       function toggleFab(){
         const open = fabRoot.classList.toggle('fab-open');
         fabMain.setAttribute('aria-expanded', open ? 'true' : 'false');
-        fabChatLink.style.pointerEvents = open ? 'none' : 'auto';
+        fabChatLink.style.pointerEvents = open ? 'none' : 'auto'; // overlay off when expanded
       }
-      fabMain?.addEventListener('click', toggleFab);
+      fabMain.addEventListener('click', toggleFab);
 
-      document.addEventListener('scroll', () => { if (fabRoot?.classList.contains('fab-open')) toggleFab(); }, {passive:true});
+      document.addEventListener('scroll', () => { if (fabRoot.classList.contains('fab-open')) toggleFab(); }, {passive:true});
       document.addEventListener('click', (e) => {
-        if (fabRoot && !fabRoot.contains(e.target) && fabRoot.classList.contains('fab-open')) toggleFab();
+        if (!fabRoot.contains(e.target) && fabRoot.classList.contains('fab-open')) toggleFab();
       });
 
-      // Track key events (Meta Pixel)
+      // Meta Pixel custom events
       document.querySelectorAll('.book-cta').forEach(el => {
-        el.addEventListener('click', () => { try { fbq('trackCustom', 'CTA_Hero_Assessment'); } catch(e) {} });
+        el.addEventListener('click', () => { try { fbq('trackCustom', 'BookCTA'); } catch(e) {} });
       });
-      document.querySelectorAll('.kf-enquire').forEach(el => {
-        el.addEventListener('click', () => { try { fbq('trackCustom', 'CTA_KF_Enquire'); } catch(e) {} });
-      });
-      // Track WhatsApp tap when collapsed (direct chat via FAB)
-      fabChatLink?.addEventListener('click', () => { try { fbq('trackCustom', 'WhatsAppChat'); } catch(e) {} });
-
-      // ADDED: Miles ROI calculator logic
-      const fare = document.getElementById('calcFare');
-      const miles = document.getElementById('calcMiles');
-      const taxes = document.getElementById('calcTaxes');
-      const btn   = document.getElementById('calcBtn');
-      const out   = document.getElementById('calcOut');
-      const pctEl = document.getElementById('calcPct');
-      const costPerKEl = document.getElementById('calcCostPerK');
-
-      function estimate(){
-        const f = parseFloat(fare.value || '0');
-        const m = parseFloat(miles.value || '0'); /* in thousands */
-        const t = parseFloat(taxes.value || '0');
-        if (f <= 0 || m <= 0) { out.classList.add('hidden'); return; }
-        const assumed = 20; // S$ per 1k miles (anchor; nominee often lower)
-        const milesCost = m * assumed;
-        const total = milesCost + t;
-        const savedPct = Math.max(0, Math.round(((f - total)/f) * 100));
-        pctEl.textContent = savedPct + '%';
-        costPerKEl.textContent = 'S$' + assumed + ' / 1k';
-        out.classList.remove('hidden');
-        try { fbq('trackCustom', 'MilesCalculator_Submit', {fare:f, miles_k:m, taxes:t, saved_pct:savedPct}); } catch(e){}
-      }
-      btn?.addEventListener('click', estimate);
-
-      // ADDED: Audience chip swap
-      const audSwap = document.getElementById('audSwap');
-      const notes = {
-        family: "Example: 4 pax SIN→SFO Biz saved ~S$9.4k vs cash. We sync lay-flat seats together.",
-        work: "Last-minute? We route via alliance partners + nominee for instant confirmations.",
-        rtw: "Multi-stop / open-jaw routes stitched to maximise lie-flat time and lounge access.",
-        honeymoon: "Lie-flat both ways, sweet-spot taxes, and easy date tweaks — we plan end-to-end."
-      };
-      document.querySelectorAll('.aud-chip').forEach(btn => {
-        btn.addEventListener('click', () => {
-          audSwap.textContent = notes[btn.dataset.aud] || '';
-          try { fbq('trackCustom', 'AudienceChip_Click', {aud: btn.dataset.aud}); } catch(e){}
-        });
-      });
-
-      // ADDED: Client notes carousel
-      const track = document.getElementById('carTrack');
-      let carIndex = 0;
-      document.getElementById('carPrev')?.addEventListener('click', ()=>{ carIndex = Math.max(0, carIndex-1); track.style.transform = `translateX(-${carIndex*276}px)`; });
-      document.getElementById('carNext')?.addEventListener('click', ()=>{ carIndex = Math.min(2, carIndex+1); track.style.transform = `translateX(-${carIndex*276}px)`; });
-
-      // ADDED: Sticky mobile bar reveal (does not conflict with FAB)
-      const sticky = document.getElementById('stickyBar');
-      let stickyShown = false;
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 500 && !stickyShown){
-          sticky.classList.add('show');
-          document.body.classList.add('has-sticky-padding');
-          stickyShown = true;
-          try { fbq('trackCustom', 'StickyBar_Show'); } catch(e){}
-        }
-      }, {passive:true});
+      fabChatLink.addEventListener('click', () => { try { fbq('trackCustom', 'WhatsAppChat'); } catch(e) {} });
 
       // iOS active fix
       document.querySelectorAll('a,button').forEach(el=>el.addEventListener('touchstart',()=>{}, {passive:true}));
