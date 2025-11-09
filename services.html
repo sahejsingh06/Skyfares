@@ -4,10 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Services — Skyfare Consulting</title>
-    <meta name="description" content="Skyfare Consulting — Flight Strategy & Miles Advisory" />
+    <meta name="description" content="Skyfare Consulting — KrisFlyer miles purchase, nominee redemption, and direct transfers with transparent tiers." />
     <link rel="icon" href="favicon.ico" />
 
-    <!-- Theme boot (persist + no flash, matches index) -->
+    <!-- Theme boot (persist + no flash) -->
     <script>
       (function () {
         const ls = localStorage.getItem('theme');
@@ -31,6 +31,9 @@
             fontFamily: {
               sans: ['Plus Jakarta Sans','ui-sans-serif','system-ui'],
               serif: ['Cormorant Garamond','ui-serif']
+            },
+            boxShadow: {
+              soft: '0 8px 30px rgba(0,0,0,0.06)'
             }
           }
         }
@@ -55,6 +58,7 @@
       .btn { transition: all .2s ease; }
       .btn:active { transform: translateY(1px); }
       .badge { font-size: .7rem; letter-spacing: .06em; text-transform: uppercase; }
+      .usd-tag{font-size:.8rem; vertical-align:top; margin-right:.15rem}
 
       /* WhatsApp floating button */
       .whatsapp-float {
@@ -122,11 +126,16 @@
 
     <!-- Main -->
     <main class="container py-14 md:py-20">
-      <header class="fade-in">
-        <h1 class="font-serif text-4xl md:text-5xl">Services</h1>
-        <p class="mt-3 text-neutral-700 dark:text-neutral-300 max-w-2xl">
-          Start with a <span class="font-semibold text-emerald-700 dark:text-emerald-400">quick chat</span> — confirm only when you love an option.
+      <header class="fade-in text-center">
+        <h1 class="font-serif text-4xl md:text-5xl">KrisFlyer Miles (Singapore Airlines)</h1>
+        <p class="mt-3 text-neutral-700 dark:text-neutral-300 max-w-2xl mx-auto">
+          One clear service: buy or redeem KrisFlyer miles at transparent tiers. Confirm only when you love an option.
         </p>
+        <div class="mt-5 flex items-center justify-center gap-2 text-sm">
+          <a href="#estimator" class="inline-flex items-center rounded-2xl border border-neutral-300 dark:border-neutral-700 px-4 py-2 hover:bg-neutral-50 dark:hover:bg-neutral-800">Estimator</a>
+          <a href="#routes" class="inline-flex items-center rounded-2xl border border-neutral-300 dark:border-neutral-700 px-4 py-2 hover:bg-neutral-50 dark:hover:bg-neutral-800">Routes & Indicative Miles</a>
+          <a href="#faqs" class="inline-flex items-center rounded-2xl border border-neutral-300 dark:border-neutral-700 px-4 py-2 hover:bg-neutral-50 dark:hover:bg-neutral-800">FAQs</a>
+        </div>
       </header>
 
       <!-- Main: KrisFlyer + Talk Card -->
@@ -200,16 +209,16 @@
                class="btn inline-flex items-center rounded-2xl bg-neutral-900 px-5 py-3 text-sm font-medium text-white hover:opacity-95 dark:bg-white dark:text-neutral-900">
               Enquire / Book
             </a>
-            <a href="krisflyer.html"
+            <a href="#faqs"
                class="btn inline-flex items-center rounded-2xl border border-neutral-300 dark:border-neutral-700 px-5 py-3 text-sm font-medium hover:bg-white dark:hover:bg-neutral-800">
-              See details & FAQs
+              See FAQs
             </a>
           </div>
 
           <p class="mt-4 text-xs text-neutral-500">Transparent process • Private & secure handling • No waitlists for nominee bookings</p>
         </article>
 
-        <!-- Talk to me (Text/Call) -->
+        <!-- Prefer to talk (Text/Call) -->
         <aside class="md:col-span-4">
           <article class="card ring-soft rounded-3xl p-6 md:p-8 h-full flex flex-col">
             <div class="flex items-start justify-between">
@@ -267,7 +276,7 @@
       <!-- ========================= -->
       <!-- Nominee Redemption Guide  -->
       <!-- ========================= -->
-      <section class="mt-14">
+      <section id="routes" class="mt-14">
         <div class="flex items-end justify-between gap-4">
           <div>
             <h2 class="text-2xl md:text-3xl font-semibold tracking-tight">Nominee Redemption — Indicative Miles (Business Class, one-way from Singapore)</h2>
@@ -325,7 +334,7 @@
         </div>
 
         <!-- Quick estimator -->
-        <div class="mt-4 flex flex-col sm:flex-row gap-3 items-start sm:items-center">
+        <div id="estimator" class="mt-4 flex flex-col sm:flex-row gap-3 items-start sm:items-center">
           <div class="text-sm opacity-80">Quick check: if I need</div>
           <input id="quickMiles" type="number" min="50000" step="1000" placeholder="e.g., 68000"
                  class="w-full sm:w-48 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 px-3 py-2 text-sm">
@@ -334,13 +343,32 @@
         </div>
 
         <div class="mt-6">
-          <a href="krisflyer.html" class="inline-flex items-center rounded-2xl bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 px-5 py-3 font-medium hover:opacity-95">Buy / Nominee booking</a>
+          <a href="book.html?service=krisflyer" class="inline-flex items-center rounded-2xl bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 px-5 py-3 font-medium hover:opacity-95">Buy / Nominee booking</a>
+        </div>
+      </section>
+
+      <!-- FAQs inline -->
+      <section id="faqs" class="mt-12">
+        <h3 class="font-semibold text-xl">FAQs</h3>
+        <div class="mt-4 divide-y divide-neutral-200 dark:divide-neutral-800 rounded-2xl border border-neutral-200 dark:border-neutral-800 overflow-hidden">
+          <details class="group open:bg-neutral-50 dark:open:bg-neutral-900/60">
+            <summary class="cursor-pointer list-none p-4 font-medium hover:bg-neutral-50 dark:hover:bg-neutral-900/60">Is nominee redemption allowed by KrisFlyer?</summary>
+            <div class="px-4 pb-4 text-sm text-neutral-600 dark:text-neutral-300">Yes—KrisFlyer members can nominate individuals for award tickets as per program rules. We facilitate the search and booking process.</div>
+          </details>
+          <details class="group">
+            <summary class="cursor-pointer list-none p-4 font-medium hover:bg-neutral-50 dark:hover:bg-neutral-900/60">What taxes are included?</summary>
+            <div class="px-4 pb-4 text-sm text-neutral-600 dark:text-neutral-300">Our pricing covers miles only. Government/airport taxes are charged by Singapore Airlines at ticketing.</div>
+          </details>
+          <details class="group">
+            <summary class="cursor-pointer list-none p-4 font-medium hover:bg-neutral-50 dark:hover:bg-neutral-900/60">How fast can we ticket?</summary>
+            <div class="px-4 pb-4 text-sm text-neutral-600 dark:text-neutral-300">If seats are available, ticketing can often be completed the same business day after verification and payment.</div>
+          </details>
         </div>
       </section>
     </main>
 
     <!-- WhatsApp Floating Button -->
-    <a href="https://api.whatsapp.com/send?phone=6592701253&text=Hi%20Skyfare%2C%20I%27d%20like%20to%20ask%20how%20this%20works"
+    <a href="https://api.whatsapp.com/send?phone=6592701253&text=Hi%20Skyfare%2C%20I%27d%20like%20to%20discuss%20services"
        class="whatsapp-float" aria-label="Chat on WhatsApp">
       <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true">
         <path d="M20 12.04A8 8 0 1 1 12 4a8 8 0 0 1 8 8.04zM6.5 19.5l1.6-.47a9 9 0 1 0-3.13-3.1l-.47 1.57c-.14.46.3.9.76.76h.24z"/>
