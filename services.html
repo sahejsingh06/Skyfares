@@ -58,7 +58,6 @@
       .btn { transition: all .2s ease; }
       .btn:active { transform: translateY(1px); }
       .badge { font-size: .7rem; letter-spacing: .06em; text-transform: uppercase; }
-      .usd-tag{font-size:.8rem; vertical-align:top; margin-right:.15rem}
 
       /* WhatsApp floating button */
       .whatsapp-float {
@@ -138,7 +137,7 @@
         </div>
       </header>
 
-      <!-- Main: KrisFlyer + Talk Card -->
+      <!-- Main: KrisFlyer + Aside -->
       <section class="mt-10 grid gap-6 md:grid-cols-12">
         <!-- KrisFlyer main -->
         <article class="md:col-span-8 card ring-soft rounded-3xl p-6 md:p-8">
@@ -160,27 +159,37 @@
           <div class="mt-6 grid sm:grid-cols-2 gap-4">
             <!-- Option 1 -->
             <div class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-4">
-              <div class="text-sm font-medium">Option 1 — Direct transfer (90 days)</div>
+              <div class="text-sm font-semibold">Option 1 — Direct transfer (90 days)</div>
               <div class="text-xs text-neutral-500 mt-1">
-                Future transfers after 90 days are immediate if points are available<br/>
-                Minimum 200k per person
+                Future transfers after 90 days are immediate if points are available • Min 200k per person
               </div>
-              <ul class="mt-2 text-sm space-y-1">
-                <li>200k–499k: <strong>S$20.5</strong> / 1k</li>
-                <li>500k+: <strong>S$20</strong> / 1k</li>
+              <ul class="mt-3 text-sm space-y-2">
+                <li class="flex items-center justify-between">
+                  <span class="opacity-80">200k–499k</span>
+                  <span class="text-[1.05rem] font-extrabold tracking-tight">S$20.5 <span class="font-semibold opacity-80">/ 1k</span></span>
+                </li>
+                <li class="flex items-center justify-between">
+                  <span class="opacity-80">500k+</span>
+                  <span class="text-[1.05rem] font-extrabold tracking-tight">S$20 <span class="font-semibold opacity-80">/ 1k</span></span>
+                </li>
               </ul>
             </div>
 
             <!-- Option 2 -->
             <div class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-4">
-              <div class="text-sm font-medium">NEW Option 2 — Direct transfer (3–4 weeks)</div>
+              <div class="text-sm font-semibold">NEW Option 2 — Direct transfer (3–4 weeks)</div>
               <div class="text-xs text-neutral-500 mt-1">
-                Direct transfer to your KF account in 3–4 weeks<br/>
-                Minimum 100k per account
+                Direct transfer to your KF account in 3–4 weeks • Min 100k per account
               </div>
-              <ul class="mt-2 text-sm space-y-1">
-                <li>100k–499k: <strong>S$23.5</strong> / 1k</li>
-                <li>500k–1M: <strong>S$22</strong> / 1k</li>
+              <ul class="mt-3 text-sm space-y-2">
+                <li class="flex items-center justify-between">
+                  <span class="opacity-80">100k–499k</span>
+                  <span class="text-[1.05rem] font-extrabold tracking-tight">S$23.5 <span class="font-semibold opacity-80">/ 1k</span></span>
+                </li>
+                <li class="flex items-center justify-between">
+                  <span class="opacity-80">500k–1M</span>
+                  <span class="text-[1.05rem] font-extrabold tracking-tight">S$22 <span class="font-semibold opacity-80">/ 1k</span></span>
+                </li>
               </ul>
             </div>
 
@@ -188,7 +197,7 @@
             <div class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-4 sm:col-span-2">
               <div class="flex items-center justify-between">
                 <div>
-                  <div class="text-sm font-medium">Option 3 — Nominee redemption</div>
+                  <div class="text-sm font-semibold">Option 3 — Nominee redemption</div>
                   <div class="text-xs text-neutral-500">
                     We book and issue tickets via nominee redemption for confirmed/available flights only (no waitlists).
                     <br/>No nominee fees. Airport taxes as per SQ charged on top.
@@ -196,21 +205,30 @@
                 </div>
                 <span class="badge rounded-full bg-indigo-100 text-indigo-800 dark:bg-indigo-900/40 dark:text-indigo-300 px-3 py-1">Most Value</span>
               </div>
-              <ul class="mt-2 text-sm space-y-1">
-                <li>50k–199k: <strong>S$20.5</strong> / 1k</li>
-                <li>200k–499k: <strong>S$19.5</strong> / 1k</li>
-                <li>500k+: <strong>S$18.5</strong> / 1k</li>
+              <ul class="mt-3 text-sm space-y-2">
+                <li class="flex items-center justify-between">
+                  <span class="opacity-80">50k–199k</span>
+                  <span class="text-[1.05rem] font-extrabold tracking-tight">S$20.5 <span class="font-semibold opacity-80">/ 1k</span></span>
+                </li>
+                <li class="flex items-center justify-between">
+                  <span class="opacity-80">200k–499k</span>
+                  <span class="text-[1.05rem] font-extrabold tracking-tight">S$19.5 <span class="font-semibold opacity-80">/ 1k</span></span>
+                </li>
+                <li class="flex items-center justify-between">
+                  <span class="opacity-80">500k+</span>
+                  <span class="text-[1.05rem] font-extrabold tracking-tight">S$18.5 <span class="font-semibold opacity-80">/ 1k</span></span>
+                </li>
               </ul>
             </div>
           </div>
 
           <div class="mt-6 flex flex-wrap gap-3">
             <a href="book.html?service=krisflyer"
-               class="btn inline-flex items-center rounded-2xl bg-neutral-900 px-5 py-3 text-sm font-medium text-white hover:opacity-95 dark:bg-white dark:text-neutral-900">
+               class="btn inline-flex items-center rounded-2xl bg-neutral-900 px-5 py-3 text-sm font-semibold text-white hover:opacity-95 dark:bg-white dark:text-neutral-900">
               Enquire / Book
             </a>
             <a href="#faqs"
-               class="btn inline-flex items-center rounded-2xl border border-neutral-300 dark:border-neutral-700 px-5 py-3 text-sm font-medium hover:bg-white dark:hover:bg-neutral-800">
+               class="btn inline-flex items-center rounded-2xl border border-neutral-300 dark:border-neutral-700 px-5 py-3 text-sm font-semibold hover:bg-white dark:hover:bg-neutral-800">
               See FAQs
             </a>
           </div>
@@ -218,35 +236,44 @@
           <p class="mt-4 text-xs text-neutral-500">Transparent process • Private & secure handling • No waitlists for nominee bookings</p>
         </article>
 
-        <!-- Prefer to talk (Text/Call) -->
-        <aside class="md:col-span-4">
-          <article class="card ring-soft rounded-3xl p-6 md:p-8 h-full flex flex-col">
-            <div class="flex items-start justify-between">
-              <h3 class="text-xl md:text-2xl font-semibold tracking-tight">Prefer to talk?</h3>
-            </div>
-            <p class="mt-3 text-[0.97rem] text-neutral-700 dark:text-neutral-300">
-              Text or call and I’ll explain how the miles purchase and nominee booking works, check your route, and outline next steps.
-              No pressure—just straight answers.
+        <!-- ASIDE: Other airlines + Compact talk -->
+        <aside class="md:col-span-4 space-y-4">
+          <!-- Other airlines available -->
+          <article class="card ring-soft rounded-3xl p-5">
+            <h3 class="text-base md:text-lg font-semibold">Other airlines available</h3>
+            <p class="mt-1 text-sm text-neutral-700 dark:text-neutral-300">
+              Beyond KrisFlyer, we can also handle redemptions/strategies with partner programs.
+              <strong>Cathay Pacific redemptions</strong> can be used to reach <strong>the US via Asia</strong> (great premium-cabin value).
             </p>
-            <ul class="mt-4 space-y-3 text-sm">
+            <div class="mt-3 grid grid-cols-6 gap-2 items-center opacity-90">
+              <!-- replace src paths to your actual files -->
+              <img src="logos/airlines/cathay.svg" alt="Cathay Pacific" class="h-6 w-auto opacity-90" />
+              <img src="logos/airlines/qatar.svg" alt="Qatar Airways" class="h-6 w-auto opacity-90" />
+              <img src="logos/airlines/ana.svg" alt="ANA" class="h-6 w-auto opacity-90" />
+              <img src="logos/airlines/jal.svg" alt="Japan Airlines" class="h-6 w-auto opacity-90" />
+              <img src="logos/airlines/virgin.svg" alt="Virgin Atlantic" class="h-6 w-auto opacity-90" />
+              <img src="logos/airlines/eva.svg" alt="EVA Air" class="h-6 w-auto opacity-90" />
+            </div>
+          </article>
+
+          <!-- Prefer to talk (compact) -->
+          <article class="card ring-soft rounded-3xl p-5">
+            <h3 class="text-base md:text-lg font-semibold">Prefer to talk?</h3>
+            <p class="mt-2 text-sm text-neutral-700 dark:text-neutral-300">
+              Text/call and I’ll explain how it works, check your route, and outline next steps.
+            </p>
+            <ul class="mt-3 space-y-2 text-sm">
               <li class="flex items-center gap-3">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.9.32 1.77.58 2.61a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.47-1.1a2 2 0 0 1 2.11-.45c.84.26 1.71.46 2.61.58A2 2 0 0 1 22 16.92z" stroke-width="2"/></svg>
-                <a href="tel:+6592701253" class="underline underline-offset-2">Call: +65 9270 1253</a>
+                <a href="tel:+6581575306" class="underline underline-offset-2">Call: +65 8157 5306</a>
               </li>
               <li class="flex items-center gap-3">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 12.04A8 8 0 1 1 12 4a8 8 0 0 1 8 8.04z"/></svg>
-                <a href="https://api.whatsapp.com/send?phone=6592701253&text=Hi%20Skyfare%2C%20can%20you%20explain%20how%20this%20works%3F"
+                <a href="https://api.whatsapp.com/send?phone=6581575306&text=Hi%20Skyfare%2C%20can%20you%20explain%20how%20this%20works%3F"
                    class="underline underline-offset-2">WhatsApp message</a>
               </li>
             </ul>
-            <div class="mt-6">
-              <a href="contact.html"
-                 class="btn inline-flex items-center rounded-2xl border border-neutral-300 dark:border-neutral-700 px-5 py-3 text-sm font-medium hover:bg-neutral-50 dark:hover:bg-neutral-800">
-                More contact options
-              </a>
-            </div>
-
-            <div class="mt-6 rounded-2xl border border-neutral-200 dark:border-neutral-800 p-4 text-xs text-neutral-600 dark:text-neutral-400">
+            <div class="mt-4 rounded-xl border border-neutral-200 dark:border-neutral-800 p-3 text-xs text-neutral-600 dark:text-neutral-400">
               Tip: You save more when your dates are flexible or 6+ months out.
             </div>
           </article>
@@ -317,7 +344,7 @@
               <thead class="bg-neutral-50/70 dark:bg-neutral-900/70">
                 <tr class="text-left">
                   <th class="p-3 font-medium">From → To</th>
-                  <th class="p-3 font-medium">Region</th>
+                  <th class="p-3 font-medium">Region</h1>
                   <th class="p-3 font-medium">Saver (mi)</th>
                   <th class="p-3 font-medium">Advantage (mi)</th>
                   <th class="p-3 font-medium">Est. nominee cost*</th>
@@ -338,12 +365,12 @@
           <div class="text-sm opacity-80">Quick check: if I need</div>
           <input id="quickMiles" type="number" min="50000" step="1000" placeholder="e.g., 68000"
                  class="w-full sm:w-48 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 px-3 py-2 text-sm">
-          <button id="quickCalc" class="rounded-lg bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 px-4 py-2 text-sm font-medium">Estimate nominee cost</button>
+          <button id="quickCalc" class="rounded-lg bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 px-4 py-2 text-sm font-semibold">Estimate nominee cost</button>
           <div id="quickOut" class="text-sm"></div>
         </div>
 
         <div class="mt-6">
-          <a href="book.html?service=krisflyer" class="inline-flex items-center rounded-2xl bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 px-5 py-3 font-medium hover:opacity-95">Buy / Nominee booking</a>
+          <a href="book.html?service=krisflyer" class="inline-flex items-center rounded-2xl bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 px-5 py-3 font-semibold hover:opacity-95">Buy / Nominee booking</a>
         </div>
       </section>
 
@@ -368,7 +395,7 @@
     </main>
 
     <!-- WhatsApp Floating Button -->
-    <a href="https://api.whatsapp.com/send?phone=6592701253&text=Hi%20Skyfare%2C%20I%27d%20like%20to%20discuss%20services"
+    <a href="https://api.whatsapp.com/send?phone=6581575306&text=Hi%20Skyfare%2C%20I%27d%20like%20to%20discuss%20services"
        class="whatsapp-float" aria-label="Chat on WhatsApp">
       <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true">
         <path d="M20 12.04A8 8 0 1 1 12 4a8 8 0 0 1 8 8.04zM6.5 19.5l1.6-.47a9 9 0 1 0-3.13-3.1l-.47 1.57c-.14.46.3.9.76.76h.24z"/>
@@ -504,6 +531,7 @@
     </script>
   </body>
 </html>
+
 
 
 
