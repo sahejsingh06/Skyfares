@@ -77,17 +77,16 @@
     <!-- Header -->
     <header class="sticky top-0 z-40 backdrop-blur bg-white dark:bg-neutral-950 md:bg-white/80 md:dark:bg-neutral-950/80 border-b border-neutral-200 dark:border-neutral-800">
       <div class="container py-4 flex items-center justify-between">
-       <a href="index.html" class="flex items-center space-x-3">
-  <img 
-    src="logos/logo.png" 
-    alt="Skyfare Consulting Logo" 
-    class="h-14 w-auto object-contain drop-shadow-[0_0_8px_rgba(59,130,246,0.4)] transition-transform duration-300 hover:scale-105"
-  />
-  <span class="text-xl font-semibold text-gray-900 dark:text-white tracking-wide">
-    Skyfare Consulting
-  </span>
-</a>
-
+        <a href="index.html" class="flex items-center space-x-3">
+          <img 
+            src="logos/logo.png" 
+            alt="Skyfare Consulting Logo" 
+            class="h-14 w-auto object-contain drop-shadow-[0_0_8px_rgba(59,130,246,0.4)] transition-transform duration-300 hover:scale-105"
+          />
+          <span class="text-xl font-semibold text-gray-900 dark:text-white tracking-wide">
+            Skyfare Consulting
+          </span>
+        </a>
 
         <!-- Desktop nav -->
         <nav class="hidden md:flex items-center gap-3 text-sm">
@@ -144,31 +143,55 @@
               <p class="mt-2 text-neutral-700 dark:text-neutral-300">Top up fast or book immediately at our best tiers.</p>
             </div>
             <div class="text-right">
-              <div class="text-3xl md:text-4xl font-serif font-extrabold">S$17.9+</div>
+              <div class="text-3xl md:text-4xl font-serif font-extrabold">S$18.5+</div>
               <div class="text-xs text-neutral-500 mt-1">per 1,000 miles</div>
             </div>
           </div>
 
           <div class="mt-6 grid sm:grid-cols-2 gap-4">
+            <!-- Option 1 -->
             <div class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-4">
-              <div class="text-sm font-medium">Option 1 — Direct transfer</div>
-              <div class="text-xs text-neutral-500">~90 days</div>
-              <div class="mt-2 font-semibold">S$20.9–20 / 1k</div>
+              <div class="text-sm font-medium">Option 1 — Direct transfer (90 days)</div>
+              <div class="text-xs text-neutral-500 mt-1">
+                Future transfers after 90 days are immediate if points are available<br/>
+                Minimum 200k per person
+              </div>
+              <ul class="mt-2 text-sm space-y-1">
+                <li>200k–499k: <strong>S$20.5</strong> / 1k</li>
+                <li>500k+: <strong>S$20</strong> / 1k</li>
+              </ul>
             </div>
+
+            <!-- Option 2 -->
             <div class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-4">
-              <div class="text-sm font-medium">Option 2 — Direct transfer</div>
-              <div class="text-xs text-neutral-500">3–4 weeks</div>
-              <div class="mt-2 font-semibold">S$23–22 / 1k</div>
+              <div class="text-sm font-medium">NEW Option 2 — Direct transfer (3–4 weeks)</div>
+              <div class="text-xs text-neutral-500 mt-1">
+                Direct transfer to your KF account in 3–4 weeks<br/>
+                Minimum 100k per account
+              </div>
+              <ul class="mt-2 text-sm space-y-1">
+                <li>100k–499k: <strong>S$23.5</strong> / 1k</li>
+                <li>500k–1M: <strong>S$22</strong> / 1k</li>
+              </ul>
             </div>
+
+            <!-- Option 3 -->
             <div class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-4 sm:col-span-2">
               <div class="flex items-center justify-between">
                 <div>
                   <div class="text-sm font-medium">Option 3 — Nominee redemption</div>
-                  <div class="text-xs text-neutral-500">Confirmed flights at best rates</div>
+                  <div class="text-xs text-neutral-500">
+                    We book and issue tickets via nominee redemption for confirmed/available flights only (no waitlists).
+                    <br/>No nominee fees. Airport taxes as per SQ charged on top.
+                  </div>
                 </div>
                 <span class="badge rounded-full bg-indigo-100 text-indigo-800 dark:bg-indigo-900/40 dark:text-indigo-300 px-3 py-1">Most Value</span>
               </div>
-              <div class="mt-2 font-semibold">S$19.9–17.8 / 1k</div>
+              <ul class="mt-2 text-sm space-y-1">
+                <li>50k–199k: <strong>S$20.5</strong> / 1k</li>
+                <li>200k–499k: <strong>S$19.5</strong> / 1k</li>
+                <li>500k+: <strong>S$18.5</strong> / 1k</li>
+              </ul>
             </div>
           </div>
 
@@ -303,9 +326,9 @@
                  class="w-full sm:w-80 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 px-3 py-2 text-sm">
           <div class="flex items-center gap-2 text-xs opacity-80">
             <span>Nominee cost tier:</span>
-            <span class="rounded-full px-2 py-1 border border-neutral-300 dark:border-neutral-700">S$21.5</span>
             <span class="rounded-full px-2 py-1 border border-neutral-300 dark:border-neutral-700">S$20.5</span>
-            <span class="rounded-full px-2 py-1 border border-neutral-300 dark:border-neutral-700">S$19</span>
+            <span class="rounded-full px-2 py-1 border border-neutral-300 dark:border-neutral-700">S$19.5</span>
+            <span class="rounded-full px-2 py-1 border border-neutral-300 dark:border-neutral-700">S$18.5</span>
             <span class="opacity-60">(per 1k)</span>
           </div>
         </div>
@@ -335,7 +358,7 @@
         <!-- Quick estimator -->
         <div class="mt-4 flex flex-col sm:flex-row gap-3 items-start sm:items-center">
           <div class="text-sm opacity-80">Quick check: if I need</div>
-          <input id="quickMiles" type="number" min="10000" step="1000" placeholder="e.g., 68000"
+          <input id="quickMiles" type="number" min="50000" step="1000" placeholder="e.g., 68000"
                  class="w-full sm:w-48 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 px-3 py-2 text-sm">
           <button id="quickCalc" class="rounded-lg bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 px-4 py-2 text-sm font-medium">Estimate nominee cost</button>
           <div id="quickOut" class="text-sm"></div>
@@ -392,14 +415,20 @@
       });
       syncIcons(themeBtn);
 
-      // ========= Nominee Guide logic =========
+      // ========= Nominee Guide logic (updated tiers) =========
       const sgd = n => 'S$' + n.toLocaleString(undefined,{minimumFractionDigits:2, maximumFractionDigits:2});
+
+      // Nominee pricing tiers:
+      // 50k–199k => 20.5, 200k–499k => 19.5, 500k+ => 18.5 (per 1k)
       function nomineeCost(miles){
-        let rate = 21.5; if (miles >= 200000 && miles < 500000) rate = 20.5; if (miles >= 500000) rate = 19;
+        let rate;
+        if (miles >= 500000) rate = 18.5;
+        else if (miles >= 200000) rate = 19.5;
+        else rate = 20.5;
         return sgd((miles/1000)*rate);
       }
 
-      // Expanded dataset (illustrative)
+      // Award dataset (illustrative)
       const awards = [
         {to:'Bangkok (BKK)',    region:'SEA',         saver:24000,  advantage:39000},
         {to:'Bali (DPS)',       region:'SEA',         saver:27000,  advantage:43000},
@@ -473,7 +502,7 @@
       const qOut = document.getElementById('quickOut');
       qBtn?.addEventListener('click', () => {
         const miles = parseInt(qIn.value || '0', 10);
-        if (!miles || miles < 10000) { qOut.textContent = ' Enter a valid mileage (≥10,000).'; return; }
+        if (!miles || miles < 50000) { qOut.textContent = ' Enter a valid mileage (≥50,000).'; return; }
         qOut.textContent = ' ≈ ' + nomineeCost(miles) + ' (excl. taxes)';
       });
     </script>
