@@ -87,6 +87,9 @@
       .faq-item{border-radius:1rem; overflow:hidden}
       .faq-item[open] .faq-q{background:linear-gradient(to right, rgba(16,185,129,.08), transparent)}
       .faq-q{cursor:pointer}
+
+      .glass { backdrop-filter: blur(10px); background: rgba(255,255,255,0.08); }
+      .dark .glass { background: rgba(0,0,0,0.25); }
     </style>
   </head>
   <body class="min-h-screen flex flex-col">
@@ -137,7 +140,6 @@
 
       <div class="container mx-auto grid md:grid-cols-2 gap-10 items-center px-4 py-16 md:py-24">
         <div class="fade-in">
-          <!-- Swap any headline option here -->
           <h1 class="font-serif text-4xl md:text-6xl leading-tight">
             Premium cabins without premium prices.
           </h1>
@@ -148,14 +150,14 @@
           </h2>
 
           <p class="mt-5 text-base md:text-lg text-neutral-700 dark:text-neutral-300 max-w-xl">
-            Skyfare Consulting designs smarter routes, unlocks premium cabin value, and maximizes your miles.
-            <strong>We help you use your credit card miles to fly in Business and First Class for a fraction of the cash price — without the hassle.</strong>
+            <strong>I help you <span class="whitespace-nowrap">buy miles safely</span> and <span class="whitespace-nowrap">book confirmed</span> Business & First Class seats.</strong>
+            KrisFlyer‑first with other airlines available. Choose <em>Nominee Redemption</em> (no waitlists) or <em>Direct Transfer</em> (~5 business days) — I handle the rules, you just fly.
           </p>
 
           <div class="mt-4 flex flex-wrap gap-2 text-[13px]">
-            <span class="inline-flex items-center rounded-full bg-emerald-100 text-emerald-800 px-3 py-1 dark:bg-emerald-900/30 dark:text-emerald-200">Premium fares are inflated & complex.</span>
-            <span class="inline-flex items-center rounded-full bg-sky-100 text-sky-800 px-3 py-1 dark:bg-sky-900/30 dark:text-sky-200">Miles are confusing & often waitlisted.</span>
-            <span class="inline-flex items-center rounded-full bg-indigo-100 text-indigo-800 px-3 py-1 dark:bg-indigo-900/30 dark:text-indigo-200">We turn miles into confirmed premium seats.</span>
+            <span class="inline-flex items-center rounded-full bg-emerald-100 text-emerald-800 px-3 py-1 dark:bg-emerald-900/30 dark:text-emerald-200">Buy KrisFlyer miles (best tiers)</span>
+            <span class="inline-flex items-center rounded-full bg-sky-100 text-sky-800 px-3 py-1 dark:bg-sky-900/30 dark:text-sky-200">Nominee redemption — no waitlists</span>
+            <span class="inline-flex items-center rounded-full bg-indigo-100 text-indigo-800 px-3 py-1 dark:bg-indigo-900/30 dark:text-indigo-200">Direct transfer ≈ 5 business days</span>
           </div>
 
           <div class="mt-8 flex flex-wrap gap-3">
@@ -169,8 +171,8 @@
 
           <div class="mt-6 flex items-center gap-6 text-xs text-neutral-600 dark:text-neutral-400">
             <div class="flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-emerald-600"></span>Avg savings 25–60%*</div>
-            <div class="flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-emerald-600"></span>Premium cabins via miles redemption</div>
-            <div class="flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-emerald-600"></span>Complex multi-city mastered</div>
+            <div class="flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-emerald-600"></span>20M+ premium redemptions booked</div>
+            <div class="flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-emerald-600"></span>250+ cities served</div>
           </div>
         </div>
 
@@ -240,15 +242,15 @@
           <div class="mt-5 space-y-4">
             <div class="rise-in rounded-2xl ring-1 ring-emerald-200/60 dark:ring-emerald-700/60 p-4 flex gap-3 items-start bg-white/70 dark:bg-white/5">
               <svg class="h-5 w-5 text-emerald-600 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 17l6-6 4 4 6-6"/></svg>
-              <p>Smarter routes with alliance sweet spots & strategic stopovers.</p>
+              <p><strong>Buy miles</strong> at transparent tiers or use <strong>Nominee Redemption</strong> for confirmed seats.</p>
             </div>
             <div class="rise-in rounded-2xl ring-1 ring-emerald-200/60 dark:ring-emerald-700/60 p-4 flex gap-3 items-start bg-white/70 dark:bg-white/5">
               <svg class="h-5 w-5 text-emerald-600 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h20"/><path d="M12 2v20"/></svg>
-              <p>Nominee redemptions (no waitlists) or fast direct transfers (~5 biz days).</p>
+              <p><strong>Direct transfers</strong> complete in about 5 business days; nominee can be immediate once space is secured.</p>
             </div>
             <div class="rise-in rounded-2xl ring-1 ring-emerald-200/60 dark:ring-emerald-700/60 p-4 flex gap-3 items-start bg-white/70 dark:bg-white/5">
               <svg class="h-5 w-5 text-emerald-600 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 7h7l-5.5 4 2.5 7L12 16l-7 4 2.5-7L2 9h7z"/></svg>
-              <p>Concierge booking — we handle rules, you just fly.</p>
+              <p><strong>Concierge booking</strong> — we handle rules, nominees, and seat selection; you just approve and fly.</p>
             </div>
           </div>
           <p class="mt-4 text-xs text-neutral-600 dark:text-neutral-400">Proof: 54% average fare reduction · USD $2,450 average family saving · 20M+ premium redemptions.</p>
@@ -256,12 +258,12 @@
       </div>
     </section>
 
-    <!-- HOW IT WORKS (icons, no emojis) -->
+    <!-- HOW IT WORKS -->
     <section class="container mx-auto px-4 py-10 md:py-14">
       <div class="rounded-3xl bg-white dark:bg-neutral-900 shadow-sm ring-1 ring-black/5 dark:ring-white/10 px-6 py-8 md:px-10 md:py-10">
         <h2 class="font-serif text-3xl md:text-4xl text-center">How It Works</h2>
         <p class="mt-3 text-center text-neutral-700 dark:text-neutral-300 max-w-3xl mx-auto">
-          A simple, guided process — from trip goals to premium seats booked.
+          A simple, guided process — from enquiry to premium seats booked.
         </p>
 
         <div class="mt-10 grid gap-6 sm:grid-cols-2 md:grid-cols-4">
@@ -272,13 +274,13 @@
           </div>
           <div class="group rounded-2xl p-5 bg-gradient-to-b from-sky-50 to-white dark:from-neutral-800 dark:to-neutral-900 ring-1 ring-sky-100 dark:ring-neutral-700 hover:-translate-y-0.5 hover:shadow-md transition">
             <svg class="h-7 w-7 text-sky-700 dark:text-sky-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 17l6-6 4 4 6-6"/><path d="M14 7h6v6"/></svg>
-            <h3 class="mt-3 font-medium">We design smarter routes</h3>
-            <p class="mt-1 text-sm text-neutral-700 dark:text-neutral-300">Optimize miles, timing, and sweet spots.</p>
+            <h3 class="mt-3 font-medium">Choose your path</h3>
+            <p class="mt-1 text-sm text-neutral-700 dark:text-neutral-300">Buy miles from us or use nominee redemption for confirmed seats.</p>
           </div>
           <div class="group rounded-2xl p-5 bg-gradient-to-b from-indigo-50 to-white dark:from-neutral-800 dark:to-neutral-900 ring-1 ring-indigo-100 dark:ring-neutral-700 hover:-translate-y-0.5 hover:shadow-md transition">
             <svg class="h-7 w-7 text-indigo-700 dark:text-indigo-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg>
-            <h3 class="mt-3 font-medium">Use or top up miles</h3>
-            <p class="mt-1 text-sm text-neutral-700 dark:text-neutral-300">Direct transfer ≈5 days or nominee booking.</p>
+            <h3 class="mt-3 font-medium">Top up or redeem</h3>
+            <p class="mt-1 text-sm text-neutral-700 dark:text-neutral-300">Direct transfer ≈5 business days or immediate nominee ticketing.</p>
           </div>
           <div class="group rounded-2xl p-5 bg-gradient-to-b from-amber-50 to-white dark:from-neutral-800 dark:to-neutral-900 ring-1 ring-amber-100 dark:ring-neutral-700 hover:-translate-y-0.5 hover:shadow-md transition">
             <svg class="h-7 w-7 text-amber-700 dark:text-amber-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 7h7l-5.5 4 2.5 7L12 16l-7 4 2.5-7L2 9h7z"/></svg>
@@ -320,7 +322,7 @@
       </div>
     </section>
 
-    <!-- KRISFLYER PROMO (unchanged core, still emphasized) -->
+    <!-- KRISFLYER PROMO -->
     <section class="container mx-auto px-4 py-6 md:py-8">
       <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-sky-500 via-indigo-500 to-emerald-500 text-white shadow-lg ring-1 ring-black/10">
         <div class="pointer-events-none absolute -top-24 -right-24 h-64 w-64 rounded-full bg-white/10 blur-2xl"></div>
@@ -401,7 +403,7 @@
       </div>
     </section>
 
-    <!-- WHY SKYFARE (kept) -->
+    <!-- WHY SKYFARE (copy shifted to redemption identity) -->
     <section id="why" class="relative container mx-auto px-4 py-16 md:py-24">
       <div class="pointer-events-none absolute -top-20 -left-24 h-72 w-72 rounded-full bg-gradient-to-tr from-emerald-300/25 via-sky-300/20 to-indigo-300/20 blur-3xl"></div>
       <div class="pointer-events-none absolute -bottom-16 -right-24 h-72 w-72 rounded-full bg-gradient-to-tr from-indigo-300/20 via-sky-300/20 to-emerald-300/25 blur-3xl"></div>
@@ -413,24 +415,24 @@
           <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-600/10 text-emerald-700 dark:text-emerald-300">
             <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h7l4-8 7 16H3z"/></svg>
           </div>
-          <h3 class="font-medium">Strategy, not Search</h3>
-          <p class="mt-2 text-sm text-neutral-700 dark:text-neutral-300">We architect routes, time zones, and fare rules—beyond what commodity search engines surface.</p>
+          <h3 class="font-medium">Redemption, not guesswork</h3>
+          <p class="mt-2 text-sm text-neutral-700 dark:text-neutral-300">We specialise in miles sales and confirmed bookings via nominee or direct transfers.</p>
         </div>
 
         <div class="group rounded-2xl bg-white dark:bg-neutral-900 p-6 shadow-md ring-1 ring-black/5 dark:ring-white/10 transition hover:shadow-lg hover:-translate-y-1">
           <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-600/10 text-emerald-700 dark:text-emerald-300">
             <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 17l6-6 4 4 6-6"/></svg>
           </div>
-          <h3 class="font-medium">Miles Maximized</h3>
-          <p class="mt-2 text-sm text-neutral-700 dark:text-neutral-300">Alliance charts, transfer bonuses, stopovers, and sweet spots—deployed for premium cabins.</p>
+          <h3 class="font-medium">Best‑value miles</h3>
+          <p class="mt-2 text-sm text-neutral-700 dark:text-neutral-300">Transparent tiers for KrisFlyer miles, with partner options when useful.</p>
         </div>
 
         <div class="group rounded-2xl bg-white dark:bg-neutral-900 p-6 shadow-md ring-1 ring-black/5 dark:ring-white/10 transition hover:shadow-lg hover:-translate-y-1">
           <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-600/10 text-emerald-700 dark:text-emerald-300">
             <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h6l3 5h11l-5 9H8l-3-5H2z"/></svg>
           </div>
-          <h3 class="font-medium">Complex, Made Simple</h3>
-          <p class="mt-2 text-sm text-neutral-700 dark:text-neutral-300">Multi-city, open-jaw, family bookings, corporate shuttles—we design itineraries that hold up.</p>
+          <h3 class="font-medium">Booking handled end‑to‑end</h3>
+          <p class="mt-2 text-sm text-neutral-700 dark:text-neutral-300">We manage nominees, rules, and seat selection — you just approve and fly.</p>
         </div>
       </div>
     </section>
@@ -472,10 +474,7 @@
       <div class="mt-6 flex flex-wrap justify-center gap-3">
         <a href="book.html" class="book-cta inline-flex items-center rounded-2xl bg-neutral-900 px-5 py-3 text-sm font-medium text-white hover:opacity-90 dark:bg-white dark:text-neutral-900">Book a Call</a>
         <a href="services.html" class="inline-flex items-center rounded-2xl border border-neutral-300 dark:border-neutral-700 px-5 py-3 text-sm font-medium hover:bg-white dark:hover:bg-neutral-800">See Services</a>
-        <a href="https://api.whatsapp.com/send?phone=6592701253&text=Hi%20Skyfare%2C%20I%27d%20like%20to%20book%20an%20assessment"
-           class="inline-flex items-center rounded-2xl bg-emerald-600 px-5 py-3 text-sm font-medium text-white hover:bg-emerald-700 transition">
-          Chat on WhatsApp
-        </a>
+        <a href="https://api.whatsapp.com/send?phone=6581575306&text=Hi%20Skyfare%2C%20I%27d%20like%20to%20buy%20miles%20or%20book%20a%20redemption" class="inline-flex items-center rounded-2xl bg-emerald-600 px-5 py-3 text-sm font-medium text-white hover:bg-emerald-700 transition">Chat on WhatsApp</a>
       </div>
     </section>
 
@@ -513,7 +512,25 @@
         aria-expanded="false" aria-label="Open quick actions">
         <svg viewBox="0 0 24 24" class="w-7 h-7" fill="currentColor" aria-hidden="true"><path d="M20 12.04A8 8 0 1 1 12 4a8 8 0 0 1 8 8.04zM6.5 19.5l1.6-.47a9 9 0 1 0-3.13-3.1l-.47 1.57c-.14.46.3.9.76.76h.24z"/><path fill="#fff" d="M16.61 13.83c-.23-.12-1.34-.66-1.55-.74-.2-.07-.35-.12-.49.12-.14.23-.56.74-.69.89-.13.14-.25.17-.48.06-.23-.12-.96-.35-1.83-1.12-.68-.6-1.13-1.35-1.26-1.57-.13-.23-.01-.35.1-.47.1-.1.23-.25.34-.38.11-.13.15-.23.23-.38.08-.14.04-.27-.02-.38-.06-.12-.49-1.18-.67-1.62-.18-.43-.36-.37-.49-.38l-.42-.01c-.14 0-.37.05-.57.27-.2.23-.76.74-.76 1.81s.78 2.1.89 2.24c.12.14 1.54 2.34 3.73 3.28 2.2.94 2.2.63 2.6.59.4-.04 1.34-.55 1.53-1.08.19-.53.19-.98.14-1.08-.04-.1-.21-.17-.44-.28z"/></svg>
       </button>
-      <a id="fabChatLink" href="https://api.whatsapp.com/send?phone=6592701253&text=Hi%20Skyfare%2C%20I%27d%20like%20to%20book%20an%20assessment" class="absolute inset-0" aria-label="Chat on WhatsApp"></a>
+      <a id="fabChatLink" href="https://api.whatsapp.com/send?phone=6581575306&text=Hi%20Skyfare%2C%20I%27d%20like%20to%20buy%20miles%20or%20book%20a%20redemption" class="absolute inset-0" aria-label="Chat on WhatsApp"></a>
+    </div>
+
+    <!-- Floating contact (simplified drawer) -->
+    <div id="contact-fab" class="fixed bottom-5 right-5 z-50 hidden md:block">
+      <button id="open-talk" class="group flex items-center gap-2 rounded-full bg-emerald-500 px-4 py-2 text-sm font-semibold shadow-lg shadow-emerald-500/20 hover:bg-emerald-400">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4"><path d="M1.5 4.5A2.25 2.25 0 0 1 3.75 2.25h16.5A2.25 2.25 0 0 1 22.5 4.5v9a2.25 2.25 0 0 1-2.25 2.25H8.309l-3.94 3.94A.75.75 0 0 1 3 18.94V15.75H3.75A2.25 2.25 0 0 1 1.5 13.5v-9Z"/></svg>
+        Quick enquiry
+      </button>
+      <div id="talk-drawer" class="invisible opacity-0 transition-all duration-300 fixed bottom-16 right-0 mr-5 w-[330px] max-w-[calc(100vw-2rem)] rounded-2xl glass border border-white/10 shadow-2xl">
+        <div class="p-4 space-y-3">
+          <h3 class="text-sm font-semibold tracking-wide text-slate-200">Miles & Bookings</h3>
+          <a href="krisflyer.html" class="block w-full rounded-xl bg-white text-neutral-900 text-sm font-semibold px-4 py-3 text-center">Buy KrisFlyer Miles</a>
+          <a href="book.html?service=nominee" class="block w-full rounded-xl border border-white/20 text-white text-sm font-semibold px-4 py-3 text-center hover:bg-white/10">Nominee Redemption Booking</a>
+          <div class="text-xs text-white/70 pt-1">
+            Prefer WhatsApp? <a href="https://api.whatsapp.com/send?phone=6581575306&text=Hi%20Skyfare%2C%20I%20want%20to%20buy%20miles%20or%20book%20a%20nominee%20ticket" class="underline">+65 8157 5306</a>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- SCRIPTS -->
@@ -546,13 +563,23 @@
       function toggleFab(){
         const open = fabRoot.classList.toggle('fab-open');
         fabMain.setAttribute('aria-expanded', open ? 'true' : 'false');
-        fabChatLink.style.pointerEvents = open ? 'none' : 'auto'; // overlay off when expanded
+        fabChatLink.style.pointerEvents = open ? 'none' : 'auto';
       }
       fabMain.addEventListener('click', toggleFab);
-
       document.addEventListener('scroll', () => { if (fabRoot.classList.contains('fab-open')) toggleFab(); }, {passive:true});
       document.addEventListener('click', (e) => {
         if (!fabRoot.contains(e.target) && fabRoot.classList.contains('fab-open')) toggleFab();
+      });
+
+      // Drawer logic (desktop quick enquiry)
+      const openTalk = document.getElementById('open-talk');
+      const drawer = document.getElementById('talk-drawer');
+      openTalk?.addEventListener('click', () => {
+        const visible = drawer.classList.contains('!visible');
+        drawer.classList.toggle('invisible', visible);
+        drawer.classList.toggle('opacity-0', visible);
+        if (!visible) { drawer.classList.add('!visible'); drawer.classList.add('opacity-100'); }
+        else { drawer.classList.remove('!visible'); drawer.classList.remove('opacity-100'); }
       });
 
       // Meta Pixel custom events
@@ -566,6 +593,7 @@
     </script>
   </body>
 </html>
+
 
 
 
