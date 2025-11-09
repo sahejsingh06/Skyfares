@@ -7,7 +7,7 @@
     <meta name="description" content="Nominee redemptions and direct transfers for KrisFlyer miles. Fast, secure, and transparent pricing." />
     <link rel="icon" href="favicon.ico" />
 
-    <!-- Fonts (match index: Inter + DM Serif Display) -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -24,22 +24,9 @@
               serif: ['"DM Serif Display"', 'Georgia', 'ui-serif', 'serif'],
             },
             colors: {
-              brand: {
-                50: '#eef6ff',
-                100: '#d9eafe',
-                200: '#bcd8fd',
-                300: '#90bffd',
-                400: '#5a9afd',
-                500: '#3478f6',
-                600: '#1d60dc',
-                700: '#1a4db0',
-                800: '#1a428f',
-                900: '#183a77'
-              }
+              brand: {50:'#eef6ff',100:'#d9eafe',200:'#bcd8fd',300:'#90bffd',400:'#5a9afd',500:'#3478f6',600:'#1d60dc',700:'#1a4db0',800:'#1a428f',900:'#183a77'}
             },
-            boxShadow: {
-              soft: '0 8px 30px rgba(0,0,0,0.06)'
-            }
+            boxShadow: { soft: '0 8px 30px rgba(0,0,0,0.06)' }
           }
         }
       }
@@ -49,15 +36,19 @@
       :root { color-scheme: light dark; }
       html, body { height: 100%; }
       .container { max-width: 1100px; }
+      .seg-btn { border-radius: 10px; padding: .4rem .6rem; font-size:.8rem; border:1px solid transparent; }
+      .seg-btn.active { background: rgb(52 120 246); color:#fff; border-color: rgb(52 120 246); }
+      .seg-btn:not(.active){ background: transparent; color: inherit; border-color: rgba(120,120,120,.25); }
     </style>
 
-    <!-- Theme sync (persist from other pages using the same key: 'sf-theme') -->
+    <!-- Theme sync (migrate 'sf-theme' -> 'theme') -->
     <script>
-      (function syncTheme() {
-        const pref = localStorage.getItem('sf-theme');
-        const mql = window.matchMedia('(prefers-color-scheme: dark)');
-        const wantsDark = pref ? pref === 'dark' : mql.matches;
-        if (wantsDark) document.documentElement.classList.add('dark');
+      (function () {
+        const legacy = localStorage.getItem('sf-theme');
+        if (legacy && !localStorage.getItem('theme')) localStorage.setItem('theme', legacy);
+        const pref = localStorage.getItem('theme');
+        const wantsDark = pref ? pref === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.classList.toggle('dark', wantsDark);
       })();
     </script>
   </head>
@@ -67,16 +58,9 @@
     <header class="sticky top-0 z-40 bg-white/75 dark:bg-neutral-950/70 backdrop-blur border-b border-neutral-200/70 dark:border-neutral-800/70">
       <div class="container mx-auto px-4 py-4 flex items-center justify-between">
         <a href="index.html" class="flex items-center space-x-3">
-  <img 
-    src="logos/logo.png" 
-    alt="Skyfare Consulting Logo" 
-    class="h-14 w-auto object-contain drop-shadow-[0_0_8px_rgba(59,130,246,0.4)] transition-transform duration-300 hover:scale-105"
-  />
-  <span class="text-xl font-semibold text-gray-900 dark:text-white tracking-wide">
-    Skyfare Consulting
-  </span>
-</a>
-
+          <img src="logos/logo.png" alt="Skyfare Consulting Logo" class="h-14 w-auto object-contain drop-shadow-[0_0_8px_rgba(59,130,246,0.4)] transition-transform duration-300 hover:scale-105"/>
+          <span class="text-xl font-semibold text-gray-900 dark:text-white tracking-wide">Skyfare Consulting</span>
+        </a>
 
         <nav class="hidden md:flex items-center gap-6 text-sm">
           <a href="index.html" class="hover:opacity-80">Home</a>
@@ -91,6 +75,19 @@
             <span id="themeIcon" aria-hidden="true">☾</span>
           </button>
         </nav>
+      </div>
+
+      <!-- Header callout -->
+      <div class="border-t border-neutral-200/70 dark:border-neutral-800/70">
+        <div class="container mx-auto px-4 py-2 text-xs md:text-sm flex flex-col md:flex-row gap-2 md:items-center md:justify-between">
+          <div class="text-neutral-600 dark:text-neutral-300">
+            Questions? <span class="font-medium">Text/Call +65 9270 1253</span>
+          </div>
+          <div class="flex gap-3">
+            <a href="tel:+6592701253" class="underline underline-offset-2">Call</a>
+            <a href="https://api.whatsapp.com/send?phone=6592701253&text=Hi%20Skyfare%2C%20can%20you%20explain%20how%20this%20works%3F" class="underline underline-offset-2">WhatsApp</a>
+          </div>
+        </div>
       </div>
     </header>
 
@@ -107,6 +104,9 @@
           <div class="rounded-full px-3 py-1 ring-1 ring-neutral-200 dark:ring-neutral-800 bg-white dark:bg-neutral-900">Private &amp; secure</div>
           <div class="rounded-full px-3 py-1 ring-1 ring-neutral-200 dark:ring-neutral-800 bg-white dark:bg-neutral-900">Transparent pricing</div>
           <div class="rounded-full px-3 py-1 ring-1 ring-neutral-200 dark:ring-neutral-800 bg-white dark:bg-neutral-900">Concierge support</div>
+          <div class="rounded-full px-3 py-1 ring-1 ring-emerald-300/60 dark:ring-emerald-600/50 bg-emerald-50/60 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-300">
+            Save more when planning 6+ months ahead
+          </div>
         </div>
       </section>
 
@@ -122,8 +122,8 @@
 
             <div class="p-5 md:p-6">
               <ul class="text-sm space-y-3">
-                <li>• We ticket confirmed flights using nominee redemption (no waitlists).</li>
-                <li>• You pay KrisFlyer taxes to SQ; our fee is per-1k miles only.</li>
+                <li>• We ticket <strong>confirmed</strong> flights using nominee redemption (no waitlists).</li>
+                <li>• <strong>No nominee fees.</strong> You pay airline taxes to SQ; our pricing is per-1k miles only.</li>
                 <li>• Ideal for families and time-sensitive trips where seats must be locked in.</li>
               </ul>
 
@@ -133,15 +133,15 @@
                 <div class="grid grid-cols-3 gap-2">
                   <div class="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-800 px-3 py-3 text-center">
                     <div class="text-[11px] text-neutral-600 dark:text-neutral-300">50k–199k</div>
-                    <div class="mt-1 text-lg font-semibold">S$21.5</div>
-                  </div>
-                  <div class="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-800 px-3 py-3 text-center">
-                    <div class="text-[11px] text-neutral-600 dark:text-neutral-300">200k–499k</div>
                     <div class="mt-1 text-lg font-semibold">S$20.5</div>
                   </div>
                   <div class="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-800 px-3 py-3 text-center">
+                    <div class="text-[11px] text-neutral-600 dark:text-neutral-300">200k–499k</div>
+                    <div class="mt-1 text-lg font-semibold">S$19.5</div>
+                  </div>
+                  <div class="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-800 px-3 py-3 text-center">
                     <div class="text-[11px] text-neutral-600 dark:text-neutral-300">500k+</div>
-                    <div class="mt-1 text-lg font-semibold">S$19</div>
+                    <div class="mt-1 text-lg font-semibold">S$18.5</div>
                   </div>
                 </div>
               </div>
@@ -156,10 +156,10 @@
                     Calculate
                   </button>
                 </div>
-                <div id="nomOut" class="mt-3 hidden">
+                <div id="nomOut" class="mt-3 hidden" aria-live="polite">
                   <div class="text-sm">Tier applied: <span id="nomTier" class="font-medium"></span></div>
                   <div class="mt-1 text-2xl font-serif">Estimated cost: <span id="nomCost" class="font-semibold"></span></div>
-                  <div class="mt-2 text-xs text-neutral-500 dark:text-neutral-400">Excludes government/airport taxes and any service fees.</div>
+                  <div class="mt-2 text-xs text-neutral-500 dark:text-neutral-400">Excludes government/airport taxes charged by SQ.</div>
                 </div>
               </div>
 
@@ -177,32 +177,32 @@
 
           <!-- Side options -->
           <aside class="space-y-6">
-            <!-- 5-day transfer -->
+            <!-- Direct Transfer (3–4 weeks) -->
             <article class="rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 shadow-soft">
               <div class="p-5">
-                <div class="mb-1 text-xs inline-flex rounded-full bg-emerald-600 text-white px-2.5 py-0.5">≈5 working days</div>
+                <div class="mb-1 text-xs inline-flex rounded-full bg-emerald-600 text-white px-2.5 py-0.5">3–4 weeks</div>
                 <h3 class="text-lg font-semibold">Direct Transfer</h3>
                 <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-300">When timing matters more than unit price.</p>
                 <ul class="mt-3 text-sm space-y-2">
-                  <li>• Min <span class="font-medium">10k</span></li>
-                  <li>• Transfer to your KF in ~5 business days</li>
+                  <li>• Min <span class="font-medium">100k</span> per account</li>
+                  <li>• Transferred directly to your KF within 3–4 weeks</li>
                 </ul>
                 <div class="mt-4 grid grid-cols-2 gap-2 text-center">
                   <div class="rounded-xl border border-neutral-200 dark:border-neutral-800 px-3 py-3">
                     <div class="text-[11px] text-neutral-600 dark:text-neutral-300">100k–499k</div>
-                    <div class="mt-1 font-semibold">S$24</div>
+                    <div class="mt-1 font-semibold">S$23.5</div>
                   </div>
                   <div class="rounded-xl border border-neutral-200 dark:border-neutral-800 px-3 py-3">
                     <div class="text-[11px] text-neutral-600 dark:text-neutral-300">500k–1m</div>
-                    <div class="mt-1 font-semibold">S$23</div>
+                    <div class="mt-1 font-semibold">S$22</div>
                   </div>
                 </div>
-                <a href="book.html?service=krisflyer&option=direct-5d"
-                   class="mt-4 inline-flex w-full items-center justify-center rounded-xl bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 px-4 py-2.5 font-medium hover:opacity-90">Enquire — Fast Transfer</a>
+                <a href="book.html?service=krisflyer&option=direct-3to4w"
+                   class="mt-4 inline-flex w-full items-center justify-center rounded-xl bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 px-4 py-2.5 font-medium hover:opacity-90">Enquire — Direct Transfer</a>
               </div>
             </article>
 
-            <!-- 90-day transfer -->
+            <!-- Direct Transfer (90 days) -->
             <article class="rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 shadow-soft">
               <div class="p-5">
                 <div class="mb-1 text-xs inline-flex rounded-full bg-sky-600 text-white px-2.5 py-0.5">Bulk-friendly</div>
@@ -210,12 +210,12 @@
                 <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-300">Best for larger balances with flexible timing.</p>
                 <ul class="mt-3 text-sm space-y-2">
                   <li>• Min <span class="font-medium">200k</span> per person</li>
-                  <li>• Future transfers after 90 days can be instant (if balance available)</li>
+                  <li>• Future transfers after 90 days may be instant (if balance available)</li>
                 </ul>
                 <div class="mt-4 grid grid-cols-2 gap-2 text-center">
                   <div class="rounded-xl border border-neutral-200 dark:border-neutral-800 px-3 py-3">
                     <div class="text-[11px] text-neutral-600 dark:text-neutral-300">200k–499k</div>
-                    <div class="mt-1 font-semibold">S$20.9</div>
+                    <div class="mt-1 font-semibold">S$20.5</div>
                   </div>
                   <div class="rounded-xl border border-neutral-200 dark:border-neutral-800 px-3 py-3">
                     <div class="text-[11px] text-neutral-600 dark:text-neutral-300">500k+</div>
@@ -254,7 +254,7 @@
         <div class="mt-4 divide-y divide-neutral-200 dark:divide-neutral-800 rounded-2xl border border-neutral-200 dark:border-neutral-800 overflow-hidden">
           <details class="group open:bg-neutral-50 dark:open:bg-neutral-900/60">
             <summary class="cursor-pointer list-none p-4 font-medium hover:bg-neutral-50 dark:hover:bg-neutral-900/60">Is nominee redemption allowed by KrisFlyer?</summary>
-            <div class="px-4 pb-4 text-sm text-neutral-600 dark:text-neutral-300">Yes, KrisFlyer members can nominate individuals for award tickets as per program rules. We facilitate the search and booking process.</div>
+            <div class="px-4 pb-4 text-sm text-neutral-600 dark:text-neutral-300">Yes—KrisFlyer members can nominate individuals for award tickets as per program rules. We facilitate the search and booking process.</div>
           </details>
           <details class="group">
             <summary class="cursor-pointer list-none p-4 font-medium hover:bg-neutral-50 dark:hover:bg-neutral-900/60">What taxes are included?</summary>
@@ -291,52 +291,60 @@
       </div>
     </footer>
 
-    <!-- Sticky estimator bar (mobile-first) -->
-    <div class="fixed bottom-3 inset-x-3 md:inset-x-auto md:right-6 md:w-96 z-40 rounded-2xl shadow-soft border border-neutral-200 dark:border-neutral-800 bg-white/95 dark:bg-neutral-900/95 backdrop-blur">
+    <!-- Sticky estimator bar with toggle -->
+    <div class="fixed bottom-3 inset-x-3 md:inset-x-auto md:right-6 md:w-[30rem] z-40 rounded-2xl shadow-soft border border-neutral-200 dark:border-neutral-800 bg-white/95 dark:bg-neutral-900/95 backdrop-blur">
       <div class="p-3">
-        <div class="text-sm font-medium">Quick quote — Nominee</div>
-        <div class="mt-2 flex gap-2">
+        <div class="flex items-center justify-between gap-2">
+          <div class="text-sm font-medium">Quick quote</div>
+          <div class="flex gap-1" role="tablist" aria-label="Estimator mode">
+            <button class="seg-btn active" id="mode-nominee" aria-selected="true">Nominee</button>
+            <button class="seg-btn" id="mode-direct-fast" aria-selected="false">Direct 3–4w</button>
+            <button class="seg-btn" id="mode-direct-90d" aria-selected="false">Direct 90d</button>
+          </div>
+        </div>
+
+        <div class="mt-2 flex gap-2 items-start">
           <input id="barMiles" type="number" min="50000" step="1000" placeholder="Miles"
                  class="w-full rounded-lg border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-300 dark:focus:ring-brand-600">
           <button id="barCalc" class="rounded-lg bg-brand-600 text-white px-3 text-sm font-medium">Calc</button>
-          <a href="book.html?service=krisflyer&option=nominee" class="rounded-lg border border-neutral-300 dark:border-neutral-700 px-3 text-sm font-medium hover:bg-neutral-50 dark:hover:bg-neutral-800">Book</a>
+          <a href="book.html?service=krisflyer" class="rounded-lg border border-neutral-300 dark:border-neutral-700 px-3 text-sm font-medium hover:bg-neutral-50 dark:hover:bg-neutral-800">Book</a>
         </div>
-        <div id="barOut" class="mt-1 hidden text-xs"><span class="opacity-70">Est:</span> <span id="barCost" class="font-medium"></span></div>
+        <div id="barHint" class="mt-1 text-[11px] text-neutral-500 dark:text-neutral-400"></div>
+        <div id="barOut" class="mt-1 hidden text-xs" aria-live="polite"><span class="opacity-70">Est:</span> <span id="barCost" class="font-medium"></span></div>
       </div>
     </div>
 
-    <!-- WhatsApp bubble (matches other pages) -->
-    <a href="https://wa.me/6580000000" target="_blank" rel="noopener"
+    <!-- WhatsApp bubble -->
+    <a href="https://api.whatsapp.com/send?phone=6592701253&text=Hi%20Skyfare%2C%20can%20you%20explain%20how%20this%20works%3F"
+       target="_blank" rel="noopener"
        class="fixed bottom-24 right-6 md:bottom-28 md:right-6 z-40 inline-flex items-center justify-center w-12 h-12 rounded-full shadow-soft bg-emerald-500 text-white hover:opacity-90"
        aria-label="WhatsApp us">
-      <!-- simple WA glyph -->
       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20.52 3.48A11.94 11.94 0 0 0 12.01 0C5.39.01.03 5.37.02 11.99A11.9 11.9 0 0 0 2.1 18.2L0 24l5.98-2.06a11.96 11.96 0 0 0 6.03 1.62h.01c6.62-.01 11.98-5.37 11.98-11.99 0-3.2-1.25-6.2-3.48-8.43ZM12.02 22a9.93 9.93 0 0 1-5.07-1.4l-.36-.21-3.55 1.22 1.22-3.46-.23-.37A9.95 9.95 0 1 1 22 12c0 5.51-4.47 10-9.98 10Zm5.7-7.48c-.31-.16-1.82-.9-2.1-1.01-.28-.1-.49-.16-.69.16-.2.31-.79 1.01-.97 1.21-.18.2-.36.23-.67.08-.31-.16-1.31-.48-2.5-1.53-.92-.81-1.54-1.81-1.72-2.11-.18-.31-.02-.48.13-.64.13-.13.31-.34.46-.51.15-.18.2-.31.31-.51.1-.2.05-.38-.02-.54-.08-.16-.69-1.66-.95-2.27-.25-.6-.5-.52-.69-.53h-.59c-.2 0-.51.07-.77.38-.26.31-1.01.98-1.01 2.39 0 1.4 1.03 2.76 1.17 2.95.15.2 2.03 3.12 4.93 4.37.69.3 1.22.48 1.64.62.69.22 1.31.19 1.8.12.55-.08 1.82-.74 2.08-1.45.26-.72.26-1.34.18-1.45-.07-.12-.28-.19-.59-.35Z"/></svg>
     </a>
 
     <!-- Scripts -->
     <script>
       // footer year
-      document.getElementById('year').textContent = new Date().getFullYear();
+      document.getElementById('year').textContent = new Date().getFullYear?.() || new Date().getFullYear();
 
-      // Theme toggle
-      const toggle = document.getElementById('themeToggle');
+      // Theme toggle (uses 'theme')
+      const themeBtn = document.getElementById('themeToggle');
       const icon = document.getElementById('themeIcon');
       function setTheme(mode) {
-        localStorage.setItem('sf-theme', mode);
+        localStorage.setItem('theme', mode);
         document.documentElement.classList.toggle('dark', mode === 'dark');
         icon.textContent = mode === 'dark' ? '☀' : '☾';
       }
-      toggle?.addEventListener('click', () => {
+      themeBtn?.addEventListener('click', () => {
         const nowDark = !document.documentElement.classList.contains('dark');
         setTheme(nowDark ? 'dark' : 'light');
       });
-      // Sync icon state on load
       icon.textContent = document.documentElement.classList.contains('dark') ? '☀' : '☾';
 
       // Money formatting
       function sgd(n){ return 'S$' + n.toLocaleString(undefined,{minimumFractionDigits:2, maximumFractionDigits:2}); }
 
-      // Nominee estimator (card)
+      // Nominee estimator (card) — tiers: 50–199k => 20.5 | 200–499k => 19.5 | 500k+ => 18.5
       (function(){
         const input = document.getElementById('nomMiles');
         const btn   = document.getElementById('nomCalc');
@@ -347,36 +355,95 @@
         btn.addEventListener('click', () => {
           const miles = parseInt(input.value || '0', 10);
           if (!miles || miles < 50000) { out.classList.remove('hidden'); tierL.textContent='n/a'; costL.textContent='Enter ≥ 50,000 miles'; return; }
-          let rate = 21.5, tier = '50k–199k';
-          if (miles >= 200000 && miles < 500000) { rate = 20.5; tier = '200k–499k'; }
-          if (miles >= 500000) { rate = 19; tier = '500k+'; }
-          const cost = (miles/1000) * rate;
+          let rate = 20.5, tier = '50k–199k';
+          if (miles >= 200000 && miles < 500000) { rate = 19.5; tier = '200k–499k'; }
+          if (miles >= 500000) { rate = 18.5; tier = '500k+'; }
           out.classList.remove('hidden');
           tierL.textContent = `${tier} @ ${sgd(rate)}/1k`;
-          costL.textContent = sgd(cost);
+          costL.textContent = sgd((miles/1000) * rate);
         });
       })();
 
-      // Sticky bar estimator
+      // Sticky bar estimator with mode toggle
       (function(){
         const input = document.getElementById('barMiles');
-        const btn = document.getElementById('barCalc');
-        const out = document.getElementById('barOut');
-        const cost = document.getElementById('barCost');
-        btn.addEventListener('click', () => {
-          const miles = parseInt(input.value || '0', 10);
-          if (!miles || miles < 50000) { out.classList.remove('hidden'); cost.textContent = 'Enter ≥ 50,000'; return; }
-          let rate = 21.5;
-          if (miles >= 200000 && miles < 500000) rate = 20.5;
-          if (miles >= 500000) rate = 19;
-          const c = (miles/1000) * rate;
-          out.classList.remove('hidden');
-          cost.textContent = sgd(c);
+        const btn   = document.getElementById('barCalc');
+        const out   = document.getElementById('barOut');
+        const costL = document.getElementById('barCost');
+        const hint  = document.getElementById('barHint');
+
+        const modes = {
+          nominee:   { id:'mode-nominee',   label:'Nominee',     min:50000,  tiers:[{min:500000, rate:18.5},{min:200000, rate:19.5},{min:0, rate:20.5}] },
+          directFast:{ id:'mode-direct-fast', label:'Direct 3–4w', min:100000, tiers:[{min:500000, rate:22},{min:100000, rate:23.5}] },
+          direct90d: { id:'mode-direct-90d',  label:'Direct 90d',  min:200000, tiers:[{min:500000, rate:20},{min:200000, rate:20.5}] }
+        };
+        let current = 'nominee';
+
+        function setActive(mode){
+          current = mode;
+          Object.values(modes).forEach(m=>{
+            const el = document.getElementById(m.id);
+            el.classList.toggle('active', m===modes[mode]);
+            el.setAttribute('aria-selected', m===modes[mode] ? 'true':'false');
+          });
+          // Update min hint
+          hint.textContent = `Minimum for ${modes[mode].label}: ${modes[mode].min.toLocaleString()} miles`;
+          input.min = modes[mode].min;
+        }
+
+        Object.entries(modes).forEach(([key, m])=>{
+          document.getElementById(m.id)?.addEventListener('click', ()=> setActive(key));
         });
+
+        btn.addEventListener('click', ()=>{
+          const miles = parseInt(input.value || '0', 10);
+          const cfg = modes[current];
+          out.classList.remove('hidden');
+          if (!miles || miles < cfg.min){ costL.textContent = `Enter ≥ ${cfg.min.toLocaleString()}`; return; }
+          let rate = cfg.tiers.find(t=> miles >= t.min)?.rate || cfg.tiers.at(-1).rate;
+          costL.textContent = sgd((miles/1000)*rate) + `  @ ${sgd(rate)}/1k`;
+        });
+
+        setActive('nominee'); // init
       })();
+    </script>
+
+    <!-- FAQ Schema (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is nominee redemption allowed by KrisFlyer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes—KrisFlyer members can nominate individuals for award tickets as per program rules. We facilitate the search and booking process."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What taxes are included?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our pricing covers miles only. Government and airport taxes are charged by Singapore Airlines at ticketing."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How fast can we ticket?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "If seats are available, ticketing can often be completed the same business day after verification and payment."
+          }
+        }
+      ]
+    }
     </script>
   </body>
 </html>
+
 
 
 
