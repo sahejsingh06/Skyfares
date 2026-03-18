@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const headerHTML = `
     <header class="sticky top-0 z-50 backdrop-blur-md bg-white/90 border-b border-brand-200/20 shadow-sm transition-all duration-300">
       <div class="container mx-auto flex items-center justify-between py-3 px-4 md:px-6">
-<a href="index.html" class="flex items-center space-x-3 group">
+<a href="/" class="flex items-center space-x-3 group">
           <div class="relative">
             <img src="logos/logo.webp" alt="Skyfare Consulting Logo" class="h-12 w-auto object-contain transition-transform duration-500 group-hover:scale-110">
             <div class="absolute inset-0 bg-brand-300/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
