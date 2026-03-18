@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+/* Global Styles */
+html,
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #f1f5f9;
+  color: #111827;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+.brand-gradient {
+  background: linear-gradient(135deg, #0a4da2 0%, #1b70ef 50%, #1b70ef 100%);
+}
+
+.deep-blue-gradient {
+  background: linear-gradient(180deg, #063d82 0%, #0a4da2 100%);
+}
+
+.glass {
+  backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.nav-link {
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+/* Animations */
+@media (prefers-reduced-motion: no-preference) {
+  .fade-in {
+    animation: fade .6s ease-out both
+  }
+
+  @keyframes fade {
+    from {
+      opacity: 0;
+      transform: translateY(10px)
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0)
+    }
+  }
+
+  .slide-up {
+    animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Common Components */
+.seg-btn {
+  border-radius: 12px;
+  padding: 0.5rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.seg-btn.active {
+  background: #1b70ef;
+  color: #fff;
+  border-color: #1b70ef;
+  box-shadow: 0 4px 12px rgba(27, 112, 239, 0.3);
+}
+
+.seg-btn:not(.active) {
+  background: transparent;
+  color: inherit;
+  border-color: rgba(123, 191, 246, 0.2);
+}
+
+
+/* --- Styles from extra-services.css --- */
+.service-card {
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 25px 50px -12px rgba(27, 112, 239, 0.15);
+}
+
+/* --- Styles from faq.css --- */
+/* Accordion custom style */
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+details[open] summary .fa-chevron-down {
+  transform: rotate(180deg);
+}
+
+
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translateY(10px)
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0)
+  }
+}
+
+.slide-up {
+  animation: slideUp .8s cubic-bezier(0.16, 1, 0.3, 1) both
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px)
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0)
+  }
+}
+
+
+
+/* Global scrollbar styles handled by header.js */
+
+/* --- Styles from privacy.css --- */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-up {
+  animation: slideUp 0.6s ease-out forwards;
+}
+
+/* Floating Animation */
+@keyframes bubbleFloat {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-float {
+  animation: bubbleFloat 5s ease-in-out infinite;
+}
+
+.icon-bold {
+  -webkit-text-stroke: 1.5px currentColor;
+}
